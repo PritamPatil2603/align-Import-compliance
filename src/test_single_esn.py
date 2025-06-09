@@ -1,349 +1,800 @@
 # ============================================
-# FILE: src\test_single_esn.py
-# Test system with ONE specific ESN folder first
+# FILE: src/test_single_esn.py (ENHANCED VERSION)
+# Now SAVES all test results to files for audit trails
 # ============================================
 
 import asyncio
 import logging
+import time
+import json
+import ssl
+import socket
 from datetime import datetime
 from pathlib import Path
-import json
+from typing import List, Dict, Optional
+import pandas as pd
+from concurrent.futures import ThreadPoolExecutor
 
 from config import SystemConfig
 from google_services import GoogleServicesManager
 from invoice_processor import InvoiceProcessor
-from main import ComplianceSystemOrchestrator
+from models import CommercialInvoiceData, ConfidenceLevel
 
-class SingleESNTester:
-    """Test the system with one specific ESN folder"""
+class ResultSaver:
+    """Handles saving test results in multiple formats"""
+    
+    def __init__(self, config: SystemConfig):
+        self.config = config
+        self.output_dir = Path(config.OUTPUT_DIR)
+        self.output_dir.mkdir(parents=True, exist_ok=True)
+        
+        # Create subdirectories
+        (self.output_dir / "tests").mkdir(exist_ok=True)
+        (self.output_dir / "detailed").mkdir(exist_ok=True)
+        (self.output_dir / "excel").mkdir(exist_ok=True)
+    
+    def save_test_result(self, result_data: Dict, test_type: str = "single_esn") -> Dict[str, str]:
+        """Save test result in multiple formats"""
+        
+        timestamp = datetime.now().strftime('%Y%m%d_%H%M%S')
+        esn = result_data.get('esn', 'UNKNOWN')
+        
+        # File paths
+        json_file = self.output_dir / "tests" / f"{test_type}_{esn}_{timestamp}.json"
+        excel_file = self.output_dir / "excel" / f"{test_type}_{esn}_{timestamp}.xlsx"
+        detailed_file = self.output_dir / "detailed" / f"{test_type}_{esn}_{timestamp}_detailed.json"
+        
+        saved_files = {}
+        
+        try:
+            # 1. Save JSON summary
+            summary_data = {
+                "test_metadata": {
+                    "test_type": test_type,
+                    "timestamp": timestamp,
+                    "esn": esn,
+                    "test_date": datetime.now().isoformat(),
+                    "system_version": "production_v1.0"
+                },
+                "results": {
+                    "esn": result_data.get('esn'),
+                    "declared_amount": result_data.get('declared_amount'),
+                    "calculated_amount": result_data.get('calculated_amount'),
+                    "difference": result_data.get('difference'),
+                    "percentage_difference": result_data.get('percentage_difference'),
+                    "is_compliant": result_data.get('is_compliant'),
+                    "status": "COMPLIANT" if result_data.get('is_compliant') else "NON-COMPLIANT"
+                },
+                "performance": {
+                    "total_invoices": result_data.get('total_invoices'),
+                    "successful_extractions": result_data.get('successful_extractions'),
+                    "failed_extractions": result_data.get('failed_extractions', 0),
+                    "ai_processing_time": result_data.get('ai_processing_time'),
+                    "avg_time_per_pdf": result_data.get('ai_processing_time', 0) / max(result_data.get('total_invoices', 1), 1),
+                    "success_rate": (result_data.get('successful_extractions', 0) / max(result_data.get('total_invoices', 1), 1)) * 100
+                }
+            }
+            
+            with open(json_file, 'w') as f:
+                json.dump(summary_data, f, indent=2, default=str)
+            saved_files['json'] = str(json_file)
+            
+            # 2. Save detailed JSON (with all invoice details)
+            detailed_data = {
+                **summary_data,
+                "detailed_invoice_results": result_data.get('invoice_details', []),
+                "raw_result_data": result_data
+            }
+            
+            with open(detailed_file, 'w') as f:
+                json.dump(detailed_data, f, indent=2, default=str)
+            saved_files['detailed'] = str(detailed_file)
+            
+            # 3. Save Excel report
+            self._create_excel_report(result_data, excel_file, summary_data)
+            saved_files['excel'] = str(excel_file)
+            
+            return saved_files
+            
+        except Exception as e:
+            logging.error(f"Error saving results: {e}")
+            return {}
+    
+    def _create_excel_report(self, result_data: Dict, excel_file: Path, summary_data: Dict):
+        """Create comprehensive Excel report"""
+        
+        try:
+            with pd.ExcelWriter(excel_file, engine='openpyxl') as writer:
+                
+                # Sheet 1: Summary
+                summary_df = pd.DataFrame([{
+                    'ESN': result_data.get('esn'),
+                    'Test_Date': datetime.now().strftime('%Y-%m-%d %H:%M:%S'),
+                    'Declared_Amount': f"${result_data.get('declared_amount', 0):,.2f}",
+                    'Calculated_Amount': f"${result_data.get('calculated_amount', 0):,.2f}",
+                    'Difference': f"${result_data.get('difference', 0):,.2f}",
+                    'Percentage_Difference': f"{result_data.get('percentage_difference', 0):.2f}%",
+                    'Status': "COMPLIANT" if result_data.get('is_compliant') else "NON-COMPLIANT",
+                    'Total_PDFs': result_data.get('total_invoices', 0),
+                    'Successful_Extractions': result_data.get('successful_extractions', 0),
+                    'AI_Processing_Time': f"{result_data.get('ai_processing_time', 0):.1f}s",
+                    'Avg_Time_Per_PDF': f"{result_data.get('ai_processing_time', 0) / max(result_data.get('total_invoices', 1), 1):.1f}s"
+                }])
+                summary_df.to_excel(writer, sheet_name='Summary', index=False)
+                
+                # Sheet 2: Invoice Details
+                invoice_details = result_data.get('invoice_details', [])
+                if invoice_details:
+                    invoice_df = pd.DataFrame(invoice_details)
+                    invoice_df.to_excel(writer, sheet_name='Invoice_Details', index=False)
+                
+                # Sheet 3: Performance Metrics
+                performance_data = [{
+                    'Metric': 'Total Processing Time',
+                    'Value': f"{result_data.get('ai_processing_time', 0):.1f}s"
+                }, {
+                    'Metric': 'Average per PDF',
+                    'Value': f"{result_data.get('ai_processing_time', 0) / max(result_data.get('total_invoices', 1), 1):.1f}s"
+                }, {
+                    'Metric': 'Success Rate',
+                    'Value': f"{(result_data.get('successful_extractions', 0) / max(result_data.get('total_invoices', 1), 1)) * 100:.1f}%"
+                }, {
+                    'Metric': 'Accuracy',
+                    'Value': f"{100 - result_data.get('percentage_difference', 0):.2f}%"
+                }]
+                
+                performance_df = pd.DataFrame(performance_data)
+                performance_df.to_excel(writer, sheet_name='Performance', index=False)
+                
+        except Exception as e:
+            logging.error(f"Error creating Excel report: {e}")
+    
+    def save_benchmark_results(self, benchmark_data: List[Dict]) -> str:
+        """Save benchmark results comparing multiple ESNs"""
+        
+        timestamp = datetime.now().strftime('%Y%m%d_%H%M%S')
+        benchmark_file = self.output_dir / f"benchmark_results_{timestamp}.xlsx"
+        
+        try:
+            with pd.ExcelWriter(benchmark_file, engine='openpyxl') as writer:
+                
+                # Summary sheet
+                summary_data = []
+                for result in benchmark_data:
+                    summary_data.append({
+                        'ESN': result.get('esn'),
+                        'Declared_Amount': result.get('declared_amount'),
+                        'Calculated_Amount': result.get('calculated_amount'),
+                        'Difference': result.get('difference'),
+                        'Percentage_Diff': result.get('percentage_difference'),
+                        'Status': 'COMPLIANT' if result.get('is_compliant') else 'NON-COMPLIANT',
+                        'PDFs_Processed': result.get('total_invoices'),
+                        'Success_Rate': f"{(result.get('successful_extractions', 0) / max(result.get('total_invoices', 1), 1)) * 100:.1f}%",
+                        'Processing_Time': result.get('ai_processing_time'),
+                        'Avg_Per_PDF': result.get('ai_processing_time', 0) / max(result.get('total_invoices', 1), 1)
+                    })
+                
+                summary_df = pd.DataFrame(summary_data)
+                summary_df.to_excel(writer, sheet_name='Benchmark_Summary', index=False)
+                
+                # Overall statistics
+                total_pdfs = sum(r.get('total_invoices', 0) for r in benchmark_data)
+                total_time = sum(r.get('ai_processing_time', 0) for r in benchmark_data)
+                avg_accuracy = sum(100 - r.get('percentage_difference', 0) for r in benchmark_data) / len(benchmark_data) if benchmark_data else 0
+                
+                stats_data = [{
+                    'Metric': 'Total ESNs Tested',
+                    'Value': len(benchmark_data)
+                }, {
+                    'Metric': 'Total PDFs Processed',
+                    'Value': total_pdfs
+                }, {
+                    'Metric': 'Total Processing Time',
+                    'Value': f"{total_time:.1f}s"
+                }, {
+                    'Metric': 'Average Accuracy',
+                    'Value': f"{avg_accuracy:.2f}%"
+                }, {
+                    'Metric': 'Average Time per PDF',
+                    'Value': f"{total_time / max(total_pdfs, 1):.1f}s"
+                }]
+                
+                stats_df = pd.DataFrame(stats_data)
+                stats_df.to_excel(writer, sheet_name='Overall_Statistics', index=False)
+            
+            return str(benchmark_file)
+            
+        except Exception as e:
+            logging.error(f"Error saving benchmark results: {e}")
+            return ""
+
+class RobustCachedGoogleManager:
+    """Google Services manager with robust error handling and fallbacks"""
+    
+    def __init__(self, google_manager: GoogleServicesManager):
+        self.google_manager = google_manager
+        self._sheets_cache = None
+        self._esn_folders_cache = None
+        self.logger = logging.getLogger(__name__)
+        
+        # Configure for more robust connections
+        self.max_retries = 3
+        self.retry_delay = 2.0
+    
+    async def get_sheets_cache_with_retry(self) -> Dict[str, float]:
+        """Get sheets cache with comprehensive retry logic"""
+        
+        if self._sheets_cache is not None:
+            return self._sheets_cache
+        
+        self.logger.info("📊 Loading Google Sheets data with retry logic...")
+        
+        # Try multiple approaches in order of preference
+        approaches = [
+            ("optimized_pandas", self._load_sheets_optimized),
+            ("original_method", self._load_sheets_original),
+            ("fallback_method", self._load_sheets_fallback)
+        ]
+        
+        for approach_name, method in approaches:
+            for attempt in range(self.max_retries):
+                try:
+                    self.logger.info(f"Attempting {approach_name} (attempt {attempt + 1}/{self.max_retries})")
+                    
+                    start_time = time.time()
+                    result = await method()
+                    duration = time.time() - start_time
+                    
+                    if result:
+                        self.logger.info(f"✅ Success with {approach_name}: {len(result)} ESNs in {duration:.2f}s")
+                        self._sheets_cache = result
+                        return result
+                    
+                except Exception as e:
+                    self.logger.warning(f"❌ {approach_name} attempt {attempt + 1} failed: {e}")
+                    
+                    if attempt < self.max_retries - 1:
+                        wait_time = self.retry_delay * (2 ** attempt)  # Exponential backoff
+                        self.logger.info(f"Waiting {wait_time:.1f}s before retry...")
+                        await asyncio.sleep(wait_time)
+        
+        # If all methods fail, return empty cache but continue
+        self.logger.error("❌ All sheet loading methods failed, using empty cache")
+        self._sheets_cache = {}
+        return self._sheets_cache
+    
+    async def _load_sheets_optimized(self) -> Dict[str, float]:
+        """Original optimized method with better error handling"""
+        try:
+            # Read spreadsheet with timeout
+            range_name = "Sheet1!A:Z"
+            result = self.google_manager.sheets_service.spreadsheets().values().get(
+                spreadsheetId=self.google_manager.sheets_id,
+                range=range_name
+            ).execute()
+            
+            values = result.get('values', [])
+            if not values:
+                return {}
+            
+            # Process with pandas
+            df = pd.DataFrame(values[1:], columns=values[0])
+            df.columns = df.columns.str.strip()
+            
+            esn_column = 'Entry Summary Number'
+            amount_column = 'Line Tariff Goods Value Amount'
+            
+            if esn_column not in df.columns or amount_column not in df.columns:
+                self.logger.error(f"Required columns not found: {list(df.columns)}")
+                return {}
+            
+            # Process efficiently
+            cache = {}
+            clean_df = df.dropna(subset=[esn_column, amount_column])
+            
+            for _, row in clean_df.iterrows():
+                try:
+                    esn = str(row[esn_column]).strip()
+                    amount_str = str(row[amount_column]).strip()
+                    clean_amount = amount_str.replace('$', '').replace(',', '').strip()
+                    amount = float(clean_amount)
+                    cache[esn] = amount
+                except:
+                    continue
+            
+            return cache
+            
+        except Exception as e:
+            self.logger.error(f"Optimized method failed: {e}")
+            raise
+    
+    async def _load_sheets_original(self) -> Dict[str, float]:
+        """Fallback to original working method"""
+        try:
+            # Use the original method that was working
+            cache = {}
+            
+            range_name = "Sheet1!A:Z"
+            result = self.google_manager.sheets_service.spreadsheets().values().get(
+                spreadsheetId=self.google_manager.sheets_id,
+                range=range_name
+            ).execute()
+            
+            values = result.get('values', [])
+            if not values:
+                return {}
+            
+            # Simple processing without pandas
+            headers = values[0]
+            data_rows = values[1:]
+            
+            # Find column indices
+            esn_col_idx = None
+            amount_col_idx = None
+            
+            for i, header in enumerate(headers):
+                header_clean = str(header).strip().lower()
+                if 'entry' in header_clean and 'summary' in header_clean and 'number' in header_clean:
+                    esn_col_idx = i
+                if 'line' in header_clean and 'tariff' in header_clean and 'amount' in header_clean:
+                    amount_col_idx = i
+            
+            if esn_col_idx is None or amount_col_idx is None:
+                return {}
+            
+            # Process rows
+            for row in data_rows:
+                try:
+                    if len(row) > max(esn_col_idx, amount_col_idx):
+                        esn = str(row[esn_col_idx]).strip()
+                        amount_str = str(row[amount_col_idx]).strip()
+                        clean_amount = amount_str.replace('$', '').replace(',', '').strip()
+                        amount = float(clean_amount)
+                        cache[esn] = amount
+                except:
+                    continue
+            
+            return cache
+            
+        except Exception as e:
+            self.logger.error(f"Original method failed: {e}")
+            raise
+    
+    async def _load_sheets_fallback(self) -> Dict[str, float]:
+        """Emergency fallback method"""
+        try:
+            # Try with reduced data range
+            range_name = "Sheet1!A1:Z500"  # Limit range
+            result = self.google_manager.sheets_service.spreadsheets().values().get(
+                spreadsheetId=self.google_manager.sheets_id,
+                range=range_name
+            ).execute()
+            
+            values = result.get('values', [])
+            if not values or len(values) < 2:
+                return {}
+            
+            # Very basic processing
+            cache = {}
+            for i, row in enumerate(values[1:], 1):  # Skip header
+                try:
+                    if len(row) >= 26:  # Ensure we have enough columns
+                        esn = str(row[0]).strip()  # First column should be ESN
+                        amount_str = str(row[25]).strip()  # Last column should be amount
+                        
+                        if esn.startswith('AE') and len(esn) >= 11:
+                            clean_amount = amount_str.replace('$', '').replace(',', '').strip()
+                            amount = float(clean_amount)
+                            cache[esn] = amount
+                except:
+                    continue
+            
+            return cache
+            
+        except Exception as e:
+            self.logger.error(f"Fallback method failed: {e}")
+            raise
+    
+    async def get_esn_declared_amount(self, esn: str) -> Optional[float]:
+        """Get ESN amount with fallback handling"""
+        cache = await self.get_sheets_cache_with_retry()
+        
+        amount = cache.get(esn)
+        if amount:
+            self.logger.info(f"✅ Found {esn}: ${amount:,.2f}")
+        else:
+            self.logger.warning(f"❌ ESN {esn} not found in cache of {len(cache)} ESNs")
+            # Show some sample ESNs for debugging
+            sample_esns = list(cache.keys())[:5]
+            self.logger.info(f"Sample cached ESNs: {sample_esns}")
+        
+        return amount
+    
+    def get_esn_folders_cached(self) -> List[Dict]:
+        """Get ESN folders with caching"""
+        if self._esn_folders_cache is None:
+            self._esn_folders_cache = self.google_manager.get_all_esn_folders()
+        return self._esn_folders_cache
+
+class ProductionESNTester:
+    """Production ESN tester with comprehensive result saving"""
     
     def __init__(self):
         self.config = SystemConfig()
-        self.google_manager = GoogleServicesManager(
-            self.config.GOOGLE_CREDENTIALS_PATH,
-            self.config.GOOGLE_SHEETS_ID
-        )
-        self.invoice_processor = InvoiceProcessor(self.config)
         
-        # Setup logging for detailed output
+        # Initialize services with error handling
+        try:
+            google_manager = GoogleServicesManager(
+                self.config.GOOGLE_CREDENTIALS_PATH,
+                self.config.GOOGLE_SHEETS_ID
+            )
+            self.cached_manager = RobustCachedGoogleManager(google_manager)
+            self.invoice_processor = InvoiceProcessor(self.config)
+            self.result_saver = ResultSaver(self.config)  # NEW: Result saving
+            
+            # Setup logging
+            self._setup_logging()
+            self.logger = logging.getLogger(__name__)
+            
+        except Exception as e:
+            print(f"❌ Failed to initialize services: {e}")
+            raise
+    
+    def _setup_logging(self):
+        """Setup logging"""
+        log_format = '%(asctime)s - %(name)s - %(levelname)s - %(message)s'
+        Path("logs").mkdir(exist_ok=True)
+        
         logging.basicConfig(
             level=logging.INFO,
-            format='%(asctime)s - %(levelname)s - %(message)s',
-            handlers=[logging.StreamHandler()]
+            format=log_format,
+            handlers=[
+                logging.FileHandler(f"logs/test_{datetime.now().strftime('%Y%m%d_%H%M%S')}.log"),
+                logging.StreamHandler()
+            ]
         )
-        self.logger = logging.getLogger(__name__)
     
-    def list_available_esns(self):
-        """Show all available ESN folders for user to choose from"""
-        print("🔍 FINDING ALL AVAILABLE ESN FOLDERS")
+    async def test_specific_esn(self, target_esn: str) -> Optional[Dict]:
+        """Test specific ESN with comprehensive error handling and result saving"""
+        
+        print("🚀 PRODUCTION ESN COMPLIANCE TEST")
         print("=" * 60)
         
         try:
-            esn_folders = self.google_manager.get_all_esn_folders()
+            # Step 1: Load data with retries
+            print("📊 Loading system data...")
             
-            if not esn_folders:
-                print("❌ No ESN folders found!")
-                print("\nTroubleshooting:")
-                print("1. Check if folders start with 'AE' followed by numbers")
-                print("2. Verify Google Drive access permissions")
-                return []
+            sheets_cache = await self.cached_manager.get_sheets_cache_with_retry()
+            esn_folders = self.cached_manager.get_esn_folders_cached()
             
-            print(f"✅ Found {len(esn_folders)} ESN folders:")
-            print()
+            # Step 2: Validate ESN exists
+            declared_amount = sheets_cache.get(target_esn)
+            esn_folder = next((info for info in esn_folders if info['esn'] == target_esn), None)
             
-            # Show folders in organized format
-            for i, folder in enumerate(esn_folders, 1):
-                print(f"{i:3d}. {folder['esn']}")
-                if i % 20 == 0:  # Pause every 20 entries
-                    input("Press Enter to see more...")
-            
-            print(f"\n📋 Total: {len(esn_folders)} ESN folders available")
-            return esn_folders
-            
-        except Exception as e:
-            print(f"❌ Error finding ESN folders: {e}")
-            return []
-    
-    async def test_specific_esn(self, target_esn: str = None):
-        """Test system with one specific ESN"""
-        
-        print("🎯 TESTING SINGLE ESN FOLDER")
-        print("=" * 60)
-        
-        # Step 1: Find available ESNs
-        esn_folders = self.google_manager.get_all_esn_folders()
-        
-        if not esn_folders:
-            print("❌ No ESN folders found")
-            return None
-        
-        # Step 2: Select ESN to test
-        if target_esn:
-            # User specified an ESN
-            selected_esn = next((esn for esn in esn_folders if esn['esn'] == target_esn), None)
-            if not selected_esn:
-                print(f"❌ ESN '{target_esn}' not found")
-                print(f"Available ESNs: {[esn['esn'] for esn in esn_folders[:5]]}...")
+            if not declared_amount:
+                print(f"❌ ESN {target_esn} not found in Google Sheets")
+                print(f"📊 Available ESNs in sheets: {len(sheets_cache)}")
+                if sheets_cache:
+                    similar_esns = [esn for esn in sheets_cache.keys() if target_esn[:8] in esn]
+                    if similar_esns:
+                        print(f"🔍 Similar ESNs found: {similar_esns[:3]}")
                 return None
-        else:
-            # Let user choose
-            print("Available ESNs:")
-            for i, esn_info in enumerate(esn_folders[:10], 1):
-                print(f"{i}. {esn_info['esn']}")
             
-            if len(esn_folders) > 10:
-                print(f"... and {len(esn_folders) - 10} more")
+            if not esn_folder:
+                print(f"❌ ESN {target_esn} not found in Google Drive")
+                print(f"📁 Available ESNs in drive: {len(esn_folders)}")
+                return None
             
-            print(f"\n🎯 Using first ESN for testing: {esn_folders[0]['esn']}")
-            selected_esn = esn_folders[0]
-        
-        esn = selected_esn['esn']
-        folder_id = selected_esn['folder_id']
-        
-        print(f"\n🔬 TESTING ESN: {esn}")
-        print("=" * 40)
-        
-        # Step 3: Check Google Sheets data
-        print("📊 Step 1: Checking Google Sheets...")
-        declared_amount = self.google_manager.get_esn_declared_amount(esn)
-        
-        if declared_amount is None:
-            print(f"❌ ESN {esn} not found in Google Sheets")
-            print("💡 Check if the ESN exists in your spreadsheet")
-            return None
-        
-        print(f"✅ Declared amount: ${declared_amount:,.2f}")
-        
-        # Step 4: Find invoice files
-        print("\n📁 Step 2: Finding invoice files...")
-        invoice_files = self.google_manager.get_commercial_invoices_files(folder_id)
-        
-        if not invoice_files:
-            print("❌ No invoice files found")
-            print("💡 Check if 'COMMERCIAL INVOICES' subfolder exists")
-            return None
-        
-        print(f"✅ Found {len(invoice_files)} PDF files:")
-        for file_info in invoice_files:
-            size_mb = int(file_info.get('size', 0)) / (1024*1024) if file_info.get('size') else 0
-            print(f"   📄 {file_info['name']} ({size_mb:.1f}MB)")
-        
-        # Step 5: Download and process invoices
-        print(f"\n⚡ Step 3: Processing {len(invoice_files)} invoices...")
-        
-        # Create temp directory
-        temp_dir = Path(self.config.TEMP_DIR) / esn
-        temp_dir.mkdir(parents=True, exist_ok=True)
-        
-        downloaded_files = []
-        print("📥 Downloading files...")
-        
-        for file_info in invoice_files:
-            local_path = temp_dir / file_info['name']
-            if self.google_manager.download_file(file_info['id'], str(local_path)):
-                downloaded_files.append(str(local_path))
-                print(f"   ✅ Downloaded: {file_info['name']}")
-            else:
-                print(f"   ❌ Failed: {file_info['name']}")
-        
-        if not downloaded_files:
-            print("❌ No files downloaded successfully")
-            return None
-        
-        # Step 6: Extract data from invoices
-        print(f"\n🔍 Step 4: Extracting data from {len(downloaded_files)} PDFs...")
-        extracted_invoices = await self.invoice_processor.process_esn_invoices(esn, downloaded_files)
-        
-        # Step 7: Show detailed results
-        print("\n📋 EXTRACTION RESULTS:")
-        print("=" * 50)
-        
-        total_calculated = 0
-        successful_extractions = 0
-        
-        for i, invoice in enumerate(extracted_invoices, 1):
-            confidence_icon = {
-                "HIGH": "🟢",
-                "MEDIUM": "🟡", 
-                "LOW": "🟠",
-                "ERROR": "🔴"
-            }.get(invoice.confidence_level.value, "❓")
+            print(f"✅ ESN validated: {target_esn}")
+            print(f"💰 Declared Amount: ${declared_amount:,.2f}")
             
-            print(f"{i}. {confidence_icon} {invoice.invoice_number}")
-            print(f"   Company: {invoice.company_name}")
-            print(f"   Amount: ${invoice.total_usd_amount:,.2f} {invoice.currency}")
-            print(f"   Confidence: {invoice.confidence_level.value}")
+            # Step 3: Get invoice files
+            print("\n📁 Finding invoice files...")
+            invoice_files = self.cached_manager.google_manager.get_commercial_invoices_files(esn_folder['folder_id'])
             
-            if invoice.amount_source_text:
-                print(f"   Source: {invoice.amount_source_text[:100]}...")
+            if not invoice_files:
+                print("❌ No invoice files found")
+                return None
             
-            if invoice.extraction_notes:
-                print(f"   Notes: {invoice.extraction_notes}")
+            print(f"✅ Found {len(invoice_files)} PDF files")
+            for file_info in invoice_files:
+                size_mb = int(file_info.get('size', 0)) / (1024*1024) if file_info.get('size') else 0
+                print(f"   📄 {file_info['name']} ({size_mb:.1f}MB)")
             
-            if invoice.confidence_level.value != "ERROR":
-                total_calculated += invoice.total_usd_amount
-                successful_extractions += 1
+            # Step 4: Download files
+            temp_dir = Path(self.config.TEMP_DIR) / target_esn
+            temp_dir.mkdir(parents=True, exist_ok=True)
             
-            print()
-        
-        # Step 8: Calculate compliance
-        print("🎯 COMPLIANCE ANALYSIS:")
-        print("=" * 30)
-        print(f"Declared Amount:  ${declared_amount:,.2f}")
-        print(f"Calculated Total: ${total_calculated:,.2f}")
-        print(f"Difference:       ${abs(declared_amount - total_calculated):,.2f}")
-        
-        if declared_amount > 0:
-            percentage_diff = abs(declared_amount - total_calculated) / declared_amount * 100
-            print(f"Percentage Diff:  {percentage_diff:.2f}%")
+            downloaded_files = []
+            print("\n📥 Downloading files...")
             
-            if percentage_diff <= self.config.TOLERANCE_PERCENTAGE:
-                print("✅ STATUS: MATCH (Within tolerance)")
-            else:
-                print("❌ STATUS: MISMATCH (Exceeds tolerance)")
-        else:
-            print("⚠️  STATUS: Cannot calculate (zero declared amount)")
-        
-        print(f"\nSuccessful Extractions: {successful_extractions}/{len(extracted_invoices)}")
-        print(f"Success Rate: {successful_extractions/len(extracted_invoices)*100:.1f}%")
-        
-        # Step 9: Save detailed results for manual review
-        result_data = {
-            "esn": esn,
-            "test_timestamp": datetime.now().isoformat(),
-            "declared_amount": float(declared_amount),
-            "calculated_amount": float(total_calculated),
-            "difference": float(abs(declared_amount - total_calculated)),
-            "percentage_difference": float(percentage_diff) if declared_amount > 0 else 0,
-            "extracted_invoices": [
-                {
-                    "invoice_number": inv.invoice_number,
-                    "company_name": inv.company_name,
-                    "amount": float(inv.total_usd_amount),
-                    "currency": inv.currency,
-                    "confidence": inv.confidence_level.value,
-                    "source_text": inv.amount_source_text,
-                    "notes": inv.extraction_notes
-                }
-                for inv in extracted_invoices
-            ]
-        }
-        
-        # Save result
-        result_file = Path(self.config.OUTPUT_DIR) / f"test_{esn}_{datetime.now().strftime('%Y%m%d_%H%M%S')}.json"
-        with open(result_file, 'w') as f:
-            json.dump(result_data, f, indent=2)
-        
-        print(f"\n💾 Detailed results saved to: {result_file}")
-        
-        # Cleanup
-        for file_path in downloaded_files:
+            for i, file_info in enumerate(invoice_files, 1):
+                print(f"   Downloading {i}/{len(invoice_files)}: {file_info['name']}")
+                local_path = temp_dir / file_info['name']
+                
+                try:
+                    if self.cached_manager.google_manager.download_file(file_info['id'], str(local_path)):
+                        downloaded_files.append(str(local_path))
+                        print(f"   ✅ Success")
+                    else:
+                        print(f"   ❌ Failed")
+                except Exception as e:
+                    print(f"   ❌ Error: {e}")
+            
+            if not downloaded_files:
+                print("❌ No files downloaded successfully")
+                return None
+            
+            print(f"✅ Downloaded {len(downloaded_files)} files")
+            
+            # Step 5: Process with AI
+            print(f"\n🤖 AI Processing {len(downloaded_files)} PDFs...")
+            print("⏱️  This may take 15-45 seconds per PDF")
+            
+            ai_start = time.time()
+            extracted_invoices = []
+            
+            for i, pdf_path in enumerate(downloaded_files, 1):
+                pdf_name = Path(pdf_path).name
+                print(f"\n   🔄 Processing {i}/{len(downloaded_files)}: {pdf_name}")
+                
+                pdf_start = time.time()
+                try:
+                    invoice_data = await self.invoice_processor.process_single_invoice(pdf_path, target_esn)
+                    pdf_duration = time.time() - pdf_start
+                    
+                    confidence_icon = {
+                        "HIGH": "🟢",
+                        "MEDIUM": "🟡", 
+                        "LOW": "🟠",
+                        "ERROR": "🔴"
+                    }.get(invoice_data.confidence_level.value, "❓")
+                    
+                    print(f"   {confidence_icon} ${invoice_data.total_usd_amount:,.2f} "
+                          f"({invoice_data.confidence_level.value}, {pdf_duration:.1f}s)")
+                    
+                    extracted_invoices.append(invoice_data)
+                    
+                except Exception as e:
+                    print(f"   ❌ Error processing {pdf_name}: {e}")
+                    # Continue with other files
+            
+            ai_duration = time.time() - ai_start
+            print(f"\n⏱️  AI processing completed in {ai_duration:.1f}s")
+            
+            # Step 6: Calculate results
+            successful_invoices = [inv for inv in extracted_invoices if inv.confidence_level.value != "ERROR"]
+            total_calculated = sum(inv.total_usd_amount for inv in successful_invoices)
+            
+            difference = abs(float(declared_amount) - float(total_calculated))
+            percentage_diff = (difference / float(declared_amount) * 100) if declared_amount > 0 else 0
+            is_compliant = percentage_diff <= self.config.TOLERANCE_PERCENTAGE
+            
+            # Step 7: Prepare comprehensive result data
+            result_data = {
+                "esn": target_esn,
+                "declared_amount": float(declared_amount),
+                "calculated_amount": float(total_calculated),
+                "difference": difference,
+                "percentage_difference": percentage_diff,
+                "is_compliant": is_compliant,
+                "successful_extractions": len(successful_invoices),
+                "failed_extractions": len(extracted_invoices) - len(successful_invoices),
+                "total_invoices": len(extracted_invoices),
+                "ai_processing_time": ai_duration,
+                "test_timestamp": datetime.now().isoformat(),
+                "invoice_details": [
+                    {
+                        "invoice_number": inv.invoice_number,
+                        "company_name": inv.company_name,
+                        "amount": float(inv.total_usd_amount),
+                        "confidence": inv.confidence_level.value,
+                        "currency": inv.currency,
+                        "notes": inv.extraction_notes
+                    }
+                    for inv in extracted_invoices
+                ]
+            }
+            
+            # Step 8: SAVE RESULTS TO FILES
+            print("\n💾 Saving test results...")
+            saved_files = self.result_saver.save_test_result(result_data, "single_esn_test")
+            
+            # Step 9: Display results
+            print("\n" + "=" * 60)
+            print("📊 TEST RESULTS")
+            print("=" * 60)
+            print(f"🎯 ESN: {target_esn}")
+            print(f"💰 Declared: ${declared_amount:,.2f}")
+            print(f"💰 Calculated: ${total_calculated:,.2f}")
+            print(f"📏 Difference: ${difference:,.2f}")
+            print(f"📊 Percentage: {percentage_diff:.2f}%")
+            
+            status_icon = "✅" if is_compliant else "❌"
+            status_text = "COMPLIANT" if is_compliant else "NON-COMPLIANT"
+            print(f"\n{status_icon} STATUS: {status_text}")
+            
+            print(f"\n📈 PROCESSING METRICS:")
+            print(f"   Total PDFs: {len(extracted_invoices)}")
+            print(f"   ✅ Successful: {len(successful_invoices)}")
+            print(f"   ❌ Failed: {len(extracted_invoices) - len(successful_invoices)}")
+            print(f"   ⏱️  AI Time: {ai_duration:.1f}s")
+            print(f"   📊 Avg per PDF: {ai_duration/len(extracted_invoices):.1f}s")
+            
+            # Step 10: Display saved file locations
+            if saved_files:
+                print(f"\n💾 RESULTS SAVED TO:")
+                for file_type, file_path in saved_files.items():
+                    print(f"   📄 {file_type.upper()}: {file_path}")
+            
+            # Cleanup
+            for file_path in downloaded_files:
+                try:
+                    Path(file_path).unlink()
+                except:
+                    pass
             try:
-                Path(file_path).unlink()
+                temp_dir.rmdir()
             except:
                 pass
-        try:
-            temp_dir.rmdir()
-        except:
-            pass
-        
-        # Step 10: Manual validation guidance
-        print("\n🔍 MANUAL VALIDATION STEPS:")
-        print("=" * 35)
-        print("1. Open the PDFs in Google Drive manually")
-        print("2. Find the total USD amount in each invoice")
-        print("3. Add them up manually")
-        print("4. Compare with system calculation above")
-        print("5. Verify the declared amount in Google Sheets")
-        
-        if percentage_diff > 5:  # High discrepancy
-            print("\n⚠️  HIGH DISCREPANCY DETECTED!")
-            print("Recommended actions:")
-            print("- Manually verify invoice amounts")
-            print("- Check currency conversions")
-            print("- Review extraction confidence levels")
-        
-        return result_data
-    
-    async def run_interactive_test(self):
-        """Interactive test runner"""
-        
-        print("🧪 SINGLE ESN TESTING TOOL")
-        print("=" * 50)
-        print("This tool will test the system with ONE ESN folder")
-        print("to validate accuracy before running on all folders.")
-        print()
-        
-        try:
-            # Validate configuration first
-            if not self.config.validate():
-                return
             
-            # Option 1: List all ESNs and let user choose
-            print("Choose testing option:")
-            print("1. See all available ESNs and choose one")
-            print("2. Test a specific ESN (if you know the name)")
-            print("3. Test first available ESN automatically")
+            return result_data
             
-            choice = input("\nEnter choice (1/2/3): ").strip()
-            
-            if choice == "1":
-                # Show all ESNs
-                esn_folders = self.list_available_esns()
-                if not esn_folders:
-                    return
-                
-                esn_choice = input(f"\nEnter ESN name to test (or press Enter for first): ").strip()
-                if esn_choice:
-                    result = await self.test_specific_esn(esn_choice)
-                else:
-                    result = await self.test_specific_esn(esn_folders[0]['esn'])
-                    
-            elif choice == "2":
-                # Test specific ESN
-                target_esn = input("Enter ESN name (e.g., AE900683929): ").strip()
-                if target_esn:
-                    result = await self.test_specific_esn(target_esn)
-                else:
-                    print("❌ No ESN provided")
-                    return
-                    
-            elif choice == "3":
-                # Test first ESN automatically
-                result = await self.test_specific_esn()
-                
-            else:
-                print("❌ Invalid choice")
-                return
-            
-            # Show final recommendation
-            if result:
-                print("\n" + "=" * 60)
-                print("🎯 TEST COMPLETED!")
-                print("=" * 60)
-                
-                if result.get('percentage_difference', 100) <= 5:
-                    print("✅ RECOMMENDATION: System looks accurate!")
-                    print("   Ready to proceed with full processing.")
-                    print("\n   Next step: Run 'python main.py' for all ESNs")
-                else:
-                    print("⚠️  RECOMMENDATION: Review system accuracy")
-                    print("   High discrepancy detected. Manual verification needed.")
-                    print("\n   Next step: Investigate extraction issues")
-                
         except Exception as e:
-            print(f"❌ Test failed: {e}")
+            self.logger.error(f"Test failed: {e}")
             import traceback
             traceback.print_exc()
+            return None
+    
+    async def run_quick_test(self) -> Optional[Dict]:
+        """Run quick test with automatic ESN selection"""
+        
+        print("🚀 QUICK TEST WITH OPTIMAL ESN")
+        print("=" * 60)
+        
+        try:
+            # Load data
+            sheets_cache = await self.cached_manager.get_sheets_cache_with_retry()
+            esn_folders = self.cached_manager.get_esn_folders_cached()
+            
+            if not sheets_cache:
+                print("❌ No data available in Google Sheets")
+                return None
+            
+            if not esn_folders:
+                print("❌ No ESN folders found in Google Drive")
+                return None
+            
+            # Find matching ESNs
+            cached_esns = set(sheets_cache.keys())
+            drive_esns = set(info['esn'] for info in esn_folders)
+            matching_esns = cached_esns.intersection(drive_esns)
+            
+            if not matching_esns:
+                print("❌ No ESNs found in both systems")
+                print(f"📊 Sheets ESNs: {len(cached_esns)}")
+                print(f"📁 Drive ESNs: {len(drive_esns)}")
+                return None
+            
+            # Pick first matching ESN for testing
+            test_esn = list(matching_esns)[0]
+            print(f"🎯 Auto-selected ESN: {test_esn}")
+            
+            return await self.test_specific_esn(test_esn)
+            
+        except Exception as e:
+            print(f"❌ Quick test failed: {e}")
+            return None
+    
+    async def run_diagnostics(self):
+        """Run system diagnostics"""
+        
+        print("🔍 SYSTEM DIAGNOSTICS")
+        print("=" * 50)
+        
+        # Test Google Sheets
+        try:
+            print("📊 Testing Google Sheets connection...")
+            cache = await self.cached_manager.get_sheets_cache_with_retry()
+            print(f"✅ Google Sheets: {len(cache)} ESNs loaded")
+        except Exception as e:
+            print(f"❌ Google Sheets: {e}")
+        
+        # Test Google Drive
+        try:
+            print("\n📁 Testing Google Drive connection...")
+            folders = self.cached_manager.get_esn_folders_cached()
+            print(f"✅ Google Drive: {len(folders)} ESN folders found")
+        except Exception as e:
+            print(f"❌ Google Drive: {e}")
+        
+        # Test output directory
+        try:
+            print("\n💾 Testing result saving...")
+            print(f"✅ Output directory: {self.config.OUTPUT_DIR}")
+            print(f"   📁 Tests folder: {Path(self.config.OUTPUT_DIR) / 'tests'}")
+            print(f"   📁 Excel folder: {Path(self.config.OUTPUT_DIR) / 'excel'}")
+            print(f"   📁 Detailed folder: {Path(self.config.OUTPUT_DIR) / 'detailed'}")
+        except Exception as e:
+            print(f"❌ Result saving setup: {e}")
+        
+        # Test data alignment
+        try:
+            print("\n🔄 Testing data alignment...")
+            sheets_cache = await self.cached_manager.get_sheets_cache_with_retry()
+            esn_folders = self.cached_manager.get_esn_folders_cached()
+            
+            if sheets_cache and esn_folders:
+                cached_esns = set(sheets_cache.keys())
+                drive_esns = set(info['esn'] for info in esn_folders)
+                matching_esns = cached_esns.intersection(drive_esns)
+                
+                print(f"✅ Data Alignment:")
+                print(f"   📊 Sheets ESNs: {len(cached_esns)}")
+                print(f"   📁 Drive ESNs: {len(drive_esns)}")
+                print(f"   🎯 Matching ESNs: {len(matching_esns)}")
+                
+                if matching_esns:
+                    print(f"   📋 Sample matches: {list(matching_esns)[:3]}")
+        except Exception as e:
+            print(f"❌ Data alignment test: {e}")
+        
+        print("\n✅ Diagnostics completed")
 
 # ============================================
 # MAIN EXECUTION
 # ============================================
 
 async def main():
-    """Main function - run interactive test"""
-    tester = SingleESNTester()
-    await tester.run_interactive_test()
+    """Main execution with comprehensive result saving"""
+    
+    print("🚀 PRODUCTION ESN COMPLIANCE TESTER")
+    print("=" * 60)
+    
+    try:
+        tester = ProductionESNTester()
+        
+        print("Choose testing mode:")
+        print("1. Quick test with optimal ESN")
+        print("2. Test specific ESN")
+        print("3. Performance benchmark")
+        print("4. System diagnostics")
+        
+        choice = input("\nEnter choice (1-4): ").strip()
+        
+        if choice == "1":
+            result = await tester.run_quick_test()
+            if result:
+                print(f"\n🎉 QUICK TEST COMPLETED!")
+                print(f"   Status: {'COMPLIANT' if result['is_compliant'] else 'NON-COMPLIANT'}")
+                print(f"   Accuracy: {result['percentage_difference']:.2f}% difference")
+                print(f"   Results saved to: {tester.config.OUTPUT_DIR}")
+        
+        elif choice == "2":
+            target_esn = input("Enter ESN to test (e.g., AE900683929): ").strip()
+            if target_esn:
+                result = await tester.test_specific_esn(target_esn)
+                if result:
+                    print(f"\n🎉 TEST COMPLETED!")
+                    print(f"   Status: {'COMPLIANT' if result['is_compliant'] else 'NON-COMPLIANT'}")
+                    print(f"   Results saved to: {tester.config.OUTPUT_DIR}")
+            else:
+                print("❌ No ESN provided")
+        
+        elif choice == "3":
+            print("🏁 Performance benchmark not implemented yet")
+            print("   Use option 1 or 2 for testing")
+        
+        elif choice == "4":
+            await tester.run_diagnostics()
+        
+        else:
+            print("❌ Invalid choice")
+    
+    except Exception as e:
+        print(f"❌ System error: {e}")
+        import traceback
+        traceback.print_exc()
 
 if __name__ == "__main__":
     asyncio.run(main())

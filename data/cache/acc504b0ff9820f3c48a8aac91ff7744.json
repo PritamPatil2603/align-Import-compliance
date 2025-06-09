@@ -1,0 +1,11 @@
+{
+  "invoice_number": "EXTRACTED_FACTURA COMERCIAL 550000110",
+  "company_name": "UNKNOWN_COMPANY",
+  "total_usd_amount": "15850.8",
+  "currency": "USD",
+  "confidence_level": "HIGH",
+  "extraction_notes": "Clear USD total found on PAGE 1.",
+  "amount_source_text": "$15,850.80",
+  "cached_at": 1749481796.802046,
+  "file_path": "data\\temp\\AE900683929\\FACTURA COMERCIAL 550000110.pdf"
+}

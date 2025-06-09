@@ -15,6 +15,7 @@ google-auth
 pandas
 openpyxl
 pydantic
+aiofiles
 
 # Utilities
 python-dotenv
