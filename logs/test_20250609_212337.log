@@ -1,0 +1,6 @@
+2025-06-09 21:38:10,704 - __main__ - INFO - 📊 Loading Google Sheets data with retry logic...
+2025-06-09 21:38:10,799 - __main__ - INFO - Attempting optimized_pandas (attempt 1/3)
+2025-06-09 21:38:15,723 - __main__ - INFO - ✅ Success with optimized_pandas: 144 ESNs in 4.92s
+2025-06-09 21:38:15,736 - google_services - INFO - 🔍 Searching for ESN folders in Google Drive...
+2025-06-09 21:38:17,297 - google_services - INFO - Found 158 potential ESN folders
+2025-06-09 21:38:17,304 - google_services - INFO - ✅ Found 158 valid ESN folders

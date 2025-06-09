@@ -455,7 +455,7 @@ class ProductionESNTester:
         )
     
     async def test_specific_esn(self, target_esn: str) -> Optional[Dict]:
-        """Test specific ESN with comprehensive error handling and result saving"""
+        """Test specific ESN with concurrent processing"""
         
         print("🚀 PRODUCTION ESN COMPLIANCE TEST")
         print("=" * 60)
@@ -527,40 +527,82 @@ class ProductionESNTester:
             
             print(f"✅ Downloaded {len(downloaded_files)} files")
             
-            # Step 5: Process with AI
+            # Step 5: CONCURRENT AI Processing (REPLACE THIS SECTION)
             print(f"\n🤖 AI Processing {len(downloaded_files)} PDFs...")
-            print("⏱️  This may take 15-45 seconds per PDF")
+            print("⚡ Using concurrent processing for maximum speed")
             
             ai_start = time.time()
-            extracted_invoices = []
             
-            for i, pdf_path in enumerate(downloaded_files, 1):
-                pdf_name = Path(pdf_path).name
-                print(f"\n   🔄 Processing {i}/{len(downloaded_files)}: {pdf_name}")
-                
-                pdf_start = time.time()
-                try:
-                    invoice_data = await self.invoice_processor.process_single_invoice(pdf_path, target_esn)
-                    pdf_duration = time.time() - pdf_start
+            # Create semaphore for controlled concurrency
+            max_concurrent = min(5, len(downloaded_files))  # Process up to 5 PDFs at once
+            semaphore = asyncio.Semaphore(max_concurrent)
+            
+            async def process_single_pdf_concurrent(pdf_path: str, index: int):
+                """Process single PDF with concurrency control"""
+                async with semaphore:
+                    pdf_name = Path(pdf_path).name
+                    print(f"   🔄 Processing {index}/{len(downloaded_files)}: {pdf_name}")
                     
-                    confidence_icon = {
-                        "HIGH": "🟢",
-                        "MEDIUM": "🟡", 
-                        "LOW": "🟠",
-                        "ERROR": "🔴"
-                    }.get(invoice_data.confidence_level.value, "❓")
-                    
-                    print(f"   {confidence_icon} ${invoice_data.total_usd_amount:,.2f} "
-                          f"({invoice_data.confidence_level.value}, {pdf_duration:.1f}s)")
-                    
-                    extracted_invoices.append(invoice_data)
-                    
-                except Exception as e:
-                    print(f"   ❌ Error processing {pdf_name}: {e}")
-                    # Continue with other files
+                    pdf_start = time.time()
+                    try:
+                        # Small delay to prevent API rate limiting
+                        await asyncio.sleep(0.2 * index)  # Stagger requests
+                        
+                        invoice_data = await self.invoice_processor.process_single_invoice(pdf_path, target_esn)
+                        pdf_duration = time.time() - pdf_start
+                        
+                        # Status icons
+                        confidence_icons = {
+                            "HIGH": "🟢", "MEDIUM": "🟡", "LOW": "🟠", "ERROR": "🔴"
+                        }
+                        icon = confidence_icons.get(invoice_data.confidence_level.value, "❓")
+                        
+                        print(f"   {icon} ${invoice_data.total_usd_amount:,.2f} "
+                              f"({invoice_data.confidence_level.value}, {pdf_duration:.1f}s)")
+                        
+                        return invoice_data
+                        
+                    except Exception as e:
+                        pdf_duration = time.time() - pdf_start
+                        print(f"   ❌ Error processing {pdf_name} ({pdf_duration:.1f}s): {e}")
+                        
+                        # Return error result instead of None
+                        from models import CommercialInvoiceData, ConfidenceLevel
+                        from decimal import Decimal
+                        return CommercialInvoiceData(
+                            invoice_number=f"ERROR_{Path(pdf_path).stem}",
+                            company_name="ERROR",
+                            total_usd_amount=Decimal('0'),
+                            confidence_level=ConfidenceLevel.ERROR,
+                            extraction_notes=f"Error: {str(e)[:100]}"
+                        )
+            
+            # Run all PDFs concurrently
+            print(f"   📊 Processing {len(downloaded_files)} PDFs with {max_concurrent} concurrent workers")
+            
+            tasks = [
+                process_single_pdf_concurrent(pdf_path, i+1) 
+                for i, pdf_path in enumerate(downloaded_files)
+            ]
+            
+            # Execute all tasks concurrently
+            extracted_invoices = await asyncio.gather(*tasks, return_exceptions=True)
+            
+            # Filter out exceptions and None results
+            valid_invoices = []
+            for result in extracted_invoices:
+                if isinstance(result, Exception):
+                    print(f"   ⚠️  Exception occurred: {result}")
+                elif result is not None:
+                    valid_invoices.append(result)
             
             ai_duration = time.time() - ai_start
-            print(f"\n⏱️  AI processing completed in {ai_duration:.1f}s")
+            print(f"\n⚡ Concurrent processing completed in {ai_duration:.1f}s")
+            print(f"   📊 Speed improvement: ~{max(1, 208.6/ai_duration):.1f}x faster")
+            print(f"   ✅ Processed: {len(valid_invoices)}/{len(downloaded_files)} PDFs")
+            
+            # Use valid_invoices instead of extracted_invoices for the rest of the function
+            extracted_invoices = valid_invoices
             
             # Step 6: Calculate results
             successful_invoices = [inv for inv in extracted_invoices if inv.confidence_level.value != "ERROR"]

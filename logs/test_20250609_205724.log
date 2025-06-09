@@ -1,0 +1,88 @@
+2025-06-09 20:57:48,145 - __main__ - INFO - 📊 Loading Google Sheets data with retry logic...
+2025-06-09 20:57:48,145 - __main__ - INFO - Attempting optimized_pandas (attempt 1/3)
+2025-06-09 20:57:50,214 - __main__ - INFO - ✅ Success with optimized_pandas: 144 ESNs in 2.07s
+2025-06-09 20:57:50,216 - google_services - INFO - 🔍 Searching for ESN folders in Google Drive...
+2025-06-09 20:57:51,509 - google_services - INFO - Found 158 potential ESN folders
+2025-06-09 20:57:51,509 - google_services - INFO - ✅ Found 158 valid ESN folders
+2025-06-09 20:57:52,445 - google_services - INFO - Found 9 PDF files in COMMERCIAL INVOICES
+2025-06-09 20:58:14,917 - invoice_processor - INFO - 📄 Processing: FACTURA COMERCIAL 550000123.pdf
+2025-06-09 20:58:21,922 - httpx - INFO - HTTP Request: POST https://api.cloud.llamaindex.ai/api/parsing/upload "HTTP/1.1 200 OK"
+2025-06-09 20:58:23,511 - httpx - INFO - HTTP Request: GET https://api.cloud.llamaindex.ai/api/parsing/job/a56eaf61-9ed5-41eb-9f94-7ad3980ed658 "HTTP/1.1 200 OK"
+2025-06-09 20:58:26,499 - httpx - INFO - HTTP Request: GET https://api.cloud.llamaindex.ai/api/parsing/job/a56eaf61-9ed5-41eb-9f94-7ad3980ed658 "HTTP/1.1 200 OK"
+2025-06-09 20:58:29,803 - httpx - INFO - HTTP Request: GET https://api.cloud.llamaindex.ai/api/parsing/job/a56eaf61-9ed5-41eb-9f94-7ad3980ed658 "HTTP/1.1 200 OK"
+2025-06-09 20:58:34,157 - httpx - INFO - HTTP Request: GET https://api.cloud.llamaindex.ai/api/parsing/job/a56eaf61-9ed5-41eb-9f94-7ad3980ed658 "HTTP/1.1 200 OK"
+2025-06-09 20:58:39,953 - httpx - INFO - HTTP Request: GET https://api.cloud.llamaindex.ai/api/parsing/job/a56eaf61-9ed5-41eb-9f94-7ad3980ed658 "HTTP/1.1 200 OK"
+2025-06-09 20:58:45,277 - httpx - INFO - HTTP Request: GET https://api.cloud.llamaindex.ai/api/parsing/job/a56eaf61-9ed5-41eb-9f94-7ad3980ed658 "HTTP/1.1 200 OK"
+2025-06-09 20:58:50,591 - httpx - INFO - HTTP Request: GET https://api.cloud.llamaindex.ai/api/parsing/job/a56eaf61-9ed5-41eb-9f94-7ad3980ed658 "HTTP/1.1 200 OK"
+2025-06-09 20:58:50,996 - httpx - INFO - HTTP Request: GET https://api.cloud.llamaindex.ai/api/parsing/job/a56eaf61-9ed5-41eb-9f94-7ad3980ed658/result/markdown "HTTP/1.1 200 OK"
+2025-06-09 20:58:57,091 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-06-09 20:58:57,166 - invoice_processor - INFO - 🟢 FACTURA COMERCIAL 550000123.pdf: $16688.64 (HIGH, 42.4s)
+2025-06-09 20:58:57,196 - invoice_processor - INFO - 📄 Processing: FACTURA COMERCIAL 550000121.pdf
+2025-06-09 20:59:01,601 - httpx - INFO - HTTP Request: POST https://api.cloud.llamaindex.ai/api/parsing/upload "HTTP/1.1 200 OK"
+2025-06-09 20:59:03,058 - httpx - INFO - HTTP Request: GET https://api.cloud.llamaindex.ai/api/parsing/job/ea73cffc-4348-44a2-9d8b-e0e25c58152b "HTTP/1.1 200 OK"
+2025-06-09 20:59:05,388 - httpx - INFO - HTTP Request: GET https://api.cloud.llamaindex.ai/api/parsing/job/ea73cffc-4348-44a2-9d8b-e0e25c58152b "HTTP/1.1 200 OK"
+2025-06-09 20:59:08,693 - httpx - INFO - HTTP Request: GET https://api.cloud.llamaindex.ai/api/parsing/job/ea73cffc-4348-44a2-9d8b-e0e25c58152b "HTTP/1.1 200 OK"
+2025-06-09 20:59:13,634 - httpx - INFO - HTTP Request: GET https://api.cloud.llamaindex.ai/api/parsing/job/ea73cffc-4348-44a2-9d8b-e0e25c58152b "HTTP/1.1 200 OK"
+2025-06-09 20:59:14,107 - httpx - INFO - HTTP Request: GET https://api.cloud.llamaindex.ai/api/parsing/job/ea73cffc-4348-44a2-9d8b-e0e25c58152b/result/markdown "HTTP/1.1 200 OK"
+2025-06-09 20:59:16,848 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-06-09 20:59:16,860 - invoice_processor - INFO - 🟢 FACTURA COMERCIAL 550000121.pdf: $5325 (HIGH, 19.7s)
+2025-06-09 20:59:16,945 - invoice_processor - INFO - 📄 Processing: FACTURA COMERCIAL 0550000124.pdf
+2025-06-09 20:59:22,155 - httpx - INFO - HTTP Request: POST https://api.cloud.llamaindex.ai/api/parsing/upload "HTTP/1.1 200 OK"
+2025-06-09 20:59:45,154 - httpx - INFO - HTTP Request: GET https://api.cloud.llamaindex.ai/api/parsing/job/e2a73a40-362d-4bef-8f47-b1174f2727f5 "HTTP/1.1 200 OK"
+2025-06-09 20:59:46,604 - httpx - INFO - HTTP Request: GET https://api.cloud.llamaindex.ai/api/parsing/job/e2a73a40-362d-4bef-8f47-b1174f2727f5/result/markdown "HTTP/1.1 200 OK"
+2025-06-09 20:59:48,466 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-06-09 20:59:48,471 - invoice_processor - INFO - 🟢 FACTURA COMERCIAL 0550000124.pdf: $1891.44 (HIGH, 31.6s)
+2025-06-09 20:59:50,262 - invoice_processor - INFO - 📄 Processing: FACTURA COMERCIAL 550000122.pdf
+2025-06-09 20:59:55,366 - httpx - INFO - HTTP Request: POST https://api.cloud.llamaindex.ai/api/parsing/upload "HTTP/1.1 200 OK"
+2025-06-09 20:59:57,057 - httpx - INFO - HTTP Request: GET https://api.cloud.llamaindex.ai/api/parsing/job/866274a4-cc64-4681-bb69-3a54a9601343 "HTTP/1.1 200 OK"
+2025-06-09 20:59:59,692 - httpx - INFO - HTTP Request: GET https://api.cloud.llamaindex.ai/api/parsing/job/866274a4-cc64-4681-bb69-3a54a9601343 "HTTP/1.1 200 OK"
+2025-06-09 21:00:03,148 - httpx - INFO - HTTP Request: GET https://api.cloud.llamaindex.ai/api/parsing/job/866274a4-cc64-4681-bb69-3a54a9601343 "HTTP/1.1 200 OK"
+2025-06-09 21:00:07,838 - httpx - INFO - HTTP Request: GET https://api.cloud.llamaindex.ai/api/parsing/job/866274a4-cc64-4681-bb69-3a54a9601343 "HTTP/1.1 200 OK"
+2025-06-09 21:00:08,828 - httpx - INFO - HTTP Request: GET https://api.cloud.llamaindex.ai/api/parsing/job/866274a4-cc64-4681-bb69-3a54a9601343/result/markdown "HTTP/1.1 200 OK"
+2025-06-09 21:00:11,061 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-06-09 21:00:11,100 - invoice_processor - INFO - 🟢 FACTURA COMERCIAL 550000122.pdf: $1005.36 (HIGH, 22.6s)
+2025-06-09 21:00:12,176 - invoice_processor - INFO - 📄 Processing: FACTURA COMERCIAL 550000103.pdf
+2025-06-09 21:00:15,849 - httpx - INFO - HTTP Request: POST https://api.cloud.llamaindex.ai/api/parsing/upload "HTTP/1.1 200 OK"
+2025-06-09 21:00:17,355 - httpx - INFO - HTTP Request: GET https://api.cloud.llamaindex.ai/api/parsing/job/fb50f7fd-6c97-40db-bc4c-0096d69fe228 "HTTP/1.1 200 OK"
+2025-06-09 21:00:19,963 - httpx - INFO - HTTP Request: GET https://api.cloud.llamaindex.ai/api/parsing/job/fb50f7fd-6c97-40db-bc4c-0096d69fe228 "HTTP/1.1 200 OK"
+2025-06-09 21:00:23,303 - httpx - INFO - HTTP Request: GET https://api.cloud.llamaindex.ai/api/parsing/job/fb50f7fd-6c97-40db-bc4c-0096d69fe228 "HTTP/1.1 200 OK"
+2025-06-09 21:00:27,601 - httpx - INFO - HTTP Request: GET https://api.cloud.llamaindex.ai/api/parsing/job/fb50f7fd-6c97-40db-bc4c-0096d69fe228 "HTTP/1.1 200 OK"
+2025-06-09 21:00:28,137 - httpx - INFO - HTTP Request: GET https://api.cloud.llamaindex.ai/api/parsing/job/fb50f7fd-6c97-40db-bc4c-0096d69fe228/result/markdown "HTTP/1.1 200 OK"
+2025-06-09 21:00:31,234 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-06-09 21:00:31,248 - invoice_processor - INFO - 🟢 FACTURA COMERCIAL 550000103.pdf: $1302 (HIGH, 20.1s)
+2025-06-09 21:00:31,824 - invoice_processor - INFO - 📄 Processing: FACTURA COMERCIAL 550000113.pdf
+2025-06-09 21:00:35,107 - httpx - INFO - HTTP Request: POST https://api.cloud.llamaindex.ai/api/parsing/upload "HTTP/1.1 200 OK"
+2025-06-09 21:00:36,409 - httpx - INFO - HTTP Request: GET https://api.cloud.llamaindex.ai/api/parsing/job/533fd940-dc98-4be0-8ae7-937ef43e8d1a "HTTP/1.1 200 OK"
+2025-06-09 21:00:38,706 - httpx - INFO - HTTP Request: GET https://api.cloud.llamaindex.ai/api/parsing/job/533fd940-dc98-4be0-8ae7-937ef43e8d1a "HTTP/1.1 200 OK"
+2025-06-09 21:00:42,167 - httpx - INFO - HTTP Request: GET https://api.cloud.llamaindex.ai/api/parsing/job/533fd940-dc98-4be0-8ae7-937ef43e8d1a "HTTP/1.1 200 OK"
+2025-06-09 21:00:46,498 - httpx - INFO - HTTP Request: GET https://api.cloud.llamaindex.ai/api/parsing/job/533fd940-dc98-4be0-8ae7-937ef43e8d1a "HTTP/1.1 200 OK"
+2025-06-09 21:00:46,903 - httpx - INFO - HTTP Request: GET https://api.cloud.llamaindex.ai/api/parsing/job/533fd940-dc98-4be0-8ae7-937ef43e8d1a/result/markdown "HTTP/1.1 200 OK"
+2025-06-09 21:00:48,845 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-06-09 21:00:48,854 - invoice_processor - INFO - 🟢 FACTURA COMERCIAL 550000113.pdf: $5140.8 (HIGH, 17.6s)
+2025-06-09 21:00:48,931 - invoice_processor - INFO - 📄 Processing: FACTURA COMERCIAL 0550000115.pdf
+2025-06-09 21:00:51,337 - httpx - INFO - HTTP Request: POST https://api.cloud.llamaindex.ai/api/parsing/upload "HTTP/1.1 200 OK"
+2025-06-09 21:00:52,653 - httpx - INFO - HTTP Request: GET https://api.cloud.llamaindex.ai/api/parsing/job/a21c85e3-f13a-4b6f-8b27-ff7a586961d4 "HTTP/1.1 200 OK"
+2025-06-09 21:00:54,973 - httpx - INFO - HTTP Request: GET https://api.cloud.llamaindex.ai/api/parsing/job/a21c85e3-f13a-4b6f-8b27-ff7a586961d4 "HTTP/1.1 200 OK"
+2025-06-09 21:00:58,307 - httpx - INFO - HTTP Request: GET https://api.cloud.llamaindex.ai/api/parsing/job/a21c85e3-f13a-4b6f-8b27-ff7a586961d4 "HTTP/1.1 200 OK"
+2025-06-09 21:01:02,726 - httpx - INFO - HTTP Request: GET https://api.cloud.llamaindex.ai/api/parsing/job/a21c85e3-f13a-4b6f-8b27-ff7a586961d4 "HTTP/1.1 200 OK"
+2025-06-09 21:01:03,477 - httpx - INFO - HTTP Request: GET https://api.cloud.llamaindex.ai/api/parsing/job/a21c85e3-f13a-4b6f-8b27-ff7a586961d4/result/markdown "HTTP/1.1 200 OK"
+2025-06-09 21:01:06,138 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-06-09 21:01:06,144 - invoice_processor - INFO - 🟢 FACTURA COMERCIAL 0550000115.pdf: $1269.36 (HIGH, 17.3s)
+2025-06-09 21:01:06,209 - invoice_processor - INFO - 📄 Processing: FACTURA COMERCIAL 0550000116.pdf
+2025-06-09 21:01:11,081 - httpx - INFO - HTTP Request: POST https://api.cloud.llamaindex.ai/api/parsing/upload "HTTP/1.1 200 OK"
+2025-06-09 21:01:12,628 - httpx - INFO - HTTP Request: GET https://api.cloud.llamaindex.ai/api/parsing/job/e538cb51-c75f-42b8-8e9c-ff8970583564 "HTTP/1.1 200 OK"
+2025-06-09 21:01:15,191 - httpx - INFO - HTTP Request: GET https://api.cloud.llamaindex.ai/api/parsing/job/e538cb51-c75f-42b8-8e9c-ff8970583564 "HTTP/1.1 200 OK"
+2025-06-09 21:01:18,650 - httpx - INFO - HTTP Request: GET https://api.cloud.llamaindex.ai/api/parsing/job/e538cb51-c75f-42b8-8e9c-ff8970583564 "HTTP/1.1 200 OK"
+2025-06-09 21:01:22,958 - httpx - INFO - HTTP Request: GET https://api.cloud.llamaindex.ai/api/parsing/job/e538cb51-c75f-42b8-8e9c-ff8970583564 "HTTP/1.1 200 OK"
+2025-06-09 21:01:23,356 - httpx - INFO - HTTP Request: GET https://api.cloud.llamaindex.ai/api/parsing/job/e538cb51-c75f-42b8-8e9c-ff8970583564/result/markdown "HTTP/1.1 200 OK"
+2025-06-09 21:01:25,124 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-06-09 21:01:25,135 - invoice_processor - INFO - 🟢 FACTURA COMERCIAL 0550000116.pdf: $18381.6 (HIGH, 19.0s)
+2025-06-09 21:01:25,241 - invoice_processor - INFO - 📄 Processing: FACTURA COMERCIAL 550000104.pdf
+2025-06-09 21:01:29,186 - httpx - INFO - HTTP Request: POST https://api.cloud.llamaindex.ai/api/parsing/upload "HTTP/1.1 200 OK"
+2025-06-09 21:01:30,511 - httpx - INFO - HTTP Request: GET https://api.cloud.llamaindex.ai/api/parsing/job/8f88b585-0d2f-4c10-a4a0-646ceebc10a2 "HTTP/1.1 200 OK"
+2025-06-09 21:01:32,910 - httpx - INFO - HTTP Request: GET https://api.cloud.llamaindex.ai/api/parsing/job/8f88b585-0d2f-4c10-a4a0-646ceebc10a2 "HTTP/1.1 200 OK"
+2025-06-09 21:01:36,282 - httpx - INFO - HTTP Request: GET https://api.cloud.llamaindex.ai/api/parsing/job/8f88b585-0d2f-4c10-a4a0-646ceebc10a2 "HTTP/1.1 200 OK"
+2025-06-09 21:01:40,672 - httpx - INFO - HTTP Request: GET https://api.cloud.llamaindex.ai/api/parsing/job/8f88b585-0d2f-4c10-a4a0-646ceebc10a2 "HTTP/1.1 200 OK"
+2025-06-09 21:01:41,077 - httpx - INFO - HTTP Request: GET https://api.cloud.llamaindex.ai/api/parsing/job/8f88b585-0d2f-4c10-a4a0-646ceebc10a2/result/markdown "HTTP/1.1 200 OK"
+2025-06-09 21:01:42,950 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-06-09 21:01:43,410 - invoice_processor - INFO - 🟢 FACTURA COMERCIAL 550000104.pdf: $4073.76 (HIGH, 18.3s)

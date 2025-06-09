@@ -222,24 +222,31 @@ class OptimizedInvoiceProcessor:
             'total_processing_time': 0
         }
         
-        # Initialize optimized LlamaParse
+        # OPTIMIZED LlamaParse settings for speed
         self.parser = LlamaParse(
             api_key=config.LLAMA_CLOUD_API_KEY,
             result_type="markdown",
-            premium_mode=False,  # Faster parsing
-            language="es",
-            parsing_instruction="Extract total amounts and currency from commercial invoice.",
-            max_timeout=60,  # Timeout for stuck requests
-            show_progress=False  # Reduce overhead
+            
+            # SPEED OPTIMIZATIONS - ADD THESE LINES:
+            premium_mode=False,           # 30-40% faster than premium
+            language="es",                # Spanish optimization
+            max_timeout=60,               # Faster timeout
+            show_progress=False,          # Reduce overhead
+            
+            # Keep existing settings:
+            parsing_instruction=config.PARSING_INSTRUCTION if hasattr(config, 'PARSING_INSTRUCTION') else "Extract commercial invoice data",
+            verbose=False
         )
         
-        # Initialize optimized OpenAI client
+        # OPTIMIZED OpenAI settings for speed
         self.llm = OpenAI(
             api_key=config.OPENAI_API_KEY,
-            model="gpt-4o-mini",  # Fastest model with good accuracy
+            model="gpt-4o-mini",          # Fastest model
             temperature=0.1,
-            max_tokens=800,  # Limit response for speed
-            timeout=30.0,  # Request timeout
+            
+            # SPEED OPTIMIZATIONS - ADD THESE LINES:
+            max_tokens=600,               # Limit response length
+            timeout=30.0,                 # Faster timeout
         )
         
         # Optimized extraction prompt

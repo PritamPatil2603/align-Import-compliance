@@ -19,7 +19,7 @@ class SystemConfig:
     GOOGLE_SHEETS_ID: str = os.getenv("GOOGLE_SHEETS_ID", "")
     
     # Processing Settings
-    MAX_CONCURRENT_PDFS: int = int(os.getenv("MAX_CONCURRENT_PDFS", "3"))
+    MAX_CONCURRENT_PDFS: int = int(os.getenv("MAX_CONCURRENT_PDFS", "6"))
     TOLERANCE_PERCENTAGE: float = float(os.getenv("TOLERANCE_PERCENTAGE", "1.0"))
     
     # Directories
