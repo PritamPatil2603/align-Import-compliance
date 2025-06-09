@@ -1,0 +1,22 @@
+# Google credentials (Keep local, don't push to GitHub)
+credentials/
+token.pickle
+credentials.json
+*.pickle
+
+# Environment files
+.env
+*.env
+
+# Data directories (keep local for testing)
+data/temp/
+data/reports/
+
+# Python
+venv/
+__pycache__/
+*.pyc
+
+# IDE
+.vscode/
+.idea/
