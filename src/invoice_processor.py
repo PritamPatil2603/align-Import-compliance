@@ -225,14 +225,15 @@ class OptimizedInvoiceProcessor:
         # OPTIMIZED LlamaParse settings for speed
         self.parser = LlamaParse(
             api_key=config.LLAMA_CLOUD_API_KEY,
-            result_type="markdown",
             
             # SPEED OPTIMIZATIONS - ADD THESE LINES:
+            result_type="markdown",
             premium_mode=False,           # 30-40% faster than premium
             language="es",                # Spanish optimization
             max_timeout=60,               # Faster timeout
             show_progress=False,          # Reduce overhead
-            
+            check_interval=2,
+            num_workers=10,
             # Keep existing settings:
             parsing_instruction=config.PARSING_INSTRUCTION if hasattr(config, 'PARSING_INSTRUCTION') else "Extract commercial invoice data",
             verbose=False
