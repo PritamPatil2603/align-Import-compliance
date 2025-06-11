@@ -1,0 +1,63 @@
+2025-06-11 16:08:30,909 - __main__ - INFO - 📊 Loading Google Sheets data with retry logic...
+2025-06-11 16:08:30,909 - __main__ - INFO - Attempting optimized_pandas (attempt 1/3)
+2025-06-11 16:08:32,504 - __main__ - INFO - ✅ Success with optimized_pandas: 144 ESNs in 1.59s
+2025-06-11 16:08:32,504 - google_services - INFO - 🔍 Searching for ESN folders in Google Drive...
+2025-06-11 16:08:34,803 - google_services - INFO - Found 159 potential ESN folders
+2025-06-11 16:08:34,805 - google_services - INFO - ✅ Found 159 valid ESN folders
+2025-06-11 16:08:35,590 - google_services - INFO - Found 7 PDF files in COMMERCIAL INVOICES
+2025-06-11 16:09:16,610 - invoice_processor - INFO - 📄 Enhanced processing: FACTURA COMERCIAL 550000106.pdf
+2025-06-11 16:09:17,165 - invoice_processor - INFO - 📄 Enhanced processing: FACTURA COMERCIAL 550000105.pdf
+2025-06-11 16:09:17,182 - invoice_processor - INFO - 📄 Enhanced processing: FACTURA COMERCIAL 550000107.pdf
+2025-06-11 16:09:17,205 - invoice_processor - INFO - 📄 Enhanced processing: FACTURA COMERCIAL 550000112я.pdf
+2025-06-11 16:09:17,414 - invoice_processor - INFO - 📄 Enhanced processing: FACTURA COMERCIAL 550000110.pdf
+2025-06-11 16:09:20,773 - httpx - INFO - HTTP Request: POST https://api.cloud.llamaindex.ai/api/parsing/upload "HTTP/1.1 200 OK"
+2025-06-11 16:09:21,271 - httpx - INFO - HTTP Request: POST https://api.cloud.llamaindex.ai/api/parsing/upload "HTTP/1.1 200 OK"
+2025-06-11 16:09:21,488 - httpx - INFO - HTTP Request: POST https://api.cloud.llamaindex.ai/api/parsing/upload "HTTP/1.1 200 OK"
+2025-06-11 16:09:21,491 - httpx - INFO - HTTP Request: POST https://api.cloud.llamaindex.ai/api/parsing/upload "HTTP/1.1 200 OK"
+2025-06-11 16:09:21,543 - httpx - INFO - HTTP Request: POST https://api.cloud.llamaindex.ai/api/parsing/upload "HTTP/1.1 200 OK"
+2025-06-11 16:09:23,135 - httpx - INFO - HTTP Request: GET https://api.cloud.llamaindex.ai/api/parsing/job/b8b9366b-2dd7-41b9-9d35-4be40c48e1df "HTTP/1.1 200 OK"
+2025-06-11 16:09:23,642 - httpx - INFO - HTTP Request: GET https://api.cloud.llamaindex.ai/api/parsing/job/490002cf-3957-4383-8669-6814c8844728 "HTTP/1.1 200 OK"
+2025-06-11 16:09:23,828 - httpx - INFO - HTTP Request: GET https://api.cloud.llamaindex.ai/api/parsing/job/d4dd7dc8-f48f-4cdb-a399-a92058148288 "HTTP/1.1 200 OK"
+2025-06-11 16:09:23,857 - httpx - INFO - HTTP Request: GET https://api.cloud.llamaindex.ai/api/parsing/job/f8726ebc-f9a9-40cd-bc89-8d15629e8205 "HTTP/1.1 200 OK"
+2025-06-11 16:09:23,936 - httpx - INFO - HTTP Request: GET https://api.cloud.llamaindex.ai/api/parsing/job/1715bbcf-1a09-4bbc-843e-142142f33b81 "HTTP/1.1 200 OK"
+2025-06-11 16:09:26,506 - httpx - INFO - HTTP Request: GET https://api.cloud.llamaindex.ai/api/parsing/job/b8b9366b-2dd7-41b9-9d35-4be40c48e1df "HTTP/1.1 200 OK"
+2025-06-11 16:09:26,995 - httpx - INFO - HTTP Request: GET https://api.cloud.llamaindex.ai/api/parsing/job/490002cf-3957-4383-8669-6814c8844728 "HTTP/1.1 200 OK"
+2025-06-11 16:09:27,066 - httpx - INFO - HTTP Request: GET https://api.cloud.llamaindex.ai/api/parsing/job/b8b9366b-2dd7-41b9-9d35-4be40c48e1df/result/markdown "HTTP/1.1 200 OK"
+2025-06-11 16:09:27,925 - httpx - INFO - HTTP Request: GET https://api.cloud.llamaindex.ai/api/parsing/job/d4dd7dc8-f48f-4cdb-a399-a92058148288 "HTTP/1.1 200 OK"
+2025-06-11 16:09:27,933 - httpx - INFO - HTTP Request: GET https://api.cloud.llamaindex.ai/api/parsing/job/f8726ebc-f9a9-40cd-bc89-8d15629e8205 "HTTP/1.1 200 OK"
+2025-06-11 16:09:27,933 - httpx - INFO - HTTP Request: GET https://api.cloud.llamaindex.ai/api/parsing/job/490002cf-3957-4383-8669-6814c8844728/result/markdown "HTTP/1.1 200 OK"
+2025-06-11 16:09:28,383 - httpx - INFO - HTTP Request: GET https://api.cloud.llamaindex.ai/api/parsing/job/d4dd7dc8-f48f-4cdb-a399-a92058148288/result/markdown "HTTP/1.1 200 OK"
+2025-06-11 16:09:28,449 - httpx - INFO - HTTP Request: GET https://api.cloud.llamaindex.ai/api/parsing/job/f8726ebc-f9a9-40cd-bc89-8d15629e8205/result/markdown "HTTP/1.1 200 OK"
+2025-06-11 16:09:29,355 - httpx - INFO - HTTP Request: GET https://api.cloud.llamaindex.ai/api/parsing/job/1715bbcf-1a09-4bbc-843e-142142f33b81 "HTTP/1.1 200 OK"
+2025-06-11 16:09:29,799 - httpx - INFO - HTTP Request: GET https://api.cloud.llamaindex.ai/api/parsing/job/1715bbcf-1a09-4bbc-843e-142142f33b81/result/markdown "HTTP/1.1 200 OK"
+2025-06-11 16:09:31,743 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-06-11 16:09:31,813 - invoice_processor - INFO - ✅ Line items extracted: 1 items
+2025-06-11 16:09:31,814 - invoice_processor - ERROR - ❌ Enhanced processing failed for FACTURA COMERCIAL 550000107.pdf: unsupported operand type(s) for /: 'decimal.Decimal' and 'float'
+2025-06-11 16:09:31,833 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-06-11 16:09:31,837 - invoice_processor - INFO - ✅ Line items extracted: 1 items
+2025-06-11 16:09:31,837 - invoice_processor - ERROR - ❌ Enhanced processing failed for FACTURA COMERCIAL 550000110.pdf: unsupported operand type(s) for /: 'decimal.Decimal' and 'float'
+2025-06-11 16:09:32,520 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-06-11 16:09:32,525 - invoice_processor - INFO - ✅ Line items extracted: 1 items
+2025-06-11 16:09:32,528 - invoice_processor - ERROR - ❌ Enhanced processing failed for FACTURA COMERCIAL 550000112я.pdf: unsupported operand type(s) for /: 'decimal.Decimal' and 'float'
+2025-06-11 16:09:32,646 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-06-11 16:09:32,660 - invoice_processor - INFO - ✅ Line items extracted: 1 items
+2025-06-11 16:09:32,662 - invoice_processor - ERROR - ❌ Enhanced processing failed for FACTURA COMERCIAL 550000106.pdf: unsupported operand type(s) for /: 'decimal.Decimal' and 'float'
+2025-06-11 16:09:33,020 - invoice_processor - INFO - 📄 Enhanced processing: FACTURA COMERCIAL 550000108.pdf
+2025-06-11 16:09:33,249 - invoice_processor - INFO - 📄 Enhanced processing: FACTURA COMERCIAL 550000109.pdf
+2025-06-11 16:09:34,211 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-06-11 16:09:34,335 - invoice_processor - INFO - ✅ Line items extracted: 1 items
+2025-06-11 16:09:34,335 - invoice_processor - ERROR - ❌ Enhanced processing failed for FACTURA COMERCIAL 550000105.pdf: unsupported operand type(s) for /: 'decimal.Decimal' and 'float'
+2025-06-11 16:09:37,279 - httpx - INFO - HTTP Request: POST https://api.cloud.llamaindex.ai/api/parsing/upload "HTTP/1.1 200 OK"
+2025-06-11 16:09:38,728 - httpx - INFO - HTTP Request: POST https://api.cloud.llamaindex.ai/api/parsing/upload "HTTP/1.1 200 OK"
+2025-06-11 16:09:39,656 - httpx - INFO - HTTP Request: GET https://api.cloud.llamaindex.ai/api/parsing/job/986c1d2c-339e-4179-b166-6bd01167552d "HTTP/1.1 200 OK"
+2025-06-11 16:09:41,106 - httpx - INFO - HTTP Request: GET https://api.cloud.llamaindex.ai/api/parsing/job/57d3fd6f-c524-40fc-bb67-0dacd0ad3a0a "HTTP/1.1 200 OK"
+2025-06-11 16:09:43,008 - httpx - INFO - HTTP Request: GET https://api.cloud.llamaindex.ai/api/parsing/job/986c1d2c-339e-4179-b166-6bd01167552d "HTTP/1.1 200 OK"
+2025-06-11 16:09:43,466 - httpx - INFO - HTTP Request: GET https://api.cloud.llamaindex.ai/api/parsing/job/986c1d2c-339e-4179-b166-6bd01167552d/result/markdown "HTTP/1.1 200 OK"
+2025-06-11 16:09:44,452 - httpx - INFO - HTTP Request: GET https://api.cloud.llamaindex.ai/api/parsing/job/57d3fd6f-c524-40fc-bb67-0dacd0ad3a0a "HTTP/1.1 200 OK"
+2025-06-11 16:09:44,899 - httpx - INFO - HTTP Request: GET https://api.cloud.llamaindex.ai/api/parsing/job/57d3fd6f-c524-40fc-bb67-0dacd0ad3a0a/result/markdown "HTTP/1.1 200 OK"
+2025-06-11 16:09:49,593 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-06-11 16:09:49,595 - invoice_processor - INFO - ✅ Line items extracted: 1 items
+2025-06-11 16:09:49,597 - invoice_processor - ERROR - ❌ Enhanced processing failed for FACTURA COMERCIAL 550000109.pdf: unsupported operand type(s) for /: 'decimal.Decimal' and 'float'
+2025-06-11 16:09:50,791 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-06-11 16:09:50,798 - invoice_processor - INFO - ✅ Line items extracted: 3 items
+2025-06-11 16:09:50,798 - invoice_processor - ERROR - ❌ Enhanced processing failed for FACTURA COMERCIAL 550000108.pdf: unsupported operand type(s) for /: 'decimal.Decimal' and 'float'

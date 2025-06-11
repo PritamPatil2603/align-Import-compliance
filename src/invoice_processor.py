@@ -1,6 +1,6 @@
 # ============================================
 # FILE: src/invoice_processor.py
-# PRODUCTION-READY optimized invoice processor
+# PRODUCTION-READY optimized invoice processor with enhanced line item support
 # ============================================
 
 import asyncio
@@ -19,7 +19,7 @@ from llama_parse import LlamaParse
 from llama_index.llms.openai import OpenAI
 from llama_index.core.prompts import ChatPromptTemplate
 
-from models import CommercialInvoiceData, ConfidenceLevel
+from models import CommercialInvoiceData, ConfidenceLevel, EnhancedInvoiceData, LineItem, InvoiceExtractionResult
 from config import SystemConfig
 
 logger = logging.getLogger(__name__)
@@ -205,7 +205,7 @@ class RetryManager:
         raise last_exception
 
 class OptimizedInvoiceProcessor:
-    """Production-ready optimized invoice processor with advanced features"""
+    """Production-ready optimized invoice processor with enhanced line item support"""
     
     def __init__(self, config: SystemConfig):
         self.config = config
@@ -225,15 +225,11 @@ class OptimizedInvoiceProcessor:
         # OPTIMIZED LlamaParse settings for speed
         self.parser = LlamaParse(
             api_key=config.LLAMA_CLOUD_API_KEY,
-            
-            # SPEED OPTIMIZATIONS - ADD THESE LINES:
             result_type="markdown",
-            premium_mode=True,           # 30-40% faster than premium
-            language="es",                # Spanish optimizatio
-            show_progress=False,          # Reduce overhead
+            premium_mode=True,           
+            language="es",                
             check_interval=2,
             num_workers=6,
-            # Keep existing settings:
             parsing_instruction="""Extract invoice data from this Spanish commercial invoice (FACTURA COMERCIAL).
 
 Look for these specific fields:
@@ -253,10 +249,8 @@ Convert any monetary amounts to numbers without currency symbols.""",
         # OPTIMIZED OpenAI settings for speed
         self.llm = OpenAI(
             api_key=config.OPENAI_API_KEY,
-            model="gpt-4o",          # Fastest model
+            model="gpt-4o",
             temperature=0.1,
-            
-            # SPEED OPTIMIZATIONS - ADD THESE LINES:
             max_tokens=900,               
         )
         
@@ -382,6 +376,112 @@ Invoice content: {invoice_content}""")
             if Path(pdf_path).stat().st_size > 5 * 1024 * 1024:  # > 5MB
                 gc.collect()
     
+    async def process_single_invoice_enhanced(self, pdf_path: str, esn: str) -> InvoiceExtractionResult:
+        """Enhanced processing with line item extraction"""
+        
+        invoice_filename = Path(pdf_path).name
+        start_time = time.time()
+        
+        try:
+            logger.info(f"📄 Enhanced processing: {invoice_filename}")
+            
+            # Step 1: Parse PDF (same as before)
+            docs = await self.retry_manager.retry_with_backoff(
+                self._parse_pdf_with_timeout, pdf_path
+            )
+            
+            if not docs:
+                raise ValueError("No content extracted from PDF")
+            
+            # Step 2: Prepare content
+            invoice_content = self._prepare_invoice_content(docs)
+            
+            # Step 3: Try enhanced extraction first
+            enhanced_success = False
+            enhanced_data = None
+            
+            try:
+                enhanced_data = await self.retry_manager.retry_with_backoff(
+                    self._extract_enhanced_data_with_timeout, invoice_content
+                )
+                enhanced_success = True
+                logger.info(f"✅ Line items extracted: {len(enhanced_data.line_items)} items")
+                
+            except Exception as e:
+                logger.warning(f"⚠️ Enhanced extraction failed: {e}")
+                enhanced_success = False
+            
+            # Step 4: Fallback to legacy extraction if enhanced fails
+            if not enhanced_success or not enhanced_data:
+                logger.info("🔄 Falling back to legacy extraction")
+                legacy_data = await self.retry_manager.retry_with_backoff(
+                    self._extract_data_with_timeout, invoice_content
+                )
+                
+                # Convert legacy to enhanced format
+                enhanced_data = self._convert_legacy_to_enhanced(legacy_data)
+            
+            # Step 5: Create legacy compatibility data
+            legacy_data = self._convert_enhanced_to_legacy(enhanced_data)
+            
+            # Step 6: Post-process both formats
+            enhanced_data = self._post_process_enhanced_extraction(enhanced_data, pdf_path)
+            legacy_data = self._post_process_extraction(legacy_data, pdf_path)
+            
+            # Step 7: Create complete result
+            processing_time = time.time() - start_time
+            
+            result = InvoiceExtractionResult(
+                enhanced_data=enhanced_data,
+                legacy_data=legacy_data,
+                processing_time=processing_time,
+                extraction_method="enhanced" if enhanced_success else "legacy_fallback",
+                line_item_extraction_success=enhanced_success and len(enhanced_data.line_items) > 0
+            )
+            
+            # Step 8: Cache result (enhanced format)
+            if enhanced_data.confidence_level != ConfidenceLevel.ERROR:
+                self._save_enhanced_to_cache(pdf_path, result)
+            
+            logger.info(f"🎯 {invoice_filename}: ${enhanced_data.total_usd_amount} "
+                       f"({len(enhanced_data.line_items)} items, {processing_time:.1f}s)")
+            
+            return result
+            
+        except Exception as e:
+            # Fallback error handling
+            processing_time = time.time() - start_time
+            logger.error(f"❌ Enhanced processing failed for {invoice_filename}: {e}")
+            
+            # Create error result
+            error_enhanced = EnhancedInvoiceData(
+                invoice_number=f"ERROR_{Path(pdf_path).stem}",
+                company_name="PROCESSING_ERROR",
+                total_usd_amount=Decimal('0'),
+                confidence_level=ConfidenceLevel.ERROR,
+                extraction_notes=f"Enhanced processing failed: {str(e)[:200]}"
+            )
+            
+            error_legacy = CommercialInvoiceData(
+                invoice_number=f"ERROR_{Path(pdf_path).stem}",
+                company_name="PROCESSING_ERROR", 
+                total_usd_amount=Decimal('0'),
+                confidence_level=ConfidenceLevel.ERROR,
+                extraction_notes=f"Processing failed: {str(e)[:200]}"
+            )
+            
+            return InvoiceExtractionResult(
+                enhanced_data=error_enhanced,
+                legacy_data=error_legacy,
+                processing_time=processing_time,
+                extraction_method="error",
+                line_item_extraction_success=False
+            )
+    
+    # ============================================
+    # HELPER METHODS (All inside the class)
+    # ============================================
+    
     async def _parse_pdf_with_timeout(self, pdf_path: str):
         """Parse PDF with timeout handling"""
         try:
@@ -429,6 +529,58 @@ Invoice content: {invoice_content}""")
         except asyncio.TimeoutError:
             raise ValueError("AI extraction timeout")
     
+    async def _extract_enhanced_data_with_timeout(self, invoice_content: str) -> EnhancedInvoiceData:
+        """Extract enhanced data with line item separation"""
+        
+        # Enhanced prompt for line item extraction
+        enhanced_prompt = ChatPromptTemplate.from_messages([
+            ("system", """Extract detailed line item data from this Spanish commercial invoice.
+
+FOR EACH INDIVIDUAL PRODUCT/SKU on the invoice, extract:
+1. SKU/Reference number (REF CLIENTE)
+2. Product description (DESCRIPCIÓN DEL MATERIAL)  
+3. Individual quantity for that SKU
+4. Individual unit price for that SKU
+5. Individual line total for that SKU
+
+ALSO EXTRACT invoice header information:
+- Invoice number
+- Company name  
+- Invoice date/time
+- Total invoice amount
+
+IMPORTANT: 
+- Separate each SKU into its own line item
+- If multiple SKUs are listed together, split them
+- Calculate individual line totals (quantity × unit_price)
+- Ensure line totals sum to invoice total
+
+RETURN structured data with separate line items, not combined strings."""),
+            
+            ("user", """Extract line items and header from this invoice:
+
+REQUIRED OUTPUT STRUCTURE:
+1. Invoice header (number, company, date, total amount)
+2. Individual line items (each SKU separate)
+3. Line item details (quantity, unit price, line total per SKU)
+
+If multiple SKUs share the same total, estimate individual quantities proportionally.
+
+Invoice content: {invoice_content}""")
+        ])
+        
+        try:
+            return await asyncio.wait_for(
+                self.llm.astructured_predict(
+                    EnhancedInvoiceData,
+                    enhanced_prompt,
+                    invoice_content=invoice_content
+                ),
+                timeout=60.0  # Longer timeout for complex extraction
+            )
+        except asyncio.TimeoutError:
+            raise ValueError("Enhanced AI extraction timeout")
+    
     def _post_process_extraction(self, extracted_data: CommercialInvoiceData, pdf_path: str) -> CommercialInvoiceData:
         """Post-process and validate extraction results"""
         
@@ -453,93 +605,172 @@ Invoice content: {invoice_content}""")
         
         return extracted_data
     
-    async def process_esn_invoices(self, esn: str, pdf_files: List[str]) -> List[CommercialInvoiceData]:
-        """Optimized ESN processing with intelligent concurrency"""
+    def _post_process_enhanced_extraction(self, enhanced_data: EnhancedInvoiceData, pdf_path: str) -> EnhancedInvoiceData:
+        """Post-process enhanced extraction result"""
         
-        if not pdf_files:
-            logger.warning(f"No PDF files to process for ESN {esn}")
-            return []
+        # Validate line items total vs invoice total
+        if enhanced_data.line_items:
+            line_items_sum = sum(item.line_total for item in enhanced_data.line_items)
+            enhanced_data.line_items_total = line_items_sum
+            enhanced_data.total_line_items = len(enhanced_data.line_items)
+            
+            # Check for significant discrepancy
+            difference = abs(enhanced_data.total_usd_amount - line_items_sum)
+            if difference > 0.01:  # More than 1 cent difference
+                note = f"Line items total (${line_items_sum}) differs from invoice total (${enhanced_data.total_usd_amount}) by ${difference}"
+                if enhanced_data.extraction_notes:
+                    enhanced_data.extraction_notes += f" | {note}"
+                else:
+                    enhanced_data.extraction_notes = note
         
-        logger.info(f"⚡ Processing {len(pdf_files)} invoices for ESN {esn}")
+        return enhanced_data
+    
+    def _convert_legacy_to_enhanced(self, legacy_data: CommercialInvoiceData) -> EnhancedInvoiceData:
+        """Convert legacy format to enhanced format"""
         
-        # Dynamic concurrency based on file count and system resources
-        optimal_concurrency = min(
-            self.config.MAX_CONCURRENT_PDFS * 2,  # Base concurrency
-            len(pdf_files),  # Don't exceed file count
-            8,  # Maximum concurrent processes
-            max(2, os.cpu_count() or 2)  # Consider system resources
+        # Split combined fields if they contain multiple items
+        line_items = []
+        
+        if hasattr(legacy_data, 'client_reference') and legacy_data.client_reference:
+            skus = [s.strip() for s in legacy_data.client_reference.split(',') if s.strip()]
+            descriptions = []
+            
+            if hasattr(legacy_data, 'material_description') and legacy_data.material_description:
+                descriptions = [d.strip() for d in legacy_data.material_description.split(',') if d.strip()]
+            
+            # Create line items from split data
+            for i, sku in enumerate(skus):
+                description = descriptions[i] if i < len(descriptions) else f"Product {i+1}"
+                
+                # Estimate quantities and unit prices
+                total_qty = getattr(legacy_data, 'cantidad_total', 0) or 0
+                unit_price = getattr(legacy_data, 'valor_unitario', 0) or 0
+                
+                # FIX: Ensure proper type conversion
+                estimated_qty = float(total_qty) / len(skus) if len(skus) > 0 else 0
+                estimated_total = legacy_data.total_usd_amount / len(skus) if len(skus) > 0 else legacy_data.total_usd_amount
+                
+                line_item = LineItem(
+                    line_number=i + 1,
+                    sku=sku,
+                    description=description,
+                    quantity=estimated_qty,
+                    unit_price=Decimal(str(unit_price)),
+                    line_total=estimated_total
+                )
+                line_items.append(line_item)
+        
+        # If no line items could be created, create a single item
+        if not line_items and legacy_data.total_usd_amount > 0:
+            line_item = LineItem(
+                line_number=1,
+                sku=getattr(legacy_data, 'client_reference', 'UNKNOWN_SKU') or 'UNKNOWN_SKU',
+                description=getattr(legacy_data, 'material_description', 'Unknown Product') or 'Unknown Product',
+                quantity=float(getattr(legacy_data, 'cantidad_total', 1) or 1),  # FIX: Convert to float
+                unit_price=legacy_data.total_usd_amount,
+                line_total=legacy_data.total_usd_amount
+            )
+            line_items.append(line_item)
+        
+        # Create enhanced data
+        enhanced_data = EnhancedInvoiceData(
+            invoice_number=legacy_data.invoice_number,
+            company_name=legacy_data.company_name,
+            total_usd_amount=legacy_data.total_usd_amount,
+            currency=legacy_data.currency,
+            confidence_level=legacy_data.confidence_level,
+            extraction_notes=legacy_data.extraction_notes,
+            amount_source_text=legacy_data.amount_source_text,
+            line_items=line_items,
+            total_line_items=len(line_items),
+            line_items_total=sum(item.line_total for item in line_items),
+            # Legacy compatibility
+            client_reference=getattr(legacy_data, 'client_reference', None),
+            material_description=getattr(legacy_data, 'material_description', None),
+            cantidad_total=getattr(legacy_data, 'cantidad_total', None),
+            valor_unitario=getattr(legacy_data, 'valor_unitario', None),
+            fecha_hora=getattr(legacy_data, 'fecha_hora', None)
         )
         
-        semaphore = asyncio.Semaphore(optimal_concurrency)
+        return enhanced_data
+
+    def _convert_enhanced_to_legacy(self, enhanced_data: EnhancedInvoiceData) -> CommercialInvoiceData:
+        """Convert enhanced format to legacy format for compatibility"""
         
-        async def process_with_semaphore(pdf_path: str):
-            async with semaphore:
-                # Stagger requests to avoid API rate limits
-                await asyncio.sleep(0.1)
-                return await self.process_single_invoice(pdf_path, esn)
+        # Combine line items back to legacy format
+        combined_skus = ", ".join([item.sku for item in enhanced_data.line_items])
+        combined_descriptions = ", ".join([item.description for item in enhanced_data.line_items])
+        total_quantity = sum(item.quantity for item in enhanced_data.line_items)
         
-        # Process all invoices concurrently
-        start_time = time.time()
-        tasks = [process_with_semaphore(pdf_path) for pdf_path in pdf_files]
-        results = await asyncio.gather(*tasks, return_exceptions=True)
+        # FIX: Convert Decimal to float for division
+        avg_unit_price = (float(enhanced_data.total_usd_amount) / total_quantity) if total_quantity > 0 else 0
         
-        # Handle results and exceptions
-        valid_results = []
-        exception_count = 0
+        legacy_data = CommercialInvoiceData(
+            invoice_number=enhanced_data.invoice_number,
+            company_name=enhanced_data.company_name,
+            total_usd_amount=enhanced_data.total_usd_amount,
+            currency=enhanced_data.currency,
+            confidence_level=enhanced_data.confidence_level,
+            extraction_notes=enhanced_data.extraction_notes,
+            amount_source_text=enhanced_data.amount_source_text,
+            client_reference=combined_skus or enhanced_data.client_reference,
+            material_description=combined_descriptions or enhanced_data.material_description,
+            cantidad_total=total_quantity or enhanced_data.cantidad_total,
+            valor_unitario=float(avg_unit_price) or enhanced_data.valor_unitario,
+            fecha_hora=enhanced_data.fecha_hora
+        )
         
-        for i, result in enumerate(results):
-            if isinstance(result, Exception):
-                exception_count += 1
-                logger.error(f"Exception processing {Path(pdf_files[i]).name}: {result}")
-                
-                # Create error result for exception
-                error_result = CommercialInvoiceData(
-                    invoice_number=f"EXCEPTION_{Path(pdf_files[i]).stem}",
-                    company_name="EXCEPTION_ERROR",
-                    total_usd_amount=Decimal('0'),
-                    confidence_level=ConfidenceLevel.ERROR,
-                    extraction_notes=f"Exception: {str(result)[:200]}"
-                )
-                valid_results.append(error_result)
-            else:
-                valid_results.append(result)
-        
-        # Log comprehensive summary
-        total_time = time.time() - start_time
-        successful = len([r for r in valid_results if r.confidence_level != ConfidenceLevel.ERROR])
-        total_amount = sum(r.total_usd_amount for r in valid_results if r.confidence_level != ConfidenceLevel.ERROR)
-        avg_time = total_time / len(pdf_files) if pdf_files else 0
-        
-        logger.info(f"📊 ESN {esn} Summary:")
-        logger.info(f"   ✅ Successful: {successful}/{len(valid_results)}")
-        logger.info(f"   💰 Total: ${total_amount:,.2f}")
-        logger.info(f"   ⚠️  Exceptions: {exception_count}")
-        logger.info(f"   ⏱️  Time: {total_time:.1f}s ({avg_time:.1f}s avg/PDF)")
-        logger.info(f"   🔄 Concurrency: {optimal_concurrency}")
-        
-        return valid_results
-    
-    def get_performance_stats(self) -> Dict[str, Any]:
-        """Get comprehensive performance statistics"""
-        stats = self.processing_stats.copy()
-        
-        if stats['total_processed'] > 0:
-            stats['cache_hit_rate'] = stats['cache_hits'] / stats['total_processed'] * 100
-            stats['success_rate'] = stats['successful_extractions'] / stats['total_processed'] * 100
-            stats['avg_processing_time'] = stats['total_processing_time'] / stats['total_processed']
-        
-        return stats
-    
-    def reset_stats(self):
-        """Reset performance statistics"""
-        self.processing_stats = {
-            'total_processed': 0,
-            'cache_hits': 0,
-            'cache_misses': 0,
-            'successful_extractions': 0,
-            'failed_extractions': 0,
-            'total_processing_time': 0
-        }
+        return legacy_data
+
+    def _save_enhanced_to_cache(self, file_path: str, result: InvoiceExtractionResult):
+        """Save enhanced extraction result to cache"""
+        try:
+            file_hash = self.cache._get_file_hash(file_path)
+            cache_path = self.cache.get_cache_path(file_hash)
+            
+            # Save enhanced result to cache
+            cache_data = {
+                'invoice_number': result.enhanced_data.invoice_number,
+                'company_name': result.enhanced_data.company_name,
+                'total_usd_amount': str(result.enhanced_data.total_usd_amount),
+                'currency': result.enhanced_data.currency,
+                'confidence_level': result.enhanced_data.confidence_level.value,
+                'extraction_notes': result.enhanced_data.extraction_notes,
+                'amount_source_text': result.enhanced_data.amount_source_text,
+                'client_reference': result.enhanced_data.client_reference,
+                'material_description': result.enhanced_data.material_description,
+                'fecha_hora': result.enhanced_data.fecha_hora,
+                'cantidad_total': result.enhanced_data.cantidad_total,
+                'valor_unitario': result.enhanced_data.valor_unitario,
+                # Enhanced fields
+                'line_items': [
+                    {
+                        'line_number': item.line_number,
+                        'sku': item.sku,
+                        'description': item.description,
+                        'quantity': item.quantity,
+                        'unit_price': str(item.unit_price),
+                        'line_total': str(item.line_total),
+                        'unit_of_measure': item.unit_of_measure,
+                        'country_of_origin': item.country_of_origin,
+                        'hts_code': item.hts_code
+                    }
+                    for item in result.enhanced_data.line_items
+                ],
+                'processing_time': result.processing_time,
+                'extraction_method': result.extraction_method,
+                'line_item_extraction_success': result.line_item_extraction_success,
+                'cached_at': time.time(),
+                'file_path': str(file_path)
+            }
+            
+            with open(cache_path, 'w') as f:
+                json.dump(cache_data, f, indent=2)
+            
+            logger.debug(f"Saved enhanced result to cache: {cache_path}")
+            
+        except Exception as e:
+            logger.warning(f"Failed to save enhanced result to cache: {e}")
 
 # Legacy compatibility - keep existing InvoiceProcessor class name
 class InvoiceProcessor(OptimizedInvoiceProcessor):
@@ -579,26 +810,6 @@ class ProcessorBenchmark:
             'avg_time': sum(times) / len(times),
             'total_time': sum(times)
         }
-    
-    async def benchmark_concurrent_processing(self, pdf_files: List[str], concurrency_levels: List[int]) -> Dict[int, float]:
-        """Benchmark different concurrency levels"""
-        results = {}
-        
-        for concurrency in concurrency_levels:
-            # Temporarily set concurrency
-            original_max = self.processor.config.MAX_CONCURRENT_PDFS
-            self.processor.config.MAX_CONCURRENT_PDFS = concurrency
-            
-            start_time = time.time()
-            await self.processor.process_esn_invoices("BENCHMARK", pdf_files[:concurrency*2])
-            total_time = time.time() - start_time
-            
-            results[concurrency] = total_time
-            
-            # Restore original setting
-            self.processor.config.MAX_CONCURRENT_PDFS = original_max
-        
-        return results
 
 # ============================================
 # FACTORY FUNCTIONS

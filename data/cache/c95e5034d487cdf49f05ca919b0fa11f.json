@@ -1,0 +1,32 @@
+{
+  "invoice_number": "10-184-FIN-0076",
+  "company_name": "COSMETICOS TRUJILLO",
+  "total_usd_amount": "22680",
+  "currency": "USD",
+  "confidence_level": "HIGH",
+  "extraction_notes": null,
+  "amount_source_text": null,
+  "client_reference": null,
+  "material_description": null,
+  "fecha_hora": "28/12/2024 11:10:28",
+  "cantidad_total": null,
+  "valor_unitario": null,
+  "line_items": [
+    {
+      "line_number": 1,
+      "sku": "10-184-FIN-0076",
+      "description": "PURE SPRAY SET 3X10ML 2024",
+      "quantity": 16200.0,
+      "unit_price": "1.4",
+      "line_total": "22680",
+      "unit_of_measure": null,
+      "country_of_origin": null,
+      "hts_code": null
+    }
+  ],
+  "processing_time": 19.898807764053345,
+  "extraction_method": "enhanced",
+  "line_item_extraction_success": true,
+  "cached_at": 1749638997.5534637,
+  "file_path": "data\\temp\\AE900730936\\FACTURA COMERCIAL 0550001277.pdf"
+}

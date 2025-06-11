@@ -1,6 +1,6 @@
 # ============================================
-# FILE: src/test_single_esn.py (ENHANCED VERSION)
-# Now SAVES all test results to files for audit trails
+# FILE: src/test_single_esn.py (ENHANCED VERSION WITH LINE ITEMS)
+# Now supports both legacy and enhanced line item extraction
 # ============================================
 
 import asyncio
@@ -17,11 +17,11 @@ from concurrent.futures import ThreadPoolExecutor
 
 from config import SystemConfig
 from google_services import GoogleServicesManager
-from invoice_processor import InvoiceProcessor
-from models import CommercialInvoiceData, ConfidenceLevel
+from invoice_processor import OptimizedInvoiceProcessor
+from models import CommercialInvoiceData, ConfidenceLevel, EnhancedInvoiceData, InvoiceExtractionResult
 
 class ResultSaver:
-    """Handles saving test results in multiple formats"""
+    """Handles saving test results in multiple formats with enhanced line item support"""
     
     def __init__(self, config: SystemConfig):
         self.config = config
@@ -34,7 +34,7 @@ class ResultSaver:
         (self.output_dir / "excel").mkdir(exist_ok=True)
     
     def save_test_result(self, result_data: Dict, test_type: str = "single_esn") -> Dict[str, str]:
-        """Save test result in multiple formats"""
+        """Save test result in multiple formats with enhanced line item data"""
         
         timestamp = datetime.now().strftime('%Y%m%d_%H%M%S')
         esn = result_data.get('esn', 'UNKNOWN')
@@ -54,7 +54,7 @@ class ResultSaver:
                     "timestamp": timestamp,
                     "esn": esn,
                     "test_date": datetime.now().isoformat(),
-                    "system_version": "production_v1.0"
+                    "system_version": "enhanced_v2.0_with_line_items"
                 },
                 "results": {
                     "esn": result_data.get('esn'),
@@ -71,7 +71,10 @@ class ResultSaver:
                     "failed_extractions": result_data.get('failed_extractions', 0),
                     "ai_processing_time": result_data.get('ai_processing_time'),
                     "avg_time_per_pdf": result_data.get('ai_processing_time', 0) / max(result_data.get('total_invoices', 1), 1),
-                    "success_rate": (result_data.get('successful_extractions', 0) / max(result_data.get('total_invoices', 1), 1)) * 100
+                    "success_rate": (result_data.get('successful_extractions', 0) / max(result_data.get('total_invoices', 1), 1)) * 100,
+                    # Enhanced metrics
+                    "line_item_extraction_success_rate": result_data.get('line_item_extraction_success_rate', 0),
+                    "total_line_items_extracted": result_data.get('total_line_items_extracted', 0)
                 }
             }
             
@@ -79,10 +82,11 @@ class ResultSaver:
                 json.dump(summary_data, f, indent=2, default=str)
             saved_files['json'] = str(json_file)
             
-            # 2. Save detailed JSON (with all invoice details)
+            # 2. Save detailed JSON (with all invoice details and line items)
             detailed_data = {
                 **summary_data,
                 "detailed_invoice_results": result_data.get('invoice_details', []),
+                "enhanced_results": result_data.get('enhanced_results', []),
                 "raw_result_data": result_data
             }
             
@@ -90,8 +94,8 @@ class ResultSaver:
                 json.dump(detailed_data, f, indent=2, default=str)
             saved_files['detailed'] = str(detailed_file)
             
-            # 3. Save Excel report
-            self._create_excel_report(result_data, excel_file, summary_data)
+            # 3. Save Excel report with line items
+            self._create_enhanced_excel_report(result_data, excel_file, summary_data)
             saved_files['excel'] = str(excel_file)
             
             return saved_files
@@ -100,8 +104,8 @@ class ResultSaver:
             logging.error(f"Error saving results: {e}")
             return {}
     
-    def _create_excel_report(self, result_data: Dict, excel_file: Path, summary_data: Dict):
-        """Create comprehensive Excel report"""
+    def _create_enhanced_excel_report(self, result_data: Dict, excel_file: Path, summary_data: Dict):
+        """Create comprehensive Excel report with line item breakdowns"""
         
         try:
             with pd.ExcelWriter(excel_file, engine='openpyxl') as writer:
@@ -118,15 +122,59 @@ class ResultSaver:
                     'Total_PDFs': result_data.get('total_invoices', 0),
                     'Successful_Extractions': result_data.get('successful_extractions', 0),
                     'AI_Processing_Time': f"{result_data.get('ai_processing_time', 0):.1f}s",
-                    'Avg_Time_Per_PDF': f"{result_data.get('ai_processing_time', 0) / max(result_data.get('total_invoices', 1), 1):.1f}s"
+                    'Avg_Time_Per_PDF': f"{result_data.get('ai_processing_time', 0) / max(result_data.get('total_invoices', 1), 1):.1f}s",
+                    'Line_Items_Success_Rate': f"{result_data.get('line_item_extraction_success_rate', 0):.1f}%",
+                    'Total_Line_Items': result_data.get('total_line_items_extracted', 0)
                 }])
                 summary_df.to_excel(writer, sheet_name='Summary', index=False)
                 
-                # Sheet 2: Invoice Details
+                # Sheet 2: Invoice Details (Enhanced)
                 invoice_details = result_data.get('invoice_details', [])
                 if invoice_details:
-                    invoice_df = pd.DataFrame(invoice_details)
-                    invoice_df.to_excel(writer, sheet_name='Invoice_Details', index=False)
+                    # Flatten invoice data for Excel
+                    flattened_data = []
+                    for inv in invoice_details:
+                        base_data = {
+                            'Invoice_Number': inv.get('invoice_number'),
+                            'Company': inv.get('company_name'),
+                            'Total_Amount': inv.get('amount'),
+                            'Date_Time': inv.get('fecha_hora'),
+                            'Confidence': inv.get('confidence'),
+                            'Extraction_Method': inv.get('extraction_method', 'legacy'),
+                            'Line_Items_Count': inv.get('line_items_count', 0)
+                        }
+                        
+                        # Add line items if available
+                        line_items = inv.get('line_items', [])
+                        if line_items:
+                            for item in line_items:
+                                line_data = {
+                                    **base_data,
+                                    'Line_Number': item.get('line_number'),
+                                    'SKU': item.get('sku'),
+                                    'Description': item.get('description'),
+                                    'Quantity': item.get('quantity'),
+                                    'Unit_Price': item.get('unit_price'),
+                                    'Line_Total': item.get('line_total'),
+                                    'Unit_of_Measure': item.get('unit_of_measure')
+                                }
+                                flattened_data.append(line_data)
+                        else:
+                            # Legacy format
+                            legacy_data = {
+                                **base_data,
+                                'Line_Number': 1,
+                                'SKU': inv.get('client_reference'),
+                                'Description': inv.get('material_description'),
+                                'Quantity': inv.get('cantidad_total'),
+                                'Unit_Price': inv.get('valor_unitario'),
+                                'Line_Total': inv.get('amount'),
+                                'Unit_of_Measure': 'N/A'
+                            }
+                            flattened_data.append(legacy_data)
+                    
+                    detail_df = pd.DataFrame(flattened_data)
+                    detail_df.to_excel(writer, sheet_name='Line_Item_Details', index=False)
                 
                 # Sheet 3: Performance Metrics
                 performance_data = [{
@@ -141,6 +189,12 @@ class ResultSaver:
                 }, {
                     'Metric': 'Accuracy',
                     'Value': f"{100 - result_data.get('percentage_difference', 0):.2f}%"
+                }, {
+                    'Metric': 'Line Item Extraction Success',
+                    'Value': f"{result_data.get('line_item_extraction_success_rate', 0):.1f}%"
+                }, {
+                    'Metric': 'Total Line Items Extracted',
+                    'Value': str(result_data.get('total_line_items_extracted', 0))
                 }]
                 
                 performance_df = pd.DataFrame(performance_data)
@@ -148,65 +202,6 @@ class ResultSaver:
                 
         except Exception as e:
             logging.error(f"Error creating Excel report: {e}")
-    
-    def save_benchmark_results(self, benchmark_data: List[Dict]) -> str:
-        """Save benchmark results comparing multiple ESNs"""
-        
-        timestamp = datetime.now().strftime('%Y%m%d_%H%M%S')
-        benchmark_file = self.output_dir / f"benchmark_results_{timestamp}.xlsx"
-        
-        try:
-            with pd.ExcelWriter(benchmark_file, engine='openpyxl') as writer:
-                
-                # Summary sheet
-                summary_data = []
-                for result in benchmark_data:
-                    summary_data.append({
-                        'ESN': result.get('esn'),
-                        'Declared_Amount': result.get('declared_amount'),
-                        'Calculated_Amount': result.get('calculated_amount'),
-                        'Difference': result.get('difference'),
-                        'Percentage_Diff': result.get('percentage_difference'),
-                        'Status': 'COMPLIANT' if result.get('is_compliant') else 'NON-COMPLIANT',
-                        'PDFs_Processed': result.get('total_invoices'),
-                        'Success_Rate': f"{(result.get('successful_extractions', 0) / max(result.get('total_invoices', 1), 1)) * 100:.1f}%",
-                        'Processing_Time': result.get('ai_processing_time'),
-                        'Avg_Per_PDF': result.get('ai_processing_time', 0) / max(result.get('total_invoices', 1), 1)
-                    })
-                
-                summary_df = pd.DataFrame(summary_data)
-                summary_df.to_excel(writer, sheet_name='Benchmark_Summary', index=False)
-                
-                # Overall statistics
-                total_pdfs = sum(r.get('total_invoices', 0) for r in benchmark_data)
-                total_time = sum(r.get('ai_processing_time', 0) for r in benchmark_data)
-                avg_accuracy = sum(100 - r.get('percentage_difference', 0) for r in benchmark_data) / len(benchmark_data) if benchmark_data else 0
-                
-                stats_data = [{
-                    'Metric': 'Total ESNs Tested',
-                    'Value': len(benchmark_data)
-                }, {
-                    'Metric': 'Total PDFs Processed',
-                    'Value': total_pdfs
-                }, {
-                    'Metric': 'Total Processing Time',
-                    'Value': f"{total_time:.1f}s"
-                }, {
-                    'Metric': 'Average Accuracy',
-                    'Value': f"{avg_accuracy:.2f}%"
-                }, {
-                    'Metric': 'Average Time per PDF',
-                    'Value': f"{total_time / max(total_pdfs, 1):.1f}s"
-                }]
-                
-                stats_df = pd.DataFrame(stats_data)
-                stats_df.to_excel(writer, sheet_name='Overall_Statistics', index=False)
-            
-            return str(benchmark_file)
-            
-        except Exception as e:
-            logging.error(f"Error saving benchmark results: {e}")
-            return ""
 
 class RobustCachedGoogleManager:
     """Google Services manager with robust error handling and fallbacks"""
@@ -417,7 +412,7 @@ class RobustCachedGoogleManager:
         return self._esn_folders_cache
 
 class ProductionESNTester:
-    """Production ESN tester with comprehensive result saving"""
+    """Enhanced Production ESN tester with line item extraction support"""
     
     def __init__(self):
         self.config = SystemConfig()
@@ -429,8 +424,8 @@ class ProductionESNTester:
                 self.config.GOOGLE_SHEETS_ID
             )
             self.cached_manager = RobustCachedGoogleManager(google_manager)
-            self.invoice_processor = InvoiceProcessor(self.config)
-            self.result_saver = ResultSaver(self.config)  # NEW: Result saving
+            self.invoice_processor = OptimizedInvoiceProcessor(self.config)  # CHANGED: Use OptimizedInvoiceProcessor
+            self.result_saver = ResultSaver(self.config)
             
             # Setup logging
             self._setup_logging()
@@ -455,7 +450,7 @@ class ProductionESNTester:
         )
     
     async def test_specific_esn(self, target_esn: str) -> Optional[Dict]:
-        """Test specific ESN with concurrent processing"""
+        """Enhanced test specific ESN with line item extraction"""
         
         print("🚀 PRODUCTION ESN COMPLIANCE TEST")
         print("=" * 60)
@@ -527,18 +522,18 @@ class ProductionESNTester:
             
             print(f"✅ Downloaded {len(downloaded_files)} files")
             
-            # Step 5: CONCURRENT AI Processing (REPLACE THIS SECTION)
-            print(f"\n🤖 AI Processing {len(downloaded_files)} PDFs...")
-            print("⚡ Using concurrent processing for maximum speed")
+            # Step 5: ENHANCED CONCURRENT AI Processing
+            print(f"\n🤖 Enhanced AI Processing {len(downloaded_files)} PDFs...")
+            print("⚡ Using enhanced concurrent processing with line item extraction")
             
             ai_start = time.time()
             
             # Create semaphore for controlled concurrency
-            max_concurrent = min(5, len(downloaded_files))  # Process up to 5 PDFs at once
+            max_concurrent = min(5, len(downloaded_files))
             semaphore = asyncio.Semaphore(max_concurrent)
             
             async def process_single_pdf_concurrent(pdf_path: str, index: int):
-                """Process single PDF with concurrency control"""
+                """Process single PDF with enhanced extraction"""
                 async with semaphore:
                     pdf_name = Path(pdf_path).name
                     print(f"   🔄 Processing {index}/{len(downloaded_files)}: {pdf_name}")
@@ -546,35 +541,57 @@ class ProductionESNTester:
                     pdf_start = time.time()
                     try:
                         # Small delay to prevent API rate limiting
-                        await asyncio.sleep(0.2 * index)  # Stagger requests
+                        await asyncio.sleep(0.2 * index)
                         
-                        invoice_data = await self.invoice_processor.process_single_invoice(pdf_path, target_esn)
+                        # ENHANCED: Use enhanced processing method
+                        result = await self.invoice_processor.process_single_invoice_enhanced(pdf_path, target_esn)
                         pdf_duration = time.time() - pdf_start
+                        
+                        # Extract enhanced data
+                        enhanced_data = result.enhanced_data
                         
                         # Status icons
                         confidence_icons = {
                             "HIGH": "🟢", "MEDIUM": "🟡", "LOW": "🟠", "ERROR": "🔴"
                         }
-                        icon = confidence_icons.get(invoice_data.confidence_level.value, "❓")
+                        icon = confidence_icons.get(enhanced_data.confidence_level.value, "❓")
                         
-                        print(f"   {icon} ${invoice_data.total_usd_amount:,.2f} "
-                              f"({invoice_data.confidence_level.value}, {pdf_duration:.1f}s)")
+                        # Enhanced status with line item info
+                        line_items_info = f"({len(enhanced_data.line_items)} items)" if enhanced_data.line_items else "(legacy)"
                         
-                        return invoice_data
+                        print(f"   {icon} ${enhanced_data.total_usd_amount:,.2f} "
+                              f"{line_items_info} ({enhanced_data.confidence_level.value}, {pdf_duration:.1f}s)")
+                        
+                        return result
                         
                     except Exception as e:
                         pdf_duration = time.time() - pdf_start
                         print(f"   ❌ Error processing {pdf_name} ({pdf_duration:.1f}s): {e}")
                         
-                        # Return error result instead of None
-                        from models import CommercialInvoiceData, ConfidenceLevel
+                        # Return error result
                         from decimal import Decimal
-                        return CommercialInvoiceData(
+                        error_enhanced = EnhancedInvoiceData(
                             invoice_number=f"ERROR_{Path(pdf_path).stem}",
                             company_name="ERROR",
                             total_usd_amount=Decimal('0'),
                             confidence_level=ConfidenceLevel.ERROR,
                             extraction_notes=f"Error: {str(e)[:100]}"
+                        )
+                        
+                        error_legacy = CommercialInvoiceData(
+                            invoice_number=f"ERROR_{Path(pdf_path).stem}",
+                            company_name="ERROR",
+                            total_usd_amount=Decimal('0'),
+                            confidence_level=ConfidenceLevel.ERROR,
+                            extraction_notes=f"Error: {str(e)[:100]}"
+                        )
+                        
+                        return InvoiceExtractionResult(
+                            enhanced_data=error_enhanced,
+                            legacy_data=error_legacy,
+                            processing_time=pdf_duration,
+                            extraction_method="error",
+                            line_item_extraction_success=False
                         )
             
             # Run all PDFs concurrently
@@ -586,23 +603,39 @@ class ProductionESNTester:
             ]
             
             # Execute all tasks concurrently
-            extracted_invoices = await asyncio.gather(*tasks, return_exceptions=True)
+            extraction_results = await asyncio.gather(*tasks, return_exceptions=True)
             
-            # Filter out exceptions and None results
-            valid_invoices = []
-            for result in extracted_invoices:
+            # ENHANCED: Filter and separate enhanced vs legacy results
+            valid_results = []
+            enhanced_results = []
+            
+            for result in extraction_results:
                 if isinstance(result, Exception):
                     print(f"   ⚠️  Exception occurred: {result}")
                 elif result is not None:
-                    valid_invoices.append(result)
+                    if hasattr(result, 'enhanced_data'):
+                        # This is an InvoiceExtractionResult
+                        valid_results.append(result.enhanced_data)
+                        enhanced_results.append(result)
+                    else:
+                        # This is legacy format - convert it
+                        valid_results.append(result)
             
             ai_duration = time.time() - ai_start
-            print(f"\n⚡ Concurrent processing completed in {ai_duration:.1f}s")
+            print(f"\n⚡ Enhanced concurrent processing completed in {ai_duration:.1f}s")
             print(f"   📊 Speed improvement: ~{max(1, 208.6/ai_duration):.1f}x faster")
-            print(f"   ✅ Processed: {len(valid_invoices)}/{len(downloaded_files)} PDFs")
+            print(f"   ✅ Processed: {len(valid_results)}/{len(downloaded_files)} PDFs")
             
-            # Use valid_invoices instead of extracted_invoices for the rest of the function
-            extracted_invoices = valid_invoices
+            # Enhanced metrics
+            line_item_successes = len([r for r in enhanced_results if r.line_item_extraction_success])
+            total_line_items = sum(len(r.enhanced_data.line_items) for r in enhanced_results)
+            line_item_success_rate = (line_item_successes / len(enhanced_results) * 100) if enhanced_results else 0
+            
+            print(f"   🔧 Line Item Extraction: {line_item_successes}/{len(enhanced_results)} successful ({line_item_success_rate:.1f}%)")
+            print(f"   📦 Total Line Items: {total_line_items}")
+            
+            # Use valid_results for calculations
+            extracted_invoices = valid_results
             
             # Step 6: Calculate results
             successful_invoices = [inv for inv in extracted_invoices if inv.confidence_level.value != "ERROR"]
@@ -612,7 +645,7 @@ class ProductionESNTester:
             percentage_diff = (difference / float(declared_amount) * 100) if declared_amount > 0 else 0
             is_compliant = percentage_diff <= self.config.TOLERANCE_PERCENTAGE
             
-            # Step 7: Prepare comprehensive result data
+            # Step 7: Prepare comprehensive enhanced result data
             result_data = {
                 "esn": target_esn,
                 "declared_amount": float(declared_amount),
@@ -625,6 +658,33 @@ class ProductionESNTester:
                 "total_invoices": len(extracted_invoices),
                 "ai_processing_time": ai_duration,
                 "test_timestamp": datetime.now().isoformat(),
+                # Enhanced metrics
+                "line_item_extraction_success_rate": line_item_success_rate,
+                "total_line_items_extracted": total_line_items,
+                "enhanced_results": [
+                    {
+                        "invoice_number": r.enhanced_data.invoice_number,
+                        "company_name": r.enhanced_data.company_name,
+                        "total_amount": float(r.enhanced_data.total_usd_amount),
+                        "line_items_count": len(r.enhanced_data.line_items),
+                        "line_items": [
+                            {
+                                "line_number": item.line_number,
+                                "sku": item.sku,
+                                "description": item.description,
+                                "quantity": item.quantity,
+                                "unit_price": float(item.unit_price),
+                                "line_total": float(item.line_total),
+                                "unit_of_measure": item.unit_of_measure
+                            }
+                            for item in r.enhanced_data.line_items
+                        ],
+                        "extraction_method": r.extraction_method,
+                        "processing_time": r.processing_time,
+                        "line_item_extraction_success": r.line_item_extraction_success
+                    }
+                    for r in enhanced_results
+                ],
                 "invoice_details": [
                     {
                         "invoice_number": inv.invoice_number,
@@ -632,10 +692,24 @@ class ProductionESNTester:
                         "amount": float(inv.total_usd_amount),
                         "client_reference": getattr(inv, 'client_reference', 'Not extracted'),
                         "material_description": getattr(inv, 'material_description', 'Not extracted'),
-                        # ADD THESE NEW FIELDS:
                         "fecha_hora": getattr(inv, 'fecha_hora', 'Not extracted'),
                         "cantidad_total": getattr(inv, 'cantidad_total', 'Not extracted'),
                         "valor_unitario": getattr(inv, 'valor_unitario', 'Not extracted'),
+                        # Enhanced line items data
+                        "line_items_count": len(getattr(inv, 'line_items', [])),
+                        "line_items": [
+                            {
+                                "line_number": item.line_number,
+                                "sku": item.sku,
+                                "description": item.description,
+                                "quantity": item.quantity,
+                                "unit_price": float(item.unit_price),
+                                "line_total": float(item.line_total),
+                                "unit_of_measure": item.unit_of_measure
+                            }
+                            for item in getattr(inv, 'line_items', [])
+                        ] if hasattr(inv, 'line_items') else [],
+                        "extraction_method": "enhanced" if hasattr(inv, 'line_items') and inv.line_items else "legacy",
                         "confidence": inv.confidence_level.value,
                         "currency": inv.currency,
                         "notes": inv.extraction_notes
@@ -644,13 +718,13 @@ class ProductionESNTester:
                 ]
             }
             
-            # Step 8: SAVE RESULTS TO FILES
-            print("\n💾 Saving test results...")
+            # Step 8: SAVE ENHANCED RESULTS TO FILES
+            print("\n💾 Saving enhanced test results...")
             saved_files = self.result_saver.save_test_result(result_data, "single_esn_test")
             
-            # Step 9: Display results
+            # Step 9: Display enhanced results
             print("\n" + "=" * 60)
-            print("📊 TEST RESULTS")
+            print("📊 ENHANCED TEST RESULTS")
             print("=" * 60)
             print(f"🎯 ESN: {target_esn}")
             print(f"💰 Declared: ${declared_amount:,.2f}")
@@ -661,11 +735,31 @@ class ProductionESNTester:
             for i, inv in enumerate(extracted_invoices, 1):
                 print(f"   📄 Invoice {i}: {inv.company_name}")
                 print(f"      💰 Amount: ${inv.total_usd_amount}")
-                print(f"      🔍 SKU: {getattr(inv, 'client_reference', 'Not extracted')}")        # CHANGED: Reference → SKU
-                print(f"      📝 Description: {getattr(inv, 'material_description', 'Not extracted')}")
-                print(f"      📅 Date/Time: {getattr(inv, 'fecha_hora', 'Not extracted')}")
-                print(f"      📦 Quantity: {getattr(inv, 'cantidad_total', 'Not extracted')}")
-                print(f"      💵 Unit Value: {getattr(inv, 'valor_unitario', 'Not extracted')}")
+                
+                # ENHANCED: Check if we have line items (enhanced format)
+                if hasattr(inv, 'line_items') and inv.line_items:
+                    print(f"      📦 LINE ITEMS ({len(inv.line_items)} items):")
+                    for item in inv.line_items:
+                        print(f"         • SKU: {item.sku}")
+                        print(f"           📝 {item.description}")
+                        print(f"           📦 Qty: {item.quantity:,.1f}")
+                        print(f"           💵 Unit: ${item.unit_price}")
+                        print(f"           💰 Total: ${item.line_total}")
+                        if item.unit_of_measure:
+                            print(f"           📏 Unit: {item.unit_of_measure}")
+                        print(f"           ---")
+                    print(f"      📊 Line Items Total: ${inv.line_items_total}")
+                    validation_diff = abs(inv.total_usd_amount - inv.line_items_total)
+                    if validation_diff > 0.01:
+                        print(f"      ⚠️ Validation Difference: ${validation_diff:.2f}")
+                else:
+                    # Legacy format fallback
+                    print(f"      🔍 SKU: {getattr(inv, 'client_reference', 'Not extracted')}")
+                    print(f"      📝 Description: {getattr(inv, 'material_description', 'Not extracted')}")
+                    print(f"      📅 Date/Time: {getattr(inv, 'fecha_hora', 'Not extracted')}")
+                    print(f"      📦 Quantity: {getattr(inv, 'cantidad_total', 'Not extracted')}")
+                    print(f"      💵 Unit Value: {getattr(inv, 'valor_unitario', 'Not extracted')}")
+                
                 print(f"      ⭐ Confidence: {inv.confidence_level.value}")
                 print(f"      ---")
             
@@ -673,12 +767,14 @@ class ProductionESNTester:
             status_text = "COMPLIANT" if is_compliant else "NON-COMPLIANT"
             print(f"\n{status_icon} STATUS: {status_text}")
             
-            print(f"\n📈 PROCESSING METRICS:")
+            print(f"\n📈 ENHANCED PROCESSING METRICS:")
             print(f"   Total PDFs: {len(extracted_invoices)}")
             print(f"   ✅ Successful: {len(successful_invoices)}")
             print(f"   ❌ Failed: {len(extracted_invoices) - len(successful_invoices)}")
             print(f"   ⏱️  AI Time: {ai_duration:.1f}s")
             print(f"   📊 Avg per PDF: {ai_duration/len(extracted_invoices):.1f}s")
+            print(f"   🔧 Line Item Success: {line_item_success_rate:.1f}%")
+            print(f"   📦 Total Line Items: {total_line_items}")
             
             # Step 10: Display saved file locations
             if saved_files:
@@ -700,7 +796,7 @@ class ProductionESNTester:
             return result_data
             
         except Exception as e:
-            self.logger.error(f"Test failed: {e}")
+            self.logger.error(f"Enhanced test failed: {e}")
             import traceback
             traceback.print_exc()
             return None
@@ -805,17 +901,17 @@ class ProductionESNTester:
 # ============================================
 
 async def main():
-    """Main execution with comprehensive result saving"""
+    """Main execution with enhanced line item processing"""
     
-    print("🚀 PRODUCTION ESN COMPLIANCE TESTER")
+    print("🚀 ENHANCED PRODUCTION ESN COMPLIANCE TESTER")
     print("=" * 60)
     
     try:
         tester = ProductionESNTester()
         
         print("Choose testing mode:")
-        print("1. Quick test with optimal ESN")
-        print("2. Test specific ESN")
+        print("1. Quick test with optimal ESN (Enhanced)")
+        print("2. Test specific ESN (Enhanced)")
         print("3. Performance benchmark")
         print("4. System diagnostics")
         
@@ -824,19 +920,22 @@ async def main():
         if choice == "1":
             result = await tester.run_quick_test()
             if result:
-                print(f"\n🎉 QUICK TEST COMPLETED!")
+                print(f"\n🎉 ENHANCED QUICK TEST COMPLETED!")
                 print(f"   Status: {'COMPLIANT' if result['is_compliant'] else 'NON-COMPLIANT'}")
                 print(f"   Accuracy: {result['percentage_difference']:.2f}% difference")
-                print(f"   Results saved to: {tester.config.OUTPUT_DIR}")
+                print(f"   Line Item Success: {result['line_item_extraction_success_rate']:.1f}%")
+                print(f"   Total Line Items: {result['total_line_items_extracted']}")
+                print(f"   Results saved to: data/reports")
         
         elif choice == "2":
             target_esn = input("Enter ESN to test (e.g., AE900683929): ").strip()
             if target_esn:
                 result = await tester.test_specific_esn(target_esn)
                 if result:
-                    print(f"\n🎉 TEST COMPLETED!")
+                    print(f"\n🎉 ENHANCED TEST COMPLETED!")
                     print(f"   Status: {'COMPLIANT' if result['is_compliant'] else 'NON-COMPLIANT'}")
-                    print(f"   Results saved to: {tester.config.OUTPUT_DIR}")
+                    print(f"   Line Item Success: {result['line_item_extraction_success_rate']:.1f}%")
+                    print(f"   Results saved to: data/reports")
             else:
                 print("❌ No ESN provided")
         

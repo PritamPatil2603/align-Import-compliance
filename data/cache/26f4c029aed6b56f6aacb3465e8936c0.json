@@ -1,0 +1,11 @@
+{
+  "invoice_number": "00001000000506202789",
+  "company_name": "COSMETICOS TRUJILLO",
+  "total_usd_amount": "348",
+  "currency": "USD",
+  "confidence_level": "HIGH",
+  "extraction_notes": null,
+  "amount_source_text": "Total USD: 348.00",
+  "cached_at": 1749636595.980582,
+  "file_path": "data\\temp\\AE900703669\\FACTURA COMERCIAL 0550000547.pdf"
+}

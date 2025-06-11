@@ -1,0 +1,63 @@
+2025-06-11 15:59:19,568 - __main__ - INFO - 📊 Loading Google Sheets data with retry logic...
+2025-06-11 15:59:19,568 - __main__ - INFO - Attempting optimized_pandas (attempt 1/3)
+2025-06-11 15:59:21,263 - __main__ - INFO - ✅ Success with optimized_pandas: 144 ESNs in 1.70s
+2025-06-11 15:59:21,263 - google_services - INFO - 🔍 Searching for ESN folders in Google Drive...
+2025-06-11 15:59:23,652 - google_services - INFO - Found 159 potential ESN folders
+2025-06-11 15:59:23,653 - google_services - INFO - ✅ Found 159 valid ESN folders
+2025-06-11 15:59:24,477 - google_services - INFO - Found 7 PDF files in COMMERCIAL INVOICES
+2025-06-11 15:59:36,615 - invoice_processor - INFO - 📄 Enhanced processing: FACTURA COMERCIAL 550000106.pdf
+2025-06-11 15:59:37,980 - invoice_processor - INFO - 📄 Enhanced processing: FACTURA COMERCIAL 550000105.pdf
+2025-06-11 15:59:38,003 - invoice_processor - INFO - 📄 Enhanced processing: FACTURA COMERCIAL 550000107.pdf
+2025-06-11 15:59:38,049 - invoice_processor - INFO - 📄 Enhanced processing: FACTURA COMERCIAL 550000112я.pdf
+2025-06-11 15:59:38,080 - invoice_processor - INFO - 📄 Enhanced processing: FACTURA COMERCIAL 550000110.pdf
+2025-06-11 15:59:47,417 - httpx - INFO - HTTP Request: POST https://api.cloud.llamaindex.ai/api/parsing/upload "HTTP/1.1 200 OK"
+2025-06-11 15:59:47,490 - httpx - INFO - HTTP Request: POST https://api.cloud.llamaindex.ai/api/parsing/upload "HTTP/1.1 200 OK"
+2025-06-11 15:59:47,564 - httpx - INFO - HTTP Request: POST https://api.cloud.llamaindex.ai/api/parsing/upload "HTTP/1.1 200 OK"
+2025-06-11 15:59:49,389 - httpx - INFO - HTTP Request: POST https://api.cloud.llamaindex.ai/api/parsing/upload "HTTP/1.1 200 OK"
+2025-06-11 15:59:49,602 - httpx - INFO - HTTP Request: POST https://api.cloud.llamaindex.ai/api/parsing/upload "HTTP/1.1 200 OK"
+2025-06-11 15:59:49,774 - httpx - INFO - HTTP Request: GET https://api.cloud.llamaindex.ai/api/parsing/job/8f6430d7-cf0d-494c-8113-9d9b82080c40 "HTTP/1.1 200 OK"
+2025-06-11 15:59:49,966 - httpx - INFO - HTTP Request: GET https://api.cloud.llamaindex.ai/api/parsing/job/d85f44a6-f543-41e1-a08c-96fbe842936e "HTTP/1.1 200 OK"
+2025-06-11 15:59:49,987 - httpx - INFO - HTTP Request: GET https://api.cloud.llamaindex.ai/api/parsing/job/ac357a2a-93cc-4254-b677-df84ac8a267f "HTTP/1.1 200 OK"
+2025-06-11 15:59:51,756 - httpx - INFO - HTTP Request: GET https://api.cloud.llamaindex.ai/api/parsing/job/0817ebea-2d94-4faa-9f99-c152999610bb "HTTP/1.1 200 OK"
+2025-06-11 15:59:51,945 - httpx - INFO - HTTP Request: GET https://api.cloud.llamaindex.ai/api/parsing/job/3fd50376-00e1-4b6b-b7dc-4715de3cc6a3 "HTTP/1.1 200 OK"
+2025-06-11 15:59:53,137 - httpx - INFO - HTTP Request: GET https://api.cloud.llamaindex.ai/api/parsing/job/8f6430d7-cf0d-494c-8113-9d9b82080c40 "HTTP/1.1 200 OK"
+2025-06-11 15:59:53,316 - httpx - INFO - HTTP Request: GET https://api.cloud.llamaindex.ai/api/parsing/job/d85f44a6-f543-41e1-a08c-96fbe842936e "HTTP/1.1 200 OK"
+2025-06-11 15:59:53,370 - httpx - INFO - HTTP Request: GET https://api.cloud.llamaindex.ai/api/parsing/job/ac357a2a-93cc-4254-b677-df84ac8a267f "HTTP/1.1 200 OK"
+2025-06-11 15:59:53,662 - httpx - INFO - HTTP Request: GET https://api.cloud.llamaindex.ai/api/parsing/job/8f6430d7-cf0d-494c-8113-9d9b82080c40/result/markdown "HTTP/1.1 200 OK"
+2025-06-11 15:59:55,927 - httpx - INFO - HTTP Request: GET https://api.cloud.llamaindex.ai/api/parsing/job/d85f44a6-f543-41e1-a08c-96fbe842936e/result/markdown "HTTP/1.1 200 OK"
+2025-06-11 15:59:55,927 - httpx - INFO - HTTP Request: GET https://api.cloud.llamaindex.ai/api/parsing/job/ac357a2a-93cc-4254-b677-df84ac8a267f/result/markdown "HTTP/1.1 200 OK"
+2025-06-11 15:59:56,335 - httpx - INFO - HTTP Request: GET https://api.cloud.llamaindex.ai/api/parsing/job/3fd50376-00e1-4b6b-b7dc-4715de3cc6a3 "HTTP/1.1 200 OK"
+2025-06-11 15:59:56,353 - httpx - INFO - HTTP Request: GET https://api.cloud.llamaindex.ai/api/parsing/job/0817ebea-2d94-4faa-9f99-c152999610bb "HTTP/1.1 200 OK"
+2025-06-11 15:59:57,187 - httpx - INFO - HTTP Request: GET https://api.cloud.llamaindex.ai/api/parsing/job/3fd50376-00e1-4b6b-b7dc-4715de3cc6a3/result/markdown "HTTP/1.1 200 OK"
+2025-06-11 15:59:57,187 - httpx - INFO - HTTP Request: GET https://api.cloud.llamaindex.ai/api/parsing/job/0817ebea-2d94-4faa-9f99-c152999610bb/result/markdown "HTTP/1.1 200 OK"
+2025-06-11 16:00:00,323 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-06-11 16:00:00,385 - invoice_processor - INFO - ✅ Line items extracted: 1 items
+2025-06-11 16:00:00,385 - invoice_processor - ERROR - ❌ Enhanced processing failed for FACTURA COMERCIAL 550000106.pdf: 'OptimizedInvoiceProcessor' object has no attribute '_convert_enhanced_to_legacy'
+2025-06-11 16:00:00,508 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-06-11 16:00:00,511 - invoice_processor - INFO - ✅ Line items extracted: 1 items
+2025-06-11 16:00:00,512 - invoice_processor - ERROR - ❌ Enhanced processing failed for FACTURA COMERCIAL 550000112я.pdf: 'OptimizedInvoiceProcessor' object has no attribute '_convert_enhanced_to_legacy'
+2025-06-11 16:00:00,566 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-06-11 16:00:00,574 - invoice_processor - INFO - ✅ Line items extracted: 1 items
+2025-06-11 16:00:00,574 - invoice_processor - ERROR - ❌ Enhanced processing failed for FACTURA COMERCIAL 550000107.pdf: 'OptimizedInvoiceProcessor' object has no attribute '_convert_enhanced_to_legacy'
+2025-06-11 16:00:01,601 - invoice_processor - INFO - 📄 Enhanced processing: FACTURA COMERCIAL 550000108.pdf
+2025-06-11 16:00:01,785 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-06-11 16:00:01,787 - invoice_processor - INFO - ✅ Line items extracted: 1 items
+2025-06-11 16:00:01,787 - invoice_processor - ERROR - ❌ Enhanced processing failed for FACTURA COMERCIAL 550000105.pdf: 'OptimizedInvoiceProcessor' object has no attribute '_convert_enhanced_to_legacy'
+2025-06-11 16:00:01,914 - invoice_processor - INFO - 📄 Enhanced processing: FACTURA COMERCIAL 550000109.pdf
+2025-06-11 16:00:02,017 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-06-11 16:00:02,018 - invoice_processor - INFO - ✅ Line items extracted: 1 items
+2025-06-11 16:00:02,019 - invoice_processor - ERROR - ❌ Enhanced processing failed for FACTURA COMERCIAL 550000110.pdf: 'OptimizedInvoiceProcessor' object has no attribute '_convert_enhanced_to_legacy'
+2025-06-11 16:00:05,913 - httpx - INFO - HTTP Request: POST https://api.cloud.llamaindex.ai/api/parsing/upload "HTTP/1.1 200 OK"
+2025-06-11 16:00:06,924 - httpx - INFO - HTTP Request: POST https://api.cloud.llamaindex.ai/api/parsing/upload "HTTP/1.1 200 OK"
+2025-06-11 16:00:08,626 - httpx - INFO - HTTP Request: GET https://api.cloud.llamaindex.ai/api/parsing/job/4902dcca-13f5-446b-b9f3-0f830cbc8374 "HTTP/1.1 200 OK"
+2025-06-11 16:00:09,556 - httpx - INFO - HTTP Request: GET https://api.cloud.llamaindex.ai/api/parsing/job/2fd004cd-9c8a-42c0-8f2f-21fbc01bf668 "HTTP/1.1 200 OK"
+2025-06-11 16:00:12,021 - httpx - INFO - HTTP Request: GET https://api.cloud.llamaindex.ai/api/parsing/job/4902dcca-13f5-446b-b9f3-0f830cbc8374 "HTTP/1.1 200 OK"
+2025-06-11 16:00:12,456 - httpx - INFO - HTTP Request: GET https://api.cloud.llamaindex.ai/api/parsing/job/4902dcca-13f5-446b-b9f3-0f830cbc8374/result/markdown "HTTP/1.1 200 OK"
+2025-06-11 16:00:12,932 - httpx - INFO - HTTP Request: GET https://api.cloud.llamaindex.ai/api/parsing/job/2fd004cd-9c8a-42c0-8f2f-21fbc01bf668 "HTTP/1.1 200 OK"
+2025-06-11 16:00:13,385 - httpx - INFO - HTTP Request: GET https://api.cloud.llamaindex.ai/api/parsing/job/2fd004cd-9c8a-42c0-8f2f-21fbc01bf668/result/markdown "HTTP/1.1 200 OK"
+2025-06-11 16:00:17,497 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-06-11 16:00:17,500 - invoice_processor - INFO - ✅ Line items extracted: 1 items
+2025-06-11 16:00:17,501 - invoice_processor - ERROR - ❌ Enhanced processing failed for FACTURA COMERCIAL 550000109.pdf: 'OptimizedInvoiceProcessor' object has no attribute '_convert_enhanced_to_legacy'
+2025-06-11 16:00:19,203 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-06-11 16:00:19,208 - invoice_processor - INFO - ✅ Line items extracted: 3 items
+2025-06-11 16:00:19,208 - invoice_processor - ERROR - ❌ Enhanced processing failed for FACTURA COMERCIAL 550000108.pdf: 'OptimizedInvoiceProcessor' object has no attribute '_convert_enhanced_to_legacy'
