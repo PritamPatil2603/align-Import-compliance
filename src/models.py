@@ -26,13 +26,22 @@ class CommercialInvoiceData(BaseModel):
     company_name: str = Field(description="Issuing company name")
     
     # Financial data (main focus)
-    total_usd_amount: Decimal = Field(description="FINAL TOTAL USD AMOUNT", gt=0)
+    total_usd_amount: Decimal = Field(description="FINAL TOTAL USD AMOUNT", ge=0)
     currency: str = Field(default="USD", description="Original currency")
     
     # Quality control
     amount_source_text: Optional[str] = Field(None, description="Exact text with total amount")
     confidence_level: ConfidenceLevel = Field(default=ConfidenceLevel.MEDIUM, description="Extraction confidence")
     extraction_notes: Optional[str] = Field(None, description="Processing notes")
+    
+    # Existing enhanced fields
+    client_reference: Optional[str] = Field(None, description="SKU/Product ID/Reference number")
+    material_description: Optional[str] = Field(None, description="Product/material description")
+    
+    # ADD THESE NEW FIELDS:
+    fecha_hora: Optional[str] = Field(None, description="Fecha y hora de emisión (Date and time)")
+    cantidad_total: Optional[float] = Field(None, description="CANTIDAD TOTAL (Total units/quantity)")
+    valor_unitario: Optional[float] = Field(None, description="VALOR UNITARIO (Unit value/price)")
 
 class ESNProcessingResult(BaseModel):
     """Result of processing all invoices for one ESN"""

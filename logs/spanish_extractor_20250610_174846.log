@@ -1,0 +1,2 @@
+2025-06-10 17:48:46,615 - spanish_extractor.main - INFO - 🚀 Spanish Invoice Extractor started - Log file: logs\spanish_extractor_20250610_174846.log
+2025-06-10 17:48:46,916 - spanish_extractor.google_drive_service - INFO - ✅ Spanish Google Drive service authenticated successfully

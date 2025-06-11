@@ -1,0 +1,42 @@
+SPANISH INVOICE EXTRACTION SUMMARY REPORT
+==================================================
+
+Extraction Date: 2025-06-10T17:22:11.288370
+Total ESNs Processed: 3
+Total Invoices: 10
+Total Line Items: 0
+Success Rate: 0.0%
+Total Declared Value: $0.00
+
+ESN BREAKDOWN:
+------------------------------
+
+AE900695113:
+  Invoices: 6
+  Line Items: 0
+  Total Value: $0.00
+  Status: SUCCESS
+
+AE900692730:
+  Invoices: 4
+  Line Items: 0
+  Total Value: $0.00
+  Status: SUCCESS
+
+AE900695113-20250610T114340Z-1-001:
+  Invoices: 0
+  Line Items: 0
+  Total Value: $0.00
+  Status: NO_COMMERCIAL_INVOICES
+
+PROCESSING STATISTICS:
+------------------------------
+Average Processing Time: 70.1s
+Total Processing Time: 700.9s
+
+CONFIDENCE SUMMARY:
+------------------------------
+HIGH: 0 invoices
+MEDIUM: 0 invoices
+LOW: 0 invoices
+ERROR: 10 invoices

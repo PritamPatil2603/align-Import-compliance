@@ -228,36 +228,53 @@ class OptimizedInvoiceProcessor:
             
             # SPEED OPTIMIZATIONS - ADD THESE LINES:
             result_type="markdown",
-            premium_mode=False,           # 30-40% faster than premium
-            language="es",                # Spanish optimization
-            max_timeout=60,               # Faster timeout
+            premium_mode=True,           # 30-40% faster than premium
+            language="es",                # Spanish optimizatio
             show_progress=False,          # Reduce overhead
             check_interval=2,
-            num_workers=10,
+            num_workers=6,
             # Keep existing settings:
-            parsing_instruction=config.PARSING_INSTRUCTION if hasattr(config, 'PARSING_INSTRUCTION') else "Extract commercial invoice data",
+            parsing_instruction="""Extract invoice data from this Spanish commercial invoice (FACTURA COMERCIAL).
+
+Look for these specific fields:
+1. Fecha y hora de emisión - Invoice date and time
+2. Supplier/Company name (Emisor) - The company issuing the invoice
+3. REF CLIENTE - Client reference number or SKU
+4. DESCRIPCIÓN DEL MATERIAL - Material/product description
+5. CANTIDAD TOTAL - Total quantity/units
+6. VALOR UNITARIO - Unit price/value
+7. Total USD - Total amount in USD dollars
+
+Pay special attention to tables containing line items.
+Convert any monetary amounts to numbers without currency symbols.""",
             verbose=False
         )
         
         # OPTIMIZED OpenAI settings for speed
         self.llm = OpenAI(
             api_key=config.OPENAI_API_KEY,
-            model="gpt-4o-mini",          # Fastest model
+            model="gpt-4o",          # Fastest model
             temperature=0.1,
             
             # SPEED OPTIMIZATIONS - ADD THESE LINES:
-            max_tokens=600,               # Limit response length
-            timeout=30.0,                 # Faster timeout
+            max_tokens=900,               
         )
         
         # Optimized extraction prompt
         self.extraction_prompt = ChatPromptTemplate.from_messages([
-            ("system", """Extract the FINAL TOTAL USD AMOUNT from this commercial invoice.
+            ("system", """Extract invoice data from this Spanish commercial invoice (FACTURA COMERCIAL).
 
-FOCUS ON:
-- Final totals: "Total", "Importe Total", "Gran Total"
-- USD amounts (convert from MXN if exchange rate given)
-- Amount after all taxes and fees
+Look for these specific fields:
+1. Supplier/Company name (Emisor) - The company issuing the invoice
+2. REF CLIENTE - Client reference number or SKU
+3. DESCRIPCIÓN DEL MATERIAL - Material/product description
+4. Fecha y hora de emisión - Invoice date and time
+5. CANTIDAD TOTAL - Total quantity/units
+6. VALOR UNITARIO - Unit price/value
+7. Total USD - Total amount in USD dollars
+
+Pay special attention to tables containing line items.
+Convert any monetary amounts to numbers without currency symbols.
 
 CONFIDENCE:
 - HIGH: Clear USD total, unambiguous
@@ -265,7 +282,19 @@ CONFIDENCE:
 - LOW: Estimated or unclear
 - ERROR: Cannot determine amount"""),
             
-            ("user", "Extract the final total USD amount:\n\n{invoice_content}")
+            ("user", """Extract these fields from this commercial invoice:
+
+1. FINAL TOTAL USD AMOUNT (primary target - most important)
+2. COMPANY/SUPPLIER NAME (Emisor)
+3. CLIENT REFERENCE (REF CLIENTE - SKU, product ID, item number)
+4. MATERIAL DESCRIPTION (DESCRIPCIÓN DEL MATERIAL - product description)
+5. DATE TIME (Fecha y hora de emisión - invoice date and time)
+6. TOTAL QUANTITY (CANTIDAD TOTAL - total units/quantity)
+7. UNIT VALUE (VALOR UNITARIO - unit price/value)
+
+Focus primarily on the TOTAL USD AMOUNT. Other fields are optional but helpful for audit purposes.
+
+Invoice content: {invoice_content}""")
         ])
     
     async def process_single_invoice(self, pdf_path: str, esn: str) -> CommercialInvoiceData:

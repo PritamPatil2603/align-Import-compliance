@@ -1,0 +1,23 @@
+2025-06-10 20:14:45,736 - __main__ - INFO - 📊 Loading Google Sheets data with retry logic...
+2025-06-10 20:14:45,744 - __main__ - INFO - Attempting optimized_pandas (attempt 1/3)
+2025-06-10 20:14:49,501 - __main__ - INFO - ✅ Success with optimized_pandas: 144 ESNs in 3.75s
+2025-06-10 20:14:49,507 - google_services - INFO - 🔍 Searching for ESN folders in Google Drive...
+2025-06-10 20:14:51,097 - google_services - INFO - Found 161 potential ESN folders
+2025-06-10 20:14:51,097 - google_services - INFO - ✅ Found 161 valid ESN folders
+2025-06-10 20:14:52,135 - google_services - INFO - Found 2 PDF files in COMMERCIAL INVOICES
+2025-06-10 20:14:55,217 - invoice_processor - INFO - 📄 Processing: FACTURA COMERCIAL 550000263.pdf
+2025-06-10 20:14:56,606 - invoice_processor - INFO - 📄 Processing: FACTURA COMERCIAL 550000262.pdf
+2025-06-10 20:15:03,438 - httpx - INFO - HTTP Request: POST https://api.cloud.llamaindex.ai/api/parsing/upload "HTTP/1.1 200 OK"
+2025-06-10 20:15:05,886 - httpx - INFO - HTTP Request: GET https://api.cloud.llamaindex.ai/api/parsing/job/792ae73b-4972-471f-abf1-665bf27099a8 "HTTP/1.1 200 OK"
+2025-06-10 20:15:06,045 - httpx - INFO - HTTP Request: POST https://api.cloud.llamaindex.ai/api/parsing/upload "HTTP/1.1 200 OK"
+2025-06-10 20:15:08,532 - httpx - INFO - HTTP Request: GET https://api.cloud.llamaindex.ai/api/parsing/job/f848d532-9cc1-42b6-a9ac-c4842bb99be1 "HTTP/1.1 200 OK"
+2025-06-10 20:15:09,355 - httpx - INFO - HTTP Request: GET https://api.cloud.llamaindex.ai/api/parsing/job/792ae73b-4972-471f-abf1-665bf27099a8 "HTTP/1.1 200 OK"
+2025-06-10 20:15:09,924 - httpx - INFO - HTTP Request: GET https://api.cloud.llamaindex.ai/api/parsing/job/792ae73b-4972-471f-abf1-665bf27099a8/result/markdown "HTTP/1.1 200 OK"
+2025-06-10 20:15:20,057 - httpx - INFO - HTTP Request: GET https://api.cloud.llamaindex.ai/api/parsing/job/f848d532-9cc1-42b6-a9ac-c4842bb99be1 "HTTP/1.1 200 OK"
+2025-06-10 20:15:21,045 - httpx - INFO - HTTP Request: GET https://api.cloud.llamaindex.ai/api/parsing/job/f848d532-9cc1-42b6-a9ac-c4842bb99be1/result/markdown "HTTP/1.1 200 OK"
+2025-06-10 20:15:22,526 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 500 Internal Server Error"
+2025-06-10 20:15:22,530 - openai._base_client - INFO - Retrying request to /chat/completions in 0.408555 seconds
+2025-06-10 20:15:37,791 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-06-10 20:15:38,054 - invoice_processor - INFO - 🟢 FACTURA COMERCIAL 550000263.pdf: $15824.16 (HIGH, 43.0s)
+2025-06-10 20:15:39,900 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-06-10 20:15:39,912 - invoice_processor - INFO - 🟢 FACTURA COMERCIAL 550000262.pdf: $69832.8 (HIGH, 43.4s)

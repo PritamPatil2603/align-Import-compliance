@@ -630,6 +630,12 @@ class ProductionESNTester:
                         "invoice_number": inv.invoice_number,
                         "company_name": inv.company_name,
                         "amount": float(inv.total_usd_amount),
+                        "client_reference": getattr(inv, 'client_reference', 'Not extracted'),
+                        "material_description": getattr(inv, 'material_description', 'Not extracted'),
+                        # ADD THESE NEW FIELDS:
+                        "fecha_hora": getattr(inv, 'fecha_hora', 'Not extracted'),
+                        "cantidad_total": getattr(inv, 'cantidad_total', 'Not extracted'),
+                        "valor_unitario": getattr(inv, 'valor_unitario', 'Not extracted'),
                         "confidence": inv.confidence_level.value,
                         "currency": inv.currency,
                         "notes": inv.extraction_notes
@@ -650,7 +656,18 @@ class ProductionESNTester:
             print(f"💰 Declared: ${declared_amount:,.2f}")
             print(f"💰 Calculated: ${total_calculated:,.2f}")
             print(f"📏 Difference: ${difference:,.2f}")
-            print(f"📊 Percentage: {percentage_diff:.2f}%")
+            
+            print(f"\n📋 DETAILED INVOICE RESULTS:")
+            for i, inv in enumerate(extracted_invoices, 1):
+                print(f"   📄 Invoice {i}: {inv.company_name}")
+                print(f"      💰 Amount: ${inv.total_usd_amount}")
+                print(f"      🔍 SKU: {getattr(inv, 'client_reference', 'Not extracted')}")        # CHANGED: Reference → SKU
+                print(f"      📝 Description: {getattr(inv, 'material_description', 'Not extracted')}")
+                print(f"      📅 Date/Time: {getattr(inv, 'fecha_hora', 'Not extracted')}")
+                print(f"      📦 Quantity: {getattr(inv, 'cantidad_total', 'Not extracted')}")
+                print(f"      💵 Unit Value: {getattr(inv, 'valor_unitario', 'Not extracted')}")
+                print(f"      ⭐ Confidence: {inv.confidence_level.value}")
+                print(f"      ---")
             
             status_icon = "✅" if is_compliant else "❌"
             status_text = "COMPLIANT" if is_compliant else "NON-COMPLIANT"

@@ -1,0 +1,11 @@
+{
+  "invoice_number": "0550000107",
+  "company_name": "COSM\u00c9TICOS TRUJILLO",
+  "total_usd_amount": "416.64",
+  "currency": "USD",
+  "confidence_level": "HIGH",
+  "extraction_notes": "Final total USD amount is clearly stated as $416.64.",
+  "amount_source_text": "Total: 416.64",
+  "cached_at": 1749567552.777103,
+  "file_path": "data\\temp\\AE900683929\\FACTURA COMERCIAL 550000107.pdf"
+}
