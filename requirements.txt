@@ -24,3 +24,9 @@ asyncio-throttle
 # Development & Testing
 pytest
 pytest-asyncio
+
+pymongo
+fuzzywuzzy
+python-Levenshtein
+openpyxl
+reportlab
