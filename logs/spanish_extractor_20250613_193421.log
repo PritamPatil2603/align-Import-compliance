@@ -1,0 +1,8 @@
+2025-06-13 19:34:57,532 - google_services - INFO - 🔍 Searching for ESN folders in Google Drive...
+2025-06-13 19:34:58,969 - google_services - INFO - Found 159 potential ESN folders
+2025-06-13 19:34:58,969 - google_services - INFO - ✅ Found 159 valid ESN folders
+2025-06-13 19:34:58,975 - google_services - INFO - 🔍 Searching for commercial invoice folder in ESN: 1Yk-qG2fAvCjfz2bhOAUbjWgvQ9Y0X8uh
+2025-06-13 19:34:59,582 - google_services - INFO - 📁 Found 1 subfolders in ESN
+2025-06-13 19:34:59,584 - google_services - INFO - ✅ Found exact match: 'COMMERCIAL INVOICES'
+2025-06-13 19:34:59,586 - google_services - INFO - 🎯 Using commercial invoice folder: 'COMMERCIAL INVOICES' (ID: 1vRopHDZ2G0Qd0KIguEKeAargffcUIana)
+2025-06-13 19:35:00,011 - google_services - INFO - 📄 Found 0 PDF files in 'COMMERCIAL INVOICES'

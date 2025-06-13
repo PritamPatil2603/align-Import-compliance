@@ -1,0 +1,32 @@
+{
+  "invoice_number": "0550001423",
+  "company_name": "COSM\u00c9TICOS TRUJILLO",
+  "total_usd_amount": "37910.64",
+  "currency": "USD",
+  "confidence_level": "HIGH",
+  "extraction_notes": "Single SKU extracted with all details matching the invoice.",
+  "amount_source_text": "TREINTA Y SIETE MIL NOVECIENTOS DIEZ DOLARES 64/100 USD",
+  "client_reference": null,
+  "material_description": null,
+  "fecha_hora": "2025-01-31T22:03:57",
+  "cantidad_total": null,
+  "valor_unitario": null,
+  "line_items": [
+    {
+      "line_number": 1,
+      "sku": "10-184-MIB-0034",
+      "description": "AGUA DE PERFUME MIB TC WALMOND 50ML",
+      "quantity": 13836.0,
+      "unit_price": "2.74",
+      "line_total": "37910.64",
+      "unit_of_measure": "PIEZA",
+      "country_of_origin": null,
+      "hts_code": null
+    }
+  ],
+  "processing_time": 97.26437711715698,
+  "extraction_method": "enhanced",
+  "line_item_extraction_success": true,
+  "cached_at": 1749823255.483081,
+  "file_path": "data\\temp\\extraction_AE900735240\\FACTURA COMERCIAL 0550001423.pdf"
+}

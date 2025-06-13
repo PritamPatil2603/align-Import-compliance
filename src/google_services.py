@@ -190,30 +190,89 @@ class GoogleServicesManager:
             return []
     
     def get_commercial_invoices_files(self, esn_folder_id: str) -> List[Dict[str, str]]:
-        """Get PDF files from COMMERCIAL INVOICES subfolder - PRODUCTION VERSION"""
+        """Get PDF files from COMMERCIAL INVOICE(S) subfolder - ENHANCED VERSION"""
         try:
-            # Search for COMMERCIAL INVOICES subfolder (exact match)
-            commercial_query = (
+            logger.info(f"🔍 Searching for commercial invoice folder in ESN: {esn_folder_id}")
+            
+            # Step 1: Get ALL subfolders first to see what's available
+            all_folders_query = (
                 f"'{esn_folder_id}' in parents and "
-                f"name='COMMERCIAL INVOICES' and "
                 f"mimeType='application/vnd.google-apps.folder'"
             )
             
-            commercial_results = self.drive_service.files().list(
-                q=commercial_query,
+            all_results = self.drive_service.files().list(
+                q=all_folders_query,
                 fields="files(id, name)"
             ).execute()
             
-            commercial_folders = commercial_results.get('files', [])
+            all_folders = all_results.get('files', [])
+            logger.info(f"📁 Found {len(all_folders)} subfolders in ESN")
             
-            if not commercial_folders:
-                logger.warning(f"No 'COMMERCIAL INVOICES' folder found in ESN folder {esn_folder_id}")
+            # Log all folder names for debugging
+            for folder in all_folders:
+                logger.debug(f"   📂 Subfolder: '{folder['name']}'")
+            
+            # Step 2: Find commercial invoice folder with flexible matching
+            commercial_folder_id = None
+            commercial_folder_name = None
+            
+            # Multiple patterns to match (in order of preference)
+            invoice_patterns = [
+                'COMMERCIAL INVOICES',      # Exact plural match (preferred)
+                'COMMERCIAL INVOICE',       # Exact singular match
+                'Commercial Invoices',      # Title case plural
+                'Commercial Invoice',       # Title case singular
+                'commercial invoices',      # Lowercase plural
+                'commercial invoice',       # Lowercase singular
+            ]
+            
+            # Try exact matches first
+            for pattern in invoice_patterns:
+                matching_folders = [f for f in all_folders if f['name'] == pattern]
+                if matching_folders:
+                    commercial_folder_id = matching_folders[0]['id']
+                    commercial_folder_name = matching_folders[0]['name']
+                    logger.info(f"✅ Found exact match: '{commercial_folder_name}'")
+                    break
+            
+            # If no exact match, try partial matches
+            if not commercial_folder_id:
+                logger.info("🔍 No exact match found, trying partial matches...")
+                
+                for folder in all_folders:
+                    folder_name_lower = folder['name'].lower().strip()
+                    
+                    # Check if folder name contains both 'commercial' and 'invoice'
+                    if ('commercial' in folder_name_lower and 
+                        ('invoice' in folder_name_lower or 'invoices' in folder_name_lower)):
+                        
+                        commercial_folder_id = folder['id']
+                        commercial_folder_name = folder['name']
+                        logger.info(f"✅ Found partial match: '{commercial_folder_name}'")
+                        break
+            
+            # If still no match, try even more flexible matching
+            if not commercial_folder_id:
+                logger.info("🔍 No partial match found, trying flexible matching...")
+                
+                for folder in all_folders:
+                    folder_name_lower = folder['name'].lower().strip()
+                    
+                    # Look for any folder with 'invoice' in the name
+                    if 'invoice' in folder_name_lower:
+                        commercial_folder_id = folder['id']
+                        commercial_folder_name = folder['name']
+                        logger.info(f"⚠️ Found flexible match: '{commercial_folder_name}'")
+                        break
+            
+            if not commercial_folder_id:
+                logger.warning(f"❌ No commercial invoice folder found in ESN {esn_folder_id}")
+                logger.warning(f"Available folders: {[f['name'] for f in all_folders]}")
                 return []
             
-            commercial_folder_id = commercial_folders[0]['id']
-            logger.debug(f"Found COMMERCIAL INVOICES folder: {commercial_folder_id}")
+            logger.info(f"🎯 Using commercial invoice folder: '{commercial_folder_name}' (ID: {commercial_folder_id})")
             
-            # Get PDF files from commercial invoices folder
+            # Step 3: Get PDF files from the found folder
             pdf_query = (
                 f"'{commercial_folder_id}' in parents and "
                 f"mimeType='application/pdf'"
@@ -225,12 +284,16 @@ class GoogleServicesManager:
             ).execute()
             
             pdf_files = pdf_results.get('files', [])
-            logger.info(f"Found {len(pdf_files)} PDF files in COMMERCIAL INVOICES")
+            logger.info(f"📄 Found {len(pdf_files)} PDF files in '{commercial_folder_name}'")
+            
+            # Log PDF file names for debugging
+            for pdf in pdf_files:
+                logger.debug(f"   📄 PDF: {pdf['name']}")
             
             return pdf_files
             
         except Exception as e:
-            logger.error(f"Error getting commercial invoice files: {e}")
+            logger.error(f"❌ Error getting commercial invoice files: {e}")
             return []
     
     def download_file(self, file_id: str, local_path: str) -> bool:

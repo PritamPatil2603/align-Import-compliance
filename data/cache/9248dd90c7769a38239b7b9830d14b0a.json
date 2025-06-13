@@ -1,0 +1,32 @@
+{
+  "invoice_number": "0550001077",
+  "company_name": "COSM\u00c9TICOS TRUJILLO",
+  "total_usd_amount": "22058.4",
+  "currency": "USD",
+  "confidence_level": "HIGH",
+  "extraction_notes": null,
+  "amount_source_text": "VEINTIDOS MIL CINCUENTA Y OCHO DOLARES 40/100 USD",
+  "client_reference": null,
+  "material_description": null,
+  "fecha_hora": "2024-11-19T11:43:04",
+  "cantidad_total": null,
+  "valor_unitario": null,
+  "line_items": [
+    {
+      "line_number": 1,
+      "sku": "10-184-FIN-0010",
+      "description": "AGUA DE TOCADOR FIN SWEETOUTSIDE 150ML",
+      "quantity": 10920.0,
+      "unit_price": "2.02",
+      "line_total": "22058.4",
+      "unit_of_measure": "PIEZA",
+      "country_of_origin": null,
+      "hts_code": null
+    }
+  ],
+  "processing_time": 98.71346759796143,
+  "extraction_method": "enhanced",
+  "line_item_extraction_success": true,
+  "cached_at": 1749822027.6364326,
+  "file_path": "data\\temp\\extraction_AE900725753\\FACTURA COMERCIAL 0550001077.pdf"
+}

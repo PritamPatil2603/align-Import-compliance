@@ -1,0 +1,32 @@
+{
+  "invoice_number": "0550000470",
+  "company_name": "COSMETICOS TRUJILLO",
+  "total_usd_amount": "6286.8",
+  "currency": "USD",
+  "confidence_level": "HIGH",
+  "extraction_notes": null,
+  "amount_source_text": "SEIS MIL DOSCIENTOS OCHENTA Y SEIS DOLARES 80/100 USD",
+  "client_reference": null,
+  "material_description": null,
+  "fecha_hora": "2024-04-20T11:24:51",
+  "cantidad_total": null,
+  "valor_unitario": null,
+  "line_items": [
+    {
+      "line_number": 1,
+      "sku": "10-184-MIB-0033",
+      "description": "AGUA DE PERFUME MIB TC SPARHIB 50ML",
+      "quantity": 10140.0,
+      "unit_price": "0.62",
+      "line_total": "6286.8",
+      "unit_of_measure": "PIEZA",
+      "country_of_origin": null,
+      "hts_code": null
+    }
+  ],
+  "processing_time": 87.71352887153625,
+  "extraction_method": "enhanced",
+  "line_item_extraction_success": true,
+  "cached_at": 1749823759.6420867,
+  "file_path": "data\\temp\\extraction_AE900698083\\FACTURA COMERCIAL 0550000470.pdf"
+}

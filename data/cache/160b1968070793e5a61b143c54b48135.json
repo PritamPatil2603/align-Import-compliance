@@ -1,0 +1,54 @@
+{
+  "invoice_number": "FE0550001220",
+  "company_name": "COSM\u00c9TICOS TRUJILLO",
+  "total_usd_amount": "40.53",
+  "currency": "USD",
+  "confidence_level": "HIGH",
+  "extraction_notes": null,
+  "amount_source_text": "CUARENTA DOLARES 53/100 USD",
+  "client_reference": null,
+  "material_description": null,
+  "fecha_hora": "2024-12-18T12:20:25",
+  "cantidad_total": null,
+  "valor_unitario": null,
+  "line_items": [
+    {
+      "line_number": 1,
+      "sku": "10-184-MIB-0009",
+      "description": "AGUA DE TOCADOR MIBHBMTC VANBOUR 150ML",
+      "quantity": 9.0,
+      "unit_price": "1.95",
+      "line_total": "17.55",
+      "unit_of_measure": "PIEZA",
+      "country_of_origin": null,
+      "hts_code": null
+    },
+    {
+      "line_number": 2,
+      "sku": "10-184-MIB-0009",
+      "description": "AGUA DE TOCADOR MIB VANBOUR 75ML",
+      "quantity": 6.0,
+      "unit_price": "1.18",
+      "line_total": "7.08",
+      "unit_of_measure": "PIEZA",
+      "country_of_origin": null,
+      "hts_code": null
+    },
+    {
+      "line_number": 3,
+      "sku": "10-184-MIB-0009",
+      "description": "AGUA DE PERFUME MIB SALTPETALS 50ML",
+      "quantity": 6.0,
+      "unit_price": "2.65",
+      "line_total": "15.9",
+      "unit_of_measure": "PIEZA",
+      "country_of_origin": null,
+      "hts_code": null
+    }
+  ],
+  "processing_time": 88.81904315948486,
+  "extraction_method": "enhanced",
+  "line_item_extraction_success": true,
+  "cached_at": 1749819654.9699717,
+  "file_path": "data\\temp\\extraction_AE900729755\\FACTURA COMERCIAL 0550001220.pdf"
+}

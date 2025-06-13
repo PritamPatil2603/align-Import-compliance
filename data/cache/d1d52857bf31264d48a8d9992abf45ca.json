@@ -1,0 +1,32 @@
+{
+  "invoice_number": "0550001223",
+  "company_name": "COSM\u00c9TICOS TRUJILLO",
+  "total_usd_amount": "85737.12",
+  "currency": "USD",
+  "confidence_level": "HIGH",
+  "extraction_notes": "Single SKU with clear quantity and pricing.",
+  "amount_source_text": "OCHENTA Y CINCO MIL SETECIENTOS TREINTA Y SIETE DOLARES 12/100 USD",
+  "client_reference": null,
+  "material_description": null,
+  "fecha_hora": "18/12/2024 14:29:05",
+  "cantidad_total": null,
+  "valor_unitario": null,
+  "line_items": [
+    {
+      "line_number": 1,
+      "sku": "10-184-MIB-0069",
+      "description": "AGUA DE PERFUME MIB HONEY MILK 50ML",
+      "quantity": 32232.0,
+      "unit_price": "2.66",
+      "line_total": "85737.12",
+      "unit_of_measure": "PIEZA",
+      "country_of_origin": null,
+      "hts_code": null
+    }
+  ],
+  "processing_time": 79.11982941627502,
+  "extraction_method": "enhanced",
+  "line_item_extraction_success": true,
+  "cached_at": 1749819644.3051138,
+  "file_path": "data\\temp\\extraction_AE900729755\\FACTURA COMERCIAL 0550001223.pdf"
+}

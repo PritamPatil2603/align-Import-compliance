@@ -1,0 +1,32 @@
+{
+  "invoice_number": "0550001419",
+  "company_name": "COSM\u00c9TICOS TRUJILLO",
+  "total_usd_amount": "42129.36",
+  "currency": "USD",
+  "confidence_level": "HIGH",
+  "extraction_notes": "Single line item extracted with clear details from the invoice.",
+  "amount_source_text": "CUARENTA Y DOS MIL CIENTO VEINTINUEVE DOLARES 36/100 USD",
+  "client_reference": null,
+  "material_description": null,
+  "fecha_hora": "31/01/2025 22:02:18",
+  "cantidad_total": null,
+  "valor_unitario": null,
+  "line_items": [
+    {
+      "line_number": 1,
+      "sku": "10-184-MIB-0009",
+      "description": "AGUA DE TOCADOR MIBHBMTC VANBOUR 150ML",
+      "quantity": 23148.0,
+      "unit_price": "1.82",
+      "line_total": "42129.36",
+      "unit_of_measure": "PIEZA",
+      "country_of_origin": null,
+      "hts_code": null
+    }
+  ],
+  "processing_time": 88.79743432998657,
+  "extraction_method": "enhanced",
+  "line_item_extraction_success": true,
+  "cached_at": 1749823245.8354356,
+  "file_path": "data\\temp\\extraction_AE900735240\\FACTURA COMERCIAL 0550001419.pdf"
+}

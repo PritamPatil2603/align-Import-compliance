@@ -1,0 +1,32 @@
+{
+  "invoice_number": "0550000493",
+  "company_name": "COSMETICOS TRUJILLO",
+  "total_usd_amount": "8877.6",
+  "currency": "USD",
+  "confidence_level": "HIGH",
+  "extraction_notes": "Single SKU with clear details extracted.",
+  "amount_source_text": "OCHO MIL OCHOCIENTOS SETENTA Y SIETE DOLARES 60/100 USD",
+  "client_reference": null,
+  "material_description": null,
+  "fecha_hora": "2024-05-11T10:46:39",
+  "cantidad_total": null,
+  "valor_unitario": null,
+  "line_items": [
+    {
+      "line_number": 1,
+      "sku": "10-184-FIN-0003",
+      "description": "AGUA DE PERFUME FIN MAGCANDY 60ML",
+      "quantity": 9864.0,
+      "unit_price": "0.9",
+      "line_total": "8877.6",
+      "unit_of_measure": "PIEZA",
+      "country_of_origin": null,
+      "hts_code": null
+    }
+  ],
+  "processing_time": 56.322548389434814,
+  "extraction_method": "enhanced",
+  "line_item_extraction_success": true,
+  "cached_at": 1749820577.0131264,
+  "file_path": "data\\temp\\extraction_AE900702331\\FACTURA COMERCIAL 0550000493.pdf"
+}

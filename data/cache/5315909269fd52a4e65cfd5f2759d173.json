@@ -1,0 +1,32 @@
+{
+  "invoice_number": "FE0550001326",
+  "company_name": "COSM\u00c9TICOS TRUJILLO",
+  "total_usd_amount": "30046.44",
+  "currency": "USD",
+  "confidence_level": "HIGH",
+  "extraction_notes": "Single SKU extracted with correct calculations.",
+  "amount_source_text": "TREINTA MIL CUARENTA Y SEIS DOLARES 44/100 USD",
+  "client_reference": null,
+  "material_description": null,
+  "fecha_hora": "2025-01-11T10:21:46",
+  "cantidad_total": null,
+  "valor_unitario": null,
+  "line_items": [
+    {
+      "line_number": 1,
+      "sku": "10-184-FIN-0017",
+      "description": "AGUA DE TOCADOR FIN MIDNIGHTCAFE 150ML",
+      "quantity": 15252.0,
+      "unit_price": "1.97",
+      "line_total": "30046.44",
+      "unit_of_measure": "PIEZA",
+      "country_of_origin": null,
+      "hts_code": null
+    }
+  ],
+  "processing_time": 59.04159998893738,
+  "extraction_method": "enhanced",
+  "line_item_extraction_success": true,
+  "cached_at": 1749820105.5153975,
+  "file_path": "data\\temp\\extraction_AE900732080\\FACTURA COMERCIAL 0550001326.pdf"
+}
