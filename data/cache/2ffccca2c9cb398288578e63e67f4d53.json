@@ -1,0 +1,32 @@
+{
+  "invoice_number": "10-184-FIN-0010",
+  "company_name": "COSMETICOS TRUJILLO",
+  "total_usd_amount": "12423.6",
+  "currency": "USD",
+  "confidence_level": "HIGH",
+  "extraction_notes": "Single SKU with clear details extracted from the invoice.",
+  "amount_source_text": "12423.60",
+  "client_reference": null,
+  "material_description": null,
+  "fecha_hora": "26/04/2024 17:02:20",
+  "cantidad_total": null,
+  "valor_unitario": null,
+  "line_items": [
+    {
+      "line_number": 1,
+      "sku": "10-184-FIN-0010",
+      "description": "AGUA DE TOCADOR FIN SWEETOUTSIDE 150ML",
+      "quantity": 11832.0,
+      "unit_price": "1.05",
+      "line_total": "12423.6",
+      "unit_of_measure": "PIEZA",
+      "country_of_origin": null,
+      "hts_code": null
+    }
+  ],
+  "processing_time": 85.58289742469788,
+  "extraction_method": "enhanced",
+  "line_item_extraction_success": true,
+  "cached_at": 1749660598.829082,
+  "file_path": "data\\temp\\extraction_AE900699974\\FACTURA COMERCIAL 0550000481.pdf"
+}

@@ -1,0 +1,65 @@
+{
+  "invoice_number": "00001000000506202789",
+  "company_name": "COSMETICOS TRUJILLO",
+  "total_usd_amount": "34293.2",
+  "currency": "USD",
+  "confidence_level": "MEDIUM",
+  "extraction_notes": "The total invoice amount seems to be incorrect based on the provided line items and unit prices. The line items total calculated from the given data does not match the total USD amount stated in the invoice. | Line items total ($293.04) differs from invoice total ($34293.2) by $34000.16",
+  "amount_source_text": "Total USD (Total amount in USD dollars): 34,293.20",
+  "client_reference": "10-191-ONV-0010, 10-191-ONV-0011, 10-191-ONV-0012, 10-191-ONV-0020",
+  "material_description": "AGUA DE PERFUME ONV WATERLILYMELON30ML, AGUA DE PERFUME ONV PASSIONFRUITPEO30ML, AGUA DE PERFUME ONV ORANGEBLOSSOMTEA30ML, AGUA DE TOCADOR ONVHBM PASSFRUPEONY160ML",
+  "fecha_hora": "24/05/2024 14:22:43",
+  "cantidad_total": 198.0,
+  "valor_unitario": 0.58,
+  "line_items": [
+    {
+      "line_number": 1,
+      "sku": "10-191-ONV-0010",
+      "description": "AGUA DE PERFUME ONV WATERLILYMELON30ML",
+      "quantity": 66.0,
+      "unit_price": "0.58",
+      "line_total": "38.28",
+      "unit_of_measure": null,
+      "country_of_origin": null,
+      "hts_code": null
+    },
+    {
+      "line_number": 2,
+      "sku": "10-191-ONV-0011",
+      "description": "AGUA DE PERFUME ONV PASSIONFRUITPEO30ML",
+      "quantity": 66.0,
+      "unit_price": "0.58",
+      "line_total": "38.28",
+      "unit_of_measure": null,
+      "country_of_origin": null,
+      "hts_code": null
+    },
+    {
+      "line_number": 3,
+      "sku": "10-191-ONV-0012",
+      "description": "AGUA DE PERFUME ONV ORANGEBLOSSOMTEA30ML",
+      "quantity": 66.0,
+      "unit_price": "0.58",
+      "line_total": "38.28",
+      "unit_of_measure": null,
+      "country_of_origin": null,
+      "hts_code": null
+    },
+    {
+      "line_number": 4,
+      "sku": "10-191-ONV-0020",
+      "description": "AGUA DE TOCADOR ONVHBM PASSFRUPEONY160ML",
+      "quantity": 198.0,
+      "unit_price": "0.9",
+      "line_total": "178.2",
+      "unit_of_measure": null,
+      "country_of_origin": null,
+      "hts_code": null
+    }
+  ],
+  "processing_time": 21.526005268096924,
+  "extraction_method": "enhanced",
+  "line_item_extraction_success": true,
+  "cached_at": 1749659302.886426,
+  "file_path": "data\\temp\\extraction_AE900703669\\FACTURA COMERCIAL 0550000544.pdf"
+}

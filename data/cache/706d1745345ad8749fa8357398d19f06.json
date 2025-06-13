@@ -1,0 +1,32 @@
+{
+  "invoice_number": "10-191-ONV-0020",
+  "company_name": "COSMETICOS TRUJILLO",
+  "total_usd_amount": "345.6",
+  "currency": "USD",
+  "confidence_level": "HIGH",
+  "extraction_notes": null,
+  "amount_source_text": null,
+  "client_reference": null,
+  "material_description": null,
+  "fecha_hora": "17/12/2024 19:14:01",
+  "cantidad_total": null,
+  "valor_unitario": null,
+  "line_items": [
+    {
+      "line_number": 1,
+      "sku": "10-191-ONV-0020",
+      "description": "AGUA DE TOCADOR ONVHBM PASSFRUPEONY160ML",
+      "quantity": 384.0,
+      "unit_price": "0.9",
+      "line_total": "345.6",
+      "unit_of_measure": null,
+      "country_of_origin": null,
+      "hts_code": null
+    }
+  ],
+  "processing_time": 16.867197275161743,
+  "extraction_method": "enhanced",
+  "line_item_extraction_success": true,
+  "cached_at": 1749665714.2329473,
+  "file_path": "data\\temp\\extraction_AE900729714\\FACTURA COMERCIAL 0550001211.pdf"
+}

@@ -1,0 +1,32 @@
+{
+  "invoice_number": "10-184-MIB-0067",
+  "company_name": "COSMETICOS TRUJILLO",
+  "total_usd_amount": "5838.84",
+  "currency": "USD",
+  "confidence_level": "HIGH",
+  "extraction_notes": "Single SKU extracted from the invoice with calculated line total matching the invoice total.",
+  "amount_source_text": "Total USD: 5838.84",
+  "client_reference": null,
+  "material_description": null,
+  "fecha_hora": "30/11/2024 19:53:28",
+  "cantidad_total": null,
+  "valor_unitario": null,
+  "line_items": [
+    {
+      "line_number": 1,
+      "sku": "10-184-MIB-0067",
+      "description": "AGUADEPERFUME MIBHOLIDAY24CL/VA/PA 7.5ML",
+      "quantity": 3972.0,
+      "unit_price": "1.47",
+      "line_total": "5838.84",
+      "unit_of_measure": null,
+      "country_of_origin": null,
+      "hts_code": null
+    }
+  ],
+  "processing_time": 29.7498939037323,
+  "extraction_method": "enhanced",
+  "line_item_extraction_success": true,
+  "cached_at": 1749663535.0653086,
+  "file_path": "data\\temp\\extraction_AE900727791\\FACTURA COMERCIAL 550001141.pdf"
+}

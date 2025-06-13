@@ -1,0 +1,32 @@
+{
+  "invoice_number": "10-184-FIN-0017",
+  "company_name": "COSMETICOS TRUJILLO",
+  "total_usd_amount": "27280.56",
+  "currency": "USD",
+  "confidence_level": "HIGH",
+  "extraction_notes": null,
+  "amount_source_text": "Total USD: 27280.56",
+  "client_reference": null,
+  "material_description": null,
+  "fecha_hora": "29/03/2025 16:00:07",
+  "cantidad_total": null,
+  "valor_unitario": null,
+  "line_items": [
+    {
+      "line_number": 1,
+      "sku": "10-184-FIN-0017",
+      "description": "AGUA DE TOCADOR FIN MIDNIGHTCAFE 150ML",
+      "quantity": 13848.0,
+      "unit_price": "1.97",
+      "line_total": "27280.56",
+      "unit_of_measure": "ML",
+      "country_of_origin": null,
+      "hts_code": null
+    }
+  ],
+  "processing_time": 14.677821159362793,
+  "extraction_method": "enhanced",
+  "line_item_extraction_success": true,
+  "cached_at": 1749664193.252077,
+  "file_path": "data\\temp\\extraction_AE900744069\\FACTURA COMERCIAL 0550001696.pdf"
+}

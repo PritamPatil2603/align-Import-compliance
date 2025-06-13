@@ -1,0 +1,32 @@
+{
+  "invoice_number": "10-184-MIB-0002",
+  "company_name": "COSMETICOS TRUJILLO",
+  "total_usd_amount": "1644",
+  "currency": "USD",
+  "confidence_level": "HIGH",
+  "extraction_notes": null,
+  "amount_source_text": "Total USD: 1644.00",
+  "client_reference": null,
+  "material_description": null,
+  "fecha_hora": "11/02/2025 15:41:45",
+  "cantidad_total": null,
+  "valor_unitario": null,
+  "line_items": [
+    {
+      "line_number": 1,
+      "sku": "10-184-MIB-0002",
+      "description": "AGUA DE PERFUME MIB TC VANBOUR 50ML",
+      "quantity": 600.0,
+      "unit_price": "2.74",
+      "line_total": "1644",
+      "unit_of_measure": null,
+      "country_of_origin": null,
+      "hts_code": null
+    }
+  ],
+  "processing_time": 40.34891963005066,
+  "extraction_method": "enhanced",
+  "line_item_extraction_success": true,
+  "cached_at": 1749658161.379006,
+  "file_path": "data\\temp\\extraction_AE900736305\\FACTURA COMERCIAL 0550001442.pdf"
+}

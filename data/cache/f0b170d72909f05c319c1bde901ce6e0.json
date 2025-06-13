@@ -1,0 +1,32 @@
+{
+  "invoice_number": "10-184-FIN-0068",
+  "company_name": "COSMETICOS TRUJILLO",
+  "total_usd_amount": "25069.08",
+  "currency": "USD",
+  "confidence_level": "HIGH",
+  "extraction_notes": "Single SKU extracted with full details. No additional SKUs found.",
+  "amount_source_text": "Total USD: 25069.08",
+  "client_reference": null,
+  "material_description": null,
+  "fecha_hora": "11/11/2024 14:28:13",
+  "cantidad_total": null,
+  "valor_unitario": null,
+  "line_items": [
+    {
+      "line_number": 1,
+      "sku": "10-184-FIN-0068",
+      "description": "AGUA DE TOCADOR FIN MEN ULTRA 60ML",
+      "quantity": 8556.0,
+      "unit_price": "2.93",
+      "line_total": "25069.08",
+      "unit_of_measure": null,
+      "country_of_origin": null,
+      "hts_code": null
+    }
+  ],
+  "processing_time": 34.42457318305969,
+  "extraction_method": "enhanced",
+  "line_item_extraction_success": true,
+  "cached_at": 1749651903.4790168,
+  "file_path": "data\\temp\\extraction_AE900724673\\FACTURA COMERCIAL 0550001041.pdf"
+}

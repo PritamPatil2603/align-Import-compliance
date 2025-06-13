@@ -1,0 +1,32 @@
+{
+  "invoice_number": "10-184-FIN-0058",
+  "company_name": "COSMETICOS TRUJILLO",
+  "total_usd_amount": "36926.4",
+  "currency": "USD",
+  "confidence_level": "HIGH",
+  "extraction_notes": null,
+  "amount_source_text": "TREINTA Y SEIS MIL NOVECIENTOS VEINTISEIS DOLARES 40/100 USD",
+  "client_reference": null,
+  "material_description": null,
+  "fecha_hora": "07/03/2025 18:32:21",
+  "cantidad_total": 18840.0,
+  "valor_unitario": 1.96,
+  "line_items": [
+    {
+      "line_number": 1,
+      "sku": "10-184-FIN-0058",
+      "description": "AGUA DE TOCADOR FIN SHE'S A GOODIE 150ML",
+      "quantity": 18840.0,
+      "unit_price": "1.96",
+      "line_total": "36926.4",
+      "unit_of_measure": "PIEZA",
+      "country_of_origin": null,
+      "hts_code": null
+    }
+  ],
+  "processing_time": 36.38662910461426,
+  "extraction_method": "enhanced",
+  "line_item_extraction_success": true,
+  "cached_at": 1749664022.974684,
+  "file_path": "data\\temp\\extraction_AE900740836\\FACTURA COMERCIAL 0550001592.pdf"
+}

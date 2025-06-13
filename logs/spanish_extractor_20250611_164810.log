@@ -1,0 +1,63 @@
+2025-06-11 16:48:30,760 - google_services - INFO - 🔍 Searching for ESN folders in Google Drive...
+2025-06-11 16:48:33,309 - google_services - INFO - Found 159 potential ESN folders
+2025-06-11 16:48:33,320 - google_services - INFO - ✅ Found 159 valid ESN folders
+2025-06-11 16:48:34,536 - google_services - INFO - Found 7 PDF files in COMMERCIAL INVOICES
+2025-06-11 16:48:46,342 - invoice_processor - INFO - 📄 Enhanced processing: FACTURA COMERCIAL 550000106.pdf
+2025-06-11 16:48:47,861 - invoice_processor - INFO - 📄 Enhanced processing: FACTURA COMERCIAL 550000105.pdf
+2025-06-11 16:48:47,894 - invoice_processor - INFO - 📄 Enhanced processing: FACTURA COMERCIAL 550000107.pdf
+2025-06-11 16:48:53,796 - httpx - INFO - HTTP Request: POST https://api.cloud.llamaindex.ai/api/parsing/upload "HTTP/1.1 200 OK"
+2025-06-11 16:48:53,946 - httpx - INFO - HTTP Request: POST https://api.cloud.llamaindex.ai/api/parsing/upload "HTTP/1.1 200 OK"
+2025-06-11 16:48:53,955 - httpx - INFO - HTTP Request: POST https://api.cloud.llamaindex.ai/api/parsing/upload "HTTP/1.1 200 OK"
+2025-06-11 16:48:56,160 - httpx - INFO - HTTP Request: GET https://api.cloud.llamaindex.ai/api/parsing/job/649269fd-92fb-4ba4-a01c-e49cb49d1138 "HTTP/1.1 200 OK"
+2025-06-11 16:48:56,332 - httpx - INFO - HTTP Request: GET https://api.cloud.llamaindex.ai/api/parsing/job/f1f07350-d571-4309-abae-d99cb8b601ab "HTTP/1.1 200 OK"
+2025-06-11 16:48:56,340 - httpx - INFO - HTTP Request: GET https://api.cloud.llamaindex.ai/api/parsing/job/3a99c9c5-0f7a-4550-a41d-720eaa9af924 "HTTP/1.1 200 OK"
+2025-06-11 16:48:59,583 - httpx - INFO - HTTP Request: GET https://api.cloud.llamaindex.ai/api/parsing/job/649269fd-92fb-4ba4-a01c-e49cb49d1138 "HTTP/1.1 200 OK"
+2025-06-11 16:48:59,693 - httpx - INFO - HTTP Request: GET https://api.cloud.llamaindex.ai/api/parsing/job/f1f07350-d571-4309-abae-d99cb8b601ab "HTTP/1.1 200 OK"
+2025-06-11 16:48:59,699 - httpx - INFO - HTTP Request: GET https://api.cloud.llamaindex.ai/api/parsing/job/3a99c9c5-0f7a-4550-a41d-720eaa9af924 "HTTP/1.1 200 OK"
+2025-06-11 16:49:00,028 - httpx - INFO - HTTP Request: GET https://api.cloud.llamaindex.ai/api/parsing/job/649269fd-92fb-4ba4-a01c-e49cb49d1138/result/markdown "HTTP/1.1 200 OK"
+2025-06-11 16:49:03,928 - httpx - INFO - HTTP Request: GET https://api.cloud.llamaindex.ai/api/parsing/job/f1f07350-d571-4309-abae-d99cb8b601ab/result/markdown "HTTP/1.1 200 OK"
+2025-06-11 16:49:03,930 - httpx - INFO - HTTP Request: GET https://api.cloud.llamaindex.ai/api/parsing/job/3a99c9c5-0f7a-4550-a41d-720eaa9af924/result/markdown "HTTP/1.1 200 OK"
+2025-06-11 16:49:08,591 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-06-11 16:49:08,697 - invoice_processor - INFO - ✅ Line items extracted: 1 items
+2025-06-11 16:49:08,735 - invoice_processor - INFO - 🎯 FACTURA COMERCIAL 550000105.pdf: $223.2 (1 items, 20.8s)
+2025-06-11 16:49:08,741 - invoice_processor - INFO - 📄 Enhanced processing: FACTURA COMERCIAL 550000112я.pdf
+2025-06-11 16:49:09,347 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-06-11 16:49:09,352 - invoice_processor - INFO - ✅ Line items extracted: 1 items
+2025-06-11 16:49:09,362 - invoice_processor - INFO - 🎯 FACTURA COMERCIAL 550000107.pdf: $416.64 (1 items, 21.5s)
+2025-06-11 16:49:09,365 - invoice_processor - INFO - 📄 Enhanced processing: FACTURA COMERCIAL 550000110.pdf
+2025-06-11 16:49:09,501 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-06-11 16:49:09,507 - invoice_processor - INFO - ✅ Line items extracted: 1 items
+2025-06-11 16:49:09,519 - invoice_processor - INFO - 🎯 FACTURA COMERCIAL 550000106.pdf: $1363.2 (1 items, 23.2s)
+2025-06-11 16:49:09,523 - invoice_processor - INFO - 📄 Enhanced processing: FACTURA COMERCIAL 550000108.pdf
+2025-06-11 16:49:11,575 - httpx - INFO - HTTP Request: POST https://api.cloud.llamaindex.ai/api/parsing/upload "HTTP/1.1 200 OK"
+2025-06-11 16:49:11,749 - httpx - INFO - HTTP Request: POST https://api.cloud.llamaindex.ai/api/parsing/upload "HTTP/1.1 200 OK"
+2025-06-11 16:49:12,030 - httpx - INFO - HTTP Request: POST https://api.cloud.llamaindex.ai/api/parsing/upload "HTTP/1.1 200 OK"
+2025-06-11 16:49:14,004 - httpx - INFO - HTTP Request: GET https://api.cloud.llamaindex.ai/api/parsing/job/00bfc6b0-b994-47f7-b111-10daf72d852b "HTTP/1.1 200 OK"
+2025-06-11 16:49:14,100 - httpx - INFO - HTTP Request: GET https://api.cloud.llamaindex.ai/api/parsing/job/b32bfa31-1a27-4168-9730-99e28f495c97 "HTTP/1.1 200 OK"
+2025-06-11 16:49:14,478 - httpx - INFO - HTTP Request: GET https://api.cloud.llamaindex.ai/api/parsing/job/2aed8eaa-5701-41fd-a18a-4bf6d9b3f06e "HTTP/1.1 200 OK"
+2025-06-11 16:49:17,459 - httpx - INFO - HTTP Request: GET https://api.cloud.llamaindex.ai/api/parsing/job/00bfc6b0-b994-47f7-b111-10daf72d852b "HTTP/1.1 200 OK"
+2025-06-11 16:49:17,472 - httpx - INFO - HTTP Request: GET https://api.cloud.llamaindex.ai/api/parsing/job/b32bfa31-1a27-4168-9730-99e28f495c97 "HTTP/1.1 200 OK"
+2025-06-11 16:49:17,912 - httpx - INFO - HTTP Request: GET https://api.cloud.llamaindex.ai/api/parsing/job/00bfc6b0-b994-47f7-b111-10daf72d852b/result/markdown "HTTP/1.1 200 OK"
+2025-06-11 16:49:17,953 - httpx - INFO - HTTP Request: GET https://api.cloud.llamaindex.ai/api/parsing/job/b32bfa31-1a27-4168-9730-99e28f495c97/result/markdown "HTTP/1.1 200 OK"
+2025-06-11 16:49:18,390 - httpx - INFO - HTTP Request: GET https://api.cloud.llamaindex.ai/api/parsing/job/2aed8eaa-5701-41fd-a18a-4bf6d9b3f06e "HTTP/1.1 200 OK"
+2025-06-11 16:49:18,838 - httpx - INFO - HTTP Request: GET https://api.cloud.llamaindex.ai/api/parsing/job/2aed8eaa-5701-41fd-a18a-4bf6d9b3f06e/result/markdown "HTTP/1.1 200 OK"
+2025-06-11 16:49:21,951 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-06-11 16:49:21,957 - invoice_processor - INFO - ✅ Line items extracted: 1 items
+2025-06-11 16:49:21,969 - invoice_processor - INFO - 🎯 FACTURA COMERCIAL 550000110.pdf: $15850.8 (1 items, 12.6s)
+2025-06-11 16:49:21,972 - invoice_processor - INFO - 📄 Enhanced processing: FACTURA COMERCIAL 550000109.pdf
+2025-06-11 16:49:22,254 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-06-11 16:49:22,265 - invoice_processor - INFO - ✅ Line items extracted: 1 items
+2025-06-11 16:49:22,274 - invoice_processor - INFO - 🎯 FACTURA COMERCIAL 550000112я.pdf: $376.32 (1 items, 13.5s)
+2025-06-11 16:49:24,387 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-06-11 16:49:24,397 - invoice_processor - INFO - ✅ Line items extracted: 3 items
+2025-06-11 16:49:24,421 - invoice_processor - INFO - 🎯 FACTURA COMERCIAL 550000108.pdf: $22692 (3 items, 14.9s)
+2025-06-11 16:49:25,817 - httpx - INFO - HTTP Request: POST https://api.cloud.llamaindex.ai/api/parsing/upload "HTTP/1.1 200 OK"
+2025-06-11 16:49:28,198 - httpx - INFO - HTTP Request: GET https://api.cloud.llamaindex.ai/api/parsing/job/af12188a-382c-4187-b675-a70241da4caf "HTTP/1.1 200 OK"
+2025-06-11 16:49:31,653 - httpx - INFO - HTTP Request: GET https://api.cloud.llamaindex.ai/api/parsing/job/af12188a-382c-4187-b675-a70241da4caf "HTTP/1.1 200 OK"
+2025-06-11 16:49:32,094 - httpx - INFO - HTTP Request: GET https://api.cloud.llamaindex.ai/api/parsing/job/af12188a-382c-4187-b675-a70241da4caf/result/markdown "HTTP/1.1 200 OK"
+2025-06-11 16:49:35,220 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-06-11 16:49:35,226 - invoice_processor - INFO - ✅ Line items extracted: 1 items
+2025-06-11 16:49:35,234 - invoice_processor - INFO - 🎯 FACTURA COMERCIAL 550000109.pdf: $15170.4 (1 items, 13.3s)
+2025-06-11 16:49:35,272 - export_manager - INFO - JSON exported: data\reports\spanish_extractions\json\single_esn_AE900683929_extraction_20250611_164935.json
+2025-06-11 16:49:36,313 - export_manager - INFO - CSV exported: data\reports\spanish_extractions\csv\single_esn_AE900683929_extraction_20250611_164935.csv (9 rows)
+2025-06-11 16:49:39,640 - export_manager - INFO - Excel exported: data\reports\spanish_extractions\excel\single_esn_AE900683929_extraction_20250611_164935.xlsx

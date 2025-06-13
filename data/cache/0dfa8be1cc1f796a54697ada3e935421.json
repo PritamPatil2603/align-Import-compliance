@@ -1,0 +1,32 @@
+{
+  "invoice_number": "10-184-FIN-0027",
+  "company_name": "COSMETICOS TRUJILLO",
+  "total_usd_amount": "29650.32",
+  "currency": "USD",
+  "confidence_level": "HIGH",
+  "extraction_notes": "Single SKU extracted with all details matching the invoice total.",
+  "amount_source_text": "Total USD: 29650.32",
+  "client_reference": "10-184-FIN-0027",
+  "material_description": "AGUA DE PERFUME FIN NEWROUGE 60ML",
+  "fecha_hora": "05/03/2024 08:24:47",
+  "cantidad_total": 27972.0,
+  "valor_unitario": 1.06,
+  "line_items": [
+    {
+      "line_number": 1,
+      "sku": "10-184-FIN-0027",
+      "description": "AGUA DE PERFUME FIN NEWROUGE 60ML",
+      "quantity": 27972.0,
+      "unit_price": "1.06",
+      "line_total": "29650.32",
+      "unit_of_measure": "PIEZA",
+      "country_of_origin": null,
+      "hts_code": null
+    }
+  ],
+  "processing_time": 16.667669773101807,
+  "extraction_method": "enhanced",
+  "line_item_extraction_success": true,
+  "cached_at": 1749650169.447358,
+  "file_path": "data\\temp\\extraction_AE900689314\\FACTURA COMERCIAL 550000260.pdf"
+}

@@ -1,0 +1,32 @@
+{
+  "invoice_number": "10-184-FIN-0012",
+  "company_name": "COSMETICOS TRUJILLO",
+  "total_usd_amount": "29289.96",
+  "currency": "USD",
+  "confidence_level": "HIGH",
+  "extraction_notes": null,
+  "amount_source_text": null,
+  "client_reference": null,
+  "material_description": null,
+  "fecha_hora": "27/03/2025 12:10:57",
+  "cantidad_total": null,
+  "valor_unitario": null,
+  "line_items": [
+    {
+      "line_number": 1,
+      "sku": "10-184-FIN-0012",
+      "description": "AGUA DE TOCADOR FIN MAGCANDY 150ML",
+      "quantity": 14868.0,
+      "unit_price": "1.97",
+      "line_total": "29289.96",
+      "unit_of_measure": null,
+      "country_of_origin": null,
+      "hts_code": null
+    }
+  ],
+  "processing_time": 20.696128845214844,
+  "extraction_method": "enhanced",
+  "line_item_extraction_success": true,
+  "cached_at": 1749661682.9801655,
+  "file_path": "data\\temp\\extraction_AE900744010\\FACTURA COMERCIAL 0550001668.pdf"
+}

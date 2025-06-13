@@ -1,0 +1,32 @@
+{
+  "invoice_number": "10-184-FIN-0036",
+  "company_name": "COSMETICOS TRUJILLO",
+  "total_usd_amount": "32050.2",
+  "currency": "USD",
+  "confidence_level": "HIGH",
+  "extraction_notes": "Single line item extracted with matching totals.",
+  "amount_source_text": "Total USD: 32050.20",
+  "client_reference": null,
+  "material_description": null,
+  "fecha_hora": "05/04/2024 11:00:55",
+  "cantidad_total": null,
+  "valor_unitario": null,
+  "line_items": [
+    {
+      "line_number": 1,
+      "sku": "10-184-FIN-0036",
+      "description": "AGUA DE TOCADOR FIN PISTACHIOPLEASE150ML",
+      "quantity": 35220.0,
+      "unit_price": "0.91",
+      "line_total": "32050.2",
+      "unit_of_measure": "PCS",
+      "country_of_origin": null,
+      "hts_code": null
+    }
+  ],
+  "processing_time": 79.37224745750427,
+  "extraction_method": "enhanced",
+  "line_item_extraction_success": true,
+  "cached_at": 1749645371.3075974,
+  "file_path": "data\\temp\\extraction_AE900695113\\FACTURA COMERCIAL 0550000359.pdf"
+}

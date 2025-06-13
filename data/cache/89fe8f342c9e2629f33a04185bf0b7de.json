@@ -1,0 +1,32 @@
+{
+  "invoice_number": "10-184-FIN-0048",
+  "company_name": "COSMETICOS TRUJILLO",
+  "total_usd_amount": "842.4",
+  "currency": "USD",
+  "confidence_level": "HIGH",
+  "extraction_notes": "The invoice contains a single line item with a clear breakdown of quantity, unit price, and total.",
+  "amount_source_text": "Total USD: 842.40",
+  "client_reference": "10-184-FIN-0048",
+  "material_description": "AGUADETOCADOR FIN MINI FLOWBED 75ML",
+  "fecha_hora": "30/08/2024 20:08:40",
+  "cantidad_total": 1560.0,
+  "valor_unitario": 0.54,
+  "line_items": [
+    {
+      "line_number": 1,
+      "sku": "10-184-FIN-0048",
+      "description": "AGUADETOCADOR FIN MINI FLOWBED 75ML",
+      "quantity": 1560.0,
+      "unit_price": "0.54",
+      "line_total": "842.4",
+      "unit_of_measure": null,
+      "country_of_origin": null,
+      "hts_code": null
+    }
+  ],
+  "processing_time": 17.124086380004883,
+  "extraction_method": "enhanced",
+  "line_item_extraction_success": true,
+  "cached_at": 1749650050.509102,
+  "file_path": "data\\temp\\extraction_AE900715309\\FACTURA COMERCIAL 0550000809.pdf"
+}

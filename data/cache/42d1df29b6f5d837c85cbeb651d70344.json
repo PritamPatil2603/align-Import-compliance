@@ -1,0 +1,32 @@
+{
+  "invoice_number": "10-184-FIN-0068",
+  "company_name": "COSMETICOS TRUJILLO",
+  "total_usd_amount": "36177.12",
+  "currency": "USD",
+  "confidence_level": "HIGH",
+  "extraction_notes": null,
+  "amount_source_text": "Total USD: 36177.12",
+  "client_reference": null,
+  "material_description": null,
+  "fecha_hora": "27/02/2025 10:05:14",
+  "cantidad_total": null,
+  "valor_unitario": null,
+  "line_items": [
+    {
+      "line_number": 1,
+      "sku": "10-184-FIN-0068",
+      "description": "AGUA DE PERFUME FIN MEN ULTRA 60ML",
+      "quantity": 12432.0,
+      "unit_price": "2.91",
+      "line_total": "36177.12",
+      "unit_of_measure": null,
+      "country_of_origin": null,
+      "hts_code": null
+    }
+  ],
+  "processing_time": 23.409745693206787,
+  "extraction_method": "enhanced",
+  "line_item_extraction_success": true,
+  "cached_at": 1749665804.69633,
+  "file_path": "data\\temp\\extraction_AE900739127\\FACTURA COMERCIAL 0550001550.pdf"
+}

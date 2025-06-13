@@ -1,0 +1,32 @@
+{
+  "invoice_number": "10-184-FIN-0030",
+  "company_name": "COSMETICOS TRUJILLO",
+  "total_usd_amount": "79720.2",
+  "currency": "USD",
+  "confidence_level": "HIGH",
+  "extraction_notes": "Single SKU extracted from the invoice with total matching the invoice total.",
+  "amount_source_text": "Total USD: 79720.20",
+  "client_reference": null,
+  "material_description": null,
+  "fecha_hora": "21/10/2024 18:15:10",
+  "cantidad_total": null,
+  "valor_unitario": null,
+  "line_items": [
+    {
+      "line_number": 1,
+      "sku": "10-184-FIN-0030",
+      "description": "AGUA DE PERFUME FIN PISTACHIOPLEASE60ML",
+      "quantity": 27972.0,
+      "unit_price": "2.85",
+      "line_total": "79720.2",
+      "unit_of_measure": null,
+      "country_of_origin": null,
+      "hts_code": null
+    }
+  ],
+  "processing_time": 21.88676643371582,
+  "extraction_method": "enhanced",
+  "line_item_extraction_success": true,
+  "cached_at": 1749664981.5458934,
+  "file_path": "data\\temp\\extraction_AE900721547\\FACTURA COMERCIAL 0550000943.pdf"
+}

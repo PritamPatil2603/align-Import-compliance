@@ -1,0 +1,32 @@
+{
+  "invoice_number": "10-191-ONV-0008",
+  "company_name": "COSMETICOS TRUJILLO",
+  "total_usd_amount": "1682",
+  "currency": "USD",
+  "confidence_level": "HIGH",
+  "extraction_notes": null,
+  "amount_source_text": null,
+  "client_reference": null,
+  "material_description": null,
+  "fecha_hora": "14/02/2025 16:57:36",
+  "cantidad_total": null,
+  "valor_unitario": null,
+  "line_items": [
+    {
+      "line_number": 1,
+      "sku": "10-191-ONV-0008",
+      "description": "AGUA DE PERFUME ONV PINKPOPPYSTARFRU30ML",
+      "quantity": 2900.0,
+      "unit_price": "0.58",
+      "line_total": "1682",
+      "unit_of_measure": null,
+      "country_of_origin": null,
+      "hts_code": null
+    }
+  ],
+  "processing_time": 20.90559196472168,
+  "extraction_method": "enhanced",
+  "line_item_extraction_success": true,
+  "cached_at": 1749656397.9534552,
+  "file_path": "data\\temp\\extraction_AE900736800\\FACTURA COMERCIAL 0550001474.pdf"
+}

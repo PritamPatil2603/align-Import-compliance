@@ -1,0 +1,32 @@
+{
+  "invoice_number": "10-202-RTE-0043",
+  "company_name": "COSMETICOS TRUJILLO",
+  "total_usd_amount": "11107.2",
+  "currency": "USD",
+  "confidence_level": "HIGH",
+  "extraction_notes": null,
+  "amount_source_text": null,
+  "client_reference": null,
+  "material_description": null,
+  "fecha_hora": "2024-12-05T17:12:39",
+  "cantidad_total": null,
+  "valor_unitario": null,
+  "line_items": [
+    {
+      "line_number": 1,
+      "sku": "10-202-RTE-0043",
+      "description": "CHAMP\u00da CAPILAR RTE DAMAGE CARE 13OZ",
+      "quantity": 12480.0,
+      "unit_price": "0.89",
+      "line_total": "11107.2",
+      "unit_of_measure": null,
+      "country_of_origin": null,
+      "hts_code": null
+    }
+  ],
+  "processing_time": 28.858277082443237,
+  "extraction_method": "enhanced",
+  "line_item_extraction_success": true,
+  "cached_at": 1749658243.6003327,
+  "file_path": "data\\temp\\extraction_AE900728344\\FACTURA COMERCIAL 0550001166.pdf"
+}

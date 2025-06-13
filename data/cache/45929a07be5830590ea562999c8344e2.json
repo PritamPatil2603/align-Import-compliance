@@ -1,0 +1,76 @@
+{
+  "invoice_number": "CFCB8860-27F0-4E94-9AD0-B65D6CAFFF5D",
+  "company_name": "COSMETICOS TRUJILLO",
+  "total_usd_amount": "52978.56",
+  "currency": "USD",
+  "confidence_level": "HIGH",
+  "extraction_notes": "Quantities for each SKU were estimated based on total quantity and unit prices. | Line items total ($379.2) differs from invoice total ($52978.56) by $52599.36",
+  "amount_source_text": null,
+  "client_reference": null,
+  "material_description": null,
+  "fecha_hora": "29/05/2024 17:12:42",
+  "cantidad_total": 240.0,
+  "valor_unitario": null,
+  "line_items": [
+    {
+      "line_number": 1,
+      "sku": "10-191-ONV-0001",
+      "description": "AGUA DE TOCADOR ONV DRIFT 50ML",
+      "quantity": 60.0,
+      "unit_price": "0.68",
+      "line_total": "40.8",
+      "unit_of_measure": null,
+      "country_of_origin": null,
+      "hts_code": null
+    },
+    {
+      "line_number": 2,
+      "sku": "10-191-ONV-0002",
+      "description": "AGUA DE TOCADOR ONV EMBER 50ML",
+      "quantity": 60.0,
+      "unit_price": "0.68",
+      "line_total": "40.8",
+      "unit_of_measure": null,
+      "country_of_origin": null,
+      "hts_code": null
+    },
+    {
+      "line_number": 3,
+      "sku": "10-191-ONV-0003",
+      "description": "AGUA DE TOCADOR ONV GROVE 50ML",
+      "quantity": 60.0,
+      "unit_price": "0.68",
+      "line_total": "40.8",
+      "unit_of_measure": null,
+      "country_of_origin": null,
+      "hts_code": null
+    },
+    {
+      "line_number": 4,
+      "sku": "10-191-ONV-0004",
+      "description": "AGUA DE TOCADOR ONV INDIGO 50ML",
+      "quantity": 60.0,
+      "unit_price": "0.68",
+      "line_total": "40.8",
+      "unit_of_measure": null,
+      "country_of_origin": null,
+      "hts_code": null
+    },
+    {
+      "line_number": 5,
+      "sku": "10-191-ONV-0022",
+      "description": "AGUA DE TOCADOR ONVHBM GOLDENPEWOOD160ML",
+      "quantity": 240.0,
+      "unit_price": "0.9",
+      "line_total": "216",
+      "unit_of_measure": null,
+      "country_of_origin": null,
+      "hts_code": null
+    }
+  ],
+  "processing_time": 110.06895875930786,
+  "extraction_method": "enhanced",
+  "line_item_extraction_success": true,
+  "cached_at": 1749661149.6534681,
+  "file_path": "data\\temp\\extraction_AE900704444\\FACTURA COMERCIAL 0550000558.pdf"
+}

@@ -1,0 +1,32 @@
+{
+  "invoice_number": "10-184-MIB-0010",
+  "company_name": "COSMETICOS TRUJILLO",
+  "total_usd_amount": "31051.8",
+  "currency": "USD",
+  "confidence_level": "HIGH",
+  "extraction_notes": "Single SKU with clear details extracted from the invoice.",
+  "amount_source_text": "Total USD: 31051.80",
+  "client_reference": null,
+  "material_description": null,
+  "fecha_hora": "24/06/2024 17:50:04",
+  "cantidad_total": null,
+  "valor_unitario": null,
+  "line_items": [
+    {
+      "line_number": 1,
+      "sku": "10-184-MIB-0010",
+      "description": "AGUA DE TOCADOR MIBHBMTC CLOUDMUSK 150ML",
+      "quantity": 15924.0,
+      "unit_price": "1.95",
+      "line_total": "31051.8",
+      "unit_of_measure": "ML",
+      "country_of_origin": null,
+      "hts_code": null
+    }
+  ],
+  "processing_time": 93.55325484275818,
+  "extraction_method": "enhanced",
+  "line_item_extraction_success": true,
+  "cached_at": 1749653188.7971563,
+  "file_path": "data\\temp\\extraction_AE900707207\\FACTURA COMERCIAL 550000626.pdf"
+}

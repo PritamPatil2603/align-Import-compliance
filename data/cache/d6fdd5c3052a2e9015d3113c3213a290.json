@@ -1,0 +1,32 @@
+{
+  "invoice_number": "10-191-ONV-0005",
+  "company_name": "COSMETICOS TRUJILLO",
+  "total_usd_amount": "696",
+  "currency": "USD",
+  "confidence_level": "HIGH",
+  "extraction_notes": null,
+  "amount_source_text": "Total USD: 696.00",
+  "client_reference": null,
+  "material_description": null,
+  "fecha_hora": "11/02/2025 15:44:18",
+  "cantidad_total": null,
+  "valor_unitario": null,
+  "line_items": [
+    {
+      "line_number": 1,
+      "sku": "10-191-ONV-0005",
+      "description": "AGUA DE PERFUME ONV COTTONFLOWSHEA 30ML",
+      "quantity": 1200.0,
+      "unit_price": "0.58",
+      "line_total": "696",
+      "unit_of_measure": "PCS",
+      "country_of_origin": null,
+      "hts_code": null
+    }
+  ],
+  "processing_time": 27.51511859893799,
+  "extraction_method": "enhanced",
+  "line_item_extraction_success": true,
+  "cached_at": 1749658171.3257768,
+  "file_path": "data\\temp\\extraction_AE900736305\\FACTURA COMERCIAL 0550001447.pdf"
+}

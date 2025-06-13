@@ -1,0 +1,32 @@
+{
+  "invoice_number": "10-202-RTE-0040",
+  "company_name": "COSMETICOS TRUJILLO",
+  "total_usd_amount": "13209.6",
+  "currency": "USD",
+  "confidence_level": "HIGH",
+  "extraction_notes": null,
+  "amount_source_text": "Total USD: 13209.60",
+  "client_reference": null,
+  "material_description": null,
+  "fecha_hora": "13/11/2024 11:39:31",
+  "cantidad_total": null,
+  "valor_unitario": null,
+  "line_items": [
+    {
+      "line_number": 1,
+      "sku": "10-202-RTE-0040",
+      "description": "ACONDICIONADORCAPILAR RTE DAMAGECARE13OZ",
+      "quantity": 15360.0,
+      "unit_price": "0.86",
+      "line_total": "13209.6",
+      "unit_of_measure": null,
+      "country_of_origin": null,
+      "hts_code": null
+    }
+  ],
+  "processing_time": 33.29438400268555,
+  "extraction_method": "enhanced",
+  "line_item_extraction_success": true,
+  "cached_at": 1749652849.431075,
+  "file_path": "data\\temp\\extraction_AE900725076\\FACTURA COMERCIAL 0550001052.pdf"
+}

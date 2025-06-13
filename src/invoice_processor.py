@@ -230,19 +230,7 @@ class OptimizedInvoiceProcessor:
             language="es",                
             check_interval=2,
             num_workers=6,
-            parsing_instruction="""Extract invoice data from this Spanish commercial invoice (FACTURA COMERCIAL).
-
-Look for these specific fields:
-1. Fecha y hora de emisión - Invoice date and time
-2. Supplier/Company name (Emisor) - The company issuing the invoice
-3. REF CLIENTE - Client reference number or SKU
-4. DESCRIPCIÓN DEL MATERIAL - Material/product description
-5. CANTIDAD TOTAL - Total quantity/units
-6. VALOR UNITARIO - Unit price/value
-7. Total USD - Total amount in USD dollars
-
-Pay special attention to tables containing line items.
-Convert any monetary amounts to numbers without currency symbols.""",
+            parsing_instruction="""Extract invoice data from this commercial invoice.""",
             verbose=False
         )
         

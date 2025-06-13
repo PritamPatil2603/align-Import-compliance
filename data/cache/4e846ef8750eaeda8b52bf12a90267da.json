@@ -1,0 +1,32 @@
+{
+  "invoice_number": "10-184-MIB-0072",
+  "company_name": "COSMETICOS TRUJILLO",
+  "total_usd_amount": "62850.48",
+  "currency": "USD",
+  "confidence_level": "HIGH",
+  "extraction_notes": null,
+  "amount_source_text": "Total USD: 62850.48",
+  "client_reference": "10-184-MIB-0072",
+  "material_description": "AGUA DE TOCADOR MIB HONEY MILK 150ML",
+  "fecha_hora": "27/12/2024 12:39:57",
+  "cantidad_total": 35112.0,
+  "valor_unitario": 1.79,
+  "line_items": [
+    {
+      "line_number": 1,
+      "sku": "10-184-MIB-0072",
+      "description": "AGUA DE TOCADOR MIB HONEY MILK 150ML",
+      "quantity": 35112.0,
+      "unit_price": "1.79",
+      "line_total": "62850.48",
+      "unit_of_measure": "PCS",
+      "country_of_origin": null,
+      "hts_code": null
+    }
+  ],
+  "processing_time": 39.7460675239563,
+  "extraction_method": "enhanced",
+  "line_item_extraction_success": true,
+  "cached_at": 1749656801.9776464,
+  "file_path": "data\\temp\\extraction_AE900730746\\FACTURA COMERCIAL 0550001258.pdf"
+}

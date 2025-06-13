@@ -1,0 +1,32 @@
+{
+  "invoice_number": "10-184-FRE-0022",
+  "company_name": "COSMETICOS TRUJILLO",
+  "total_usd_amount": "26967.6",
+  "currency": "USD",
+  "confidence_level": "HIGH",
+  "extraction_notes": "Single line item extracted from the invoice. Total matches the sum of line totals.",
+  "amount_source_text": "Total USD: 26967.60",
+  "client_reference": null,
+  "material_description": null,
+  "fecha_hora": "30/10/2024 12:13:58",
+  "cantidad_total": null,
+  "valor_unitario": null,
+  "line_items": [
+    {
+      "line_number": 1,
+      "sku": "10-184-FRE-0022",
+      "description": "GEL DE DUCHA FRE BW CASHMEREVANILLA 14OZ",
+      "quantity": 11880.0,
+      "unit_price": "2.27",
+      "line_total": "26967.6",
+      "unit_of_measure": null,
+      "country_of_origin": null,
+      "hts_code": null
+    }
+  ],
+  "processing_time": 24.248413801193237,
+  "extraction_method": "enhanced",
+  "line_item_extraction_success": true,
+  "cached_at": 1749665590.1839466,
+  "file_path": "data\\temp\\extraction_AE900722990\\FACTURA COMERCIAL 550000992 .pdf"
+}

@@ -1,0 +1,32 @@
+{
+  "invoice_number": "10-184-FIN-0031",
+  "company_name": "COSMETICOS TRUJILLO",
+  "total_usd_amount": "47688.48",
+  "currency": "USD",
+  "confidence_level": "HIGH",
+  "extraction_notes": "Single SKU extracted with accurate calculations.",
+  "amount_source_text": "Total USD: 47688.48",
+  "client_reference": "10-184-FIN-0031",
+  "material_description": "AGUA DE PERFUME FIN WITHOUTATRACE 60ML",
+  "fecha_hora": "13/03/2025 15:44:29",
+  "cantidad_total": 18924.0,
+  "valor_unitario": 2.52,
+  "line_items": [
+    {
+      "line_number": 1,
+      "sku": "10-184-FIN-0031",
+      "description": "AGUA DE PERFUME FIN WITHOUTATRACE 60ML",
+      "quantity": 18924.0,
+      "unit_price": "2.52",
+      "line_total": "47688.48",
+      "unit_of_measure": "ML",
+      "country_of_origin": null,
+      "hts_code": null
+    }
+  ],
+  "processing_time": 57.49804472923279,
+  "extraction_method": "enhanced",
+  "line_item_extraction_success": true,
+  "cached_at": 1749645738.030867,
+  "file_path": "data\\temp\\extraction_AE900741446\\FACTURA COMERCIAL 0550001612.pdf"
+}

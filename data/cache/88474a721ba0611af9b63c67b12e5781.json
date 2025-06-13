@@ -1,0 +1,54 @@
+{
+  "invoice_number": "10-184-FIN-0027",
+  "company_name": "COSMETICOS TRUJILLO",
+  "total_usd_amount": "5637.6",
+  "currency": "USD",
+  "confidence_level": "HIGH",
+  "extraction_notes": "All line items have the same SKU and unit price. Quantities and line totals are calculated based on provided total quantities and unit price.",
+  "amount_source_text": "Total USD: 5637.60",
+  "client_reference": null,
+  "material_description": null,
+  "fecha_hora": "20/02/2024 15:19:21",
+  "cantidad_total": null,
+  "valor_unitario": null,
+  "line_items": [
+    {
+      "line_number": 1,
+      "sku": "10-184-FIN-0027",
+      "description": "AGUA DE PERFUME FIN NEWROUGE 60ML",
+      "quantity": 3108.0,
+      "unit_price": "0.9",
+      "line_total": "2797.2",
+      "unit_of_measure": null,
+      "country_of_origin": null,
+      "hts_code": null
+    },
+    {
+      "line_number": 2,
+      "sku": "10-184-FIN-0027",
+      "description": "AGUA DE PERFUME FIN WITHOUTATRACE 60ML",
+      "quantity": 3108.0,
+      "unit_price": "0.9",
+      "line_total": "2797.2",
+      "unit_of_measure": null,
+      "country_of_origin": null,
+      "hts_code": null
+    },
+    {
+      "line_number": 3,
+      "sku": "10-184-FIN-0027",
+      "description": "AGUA DE PERFUME FIN MYSTERIOUSNOMAD60ML",
+      "quantity": 48.0,
+      "unit_price": "0.9",
+      "line_total": "43.2",
+      "unit_of_measure": null,
+      "country_of_origin": null,
+      "hts_code": null
+    }
+  ],
+  "processing_time": 102.54198002815247,
+  "extraction_method": "enhanced",
+  "line_item_extraction_success": true,
+  "cached_at": 1749657044.76919,
+  "file_path": "data\\temp\\extraction_AE900686294\\FACTURA COMERCIAL 0550000202.pdf"
+}

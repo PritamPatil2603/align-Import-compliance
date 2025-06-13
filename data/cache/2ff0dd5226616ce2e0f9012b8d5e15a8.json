@@ -1,0 +1,32 @@
+{
+  "invoice_number": "68-184-MIB-0014",
+  "company_name": "COSMETICOS TRUJILLO",
+  "total_usd_amount": "12533.4",
+  "currency": "USD",
+  "confidence_level": "HIGH",
+  "extraction_notes": null,
+  "amount_source_text": null,
+  "client_reference": null,
+  "material_description": null,
+  "fecha_hora": "21/10/2024 18:27:03",
+  "cantidad_total": null,
+  "valor_unitario": null,
+  "line_items": [
+    {
+      "line_number": 1,
+      "sku": "68-184-MIB-0014",
+      "description": "AGUA DE PERFUME MIB TES HONEY MILK 50ML",
+      "quantity": 6330.0,
+      "unit_price": "1.98",
+      "line_total": "12533.4",
+      "unit_of_measure": null,
+      "country_of_origin": null,
+      "hts_code": null
+    }
+  ],
+  "processing_time": 25.166983366012573,
+  "extraction_method": "enhanced",
+  "line_item_extraction_success": true,
+  "cached_at": 1749664959.6527224,
+  "file_path": "data\\temp\\extraction_AE900721547\\FACTURA COMERCIAL 0550000946.pdf"
+}

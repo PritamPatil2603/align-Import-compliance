@@ -1,0 +1,32 @@
+{
+  "invoice_number": "10-191-ONV-0007",
+  "company_name": "COSMETICOS TRUJILLO",
+  "total_usd_amount": "11165",
+  "currency": "USD",
+  "confidence_level": "HIGH",
+  "extraction_notes": "Single SKU with total amount matching line total.",
+  "amount_source_text": "Total USD: 11165.00",
+  "client_reference": null,
+  "material_description": null,
+  "fecha_hora": "14/12/2024 12:52:53",
+  "cantidad_total": null,
+  "valor_unitario": null,
+  "line_items": [
+    {
+      "line_number": 1,
+      "sku": "10-191-ONV-0007",
+      "description": "AGUA DE PERFUME ONV MARINEWATERDRIFT30ML",
+      "quantity": 19250.0,
+      "unit_price": "0.58",
+      "line_total": "11165",
+      "unit_of_measure": null,
+      "country_of_origin": null,
+      "hts_code": null
+    }
+  ],
+  "processing_time": 74.9411678314209,
+  "extraction_method": "enhanced",
+  "line_item_extraction_success": true,
+  "cached_at": 1749659790.8369515,
+  "file_path": "data\\temp\\extraction_AE900729177\\FACTURA COMERCIAL 0550001205.pdf"
+}

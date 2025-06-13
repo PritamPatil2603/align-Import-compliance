@@ -1,0 +1,32 @@
+{
+  "invoice_number": "10-191-ONV-0004",
+  "company_name": "COSMETICOS TRUJILLO",
+  "total_usd_amount": "2415.36",
+  "currency": "USD",
+  "confidence_level": "HIGH",
+  "extraction_notes": "Single line item extracted with clear details from the invoice.",
+  "amount_source_text": "Total USD: 2415.36",
+  "client_reference": "10-191-ONV-0004",
+  "material_description": "AGUA DE TOCADOR ONV INDIGO 50ML",
+  "fecha_hora": "19/07/2024 16:47:24",
+  "cantidad_total": 3552.0,
+  "valor_unitario": 0.68,
+  "line_items": [
+    {
+      "line_number": 1,
+      "sku": "10-191-ONV-0004",
+      "description": "AGUA DE TOCADOR ONV INDIGO 50ML",
+      "quantity": 3552.0,
+      "unit_price": "0.68",
+      "line_total": "2415.36",
+      "unit_of_measure": "PCS",
+      "country_of_origin": null,
+      "hts_code": null
+    }
+  ],
+  "processing_time": 21.635595560073853,
+  "extraction_method": "enhanced",
+  "line_item_extraction_success": true,
+  "cached_at": 1749664594.9667397,
+  "file_path": "data\\temp\\extraction_AE900710201\\FACTURA COMERCIAL 0550000693.pdf"
+}

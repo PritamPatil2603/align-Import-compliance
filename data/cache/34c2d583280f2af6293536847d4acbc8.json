@@ -1,0 +1,32 @@
+{
+  "invoice_number": "10-184-MIB-0013",
+  "company_name": "COSMETICOS TRUJILLO",
+  "total_usd_amount": "8564.4",
+  "currency": "USD",
+  "confidence_level": "HIGH",
+  "extraction_notes": "Single SKU with clear details extracted from the invoice.",
+  "amount_source_text": "Total USD: 8564.40",
+  "client_reference": null,
+  "material_description": null,
+  "fecha_hora": "31/03/2025 18:11:04",
+  "cantidad_total": null,
+  "valor_unitario": null,
+  "line_items": [
+    {
+      "line_number": 1,
+      "sku": "10-184-MIB-0013",
+      "description": "AGUA DE TOCADOR MIBHBMTC COCOPALM150ML",
+      "quantity": 4680.0,
+      "unit_price": "1.83",
+      "line_total": "8564.4",
+      "unit_of_measure": null,
+      "country_of_origin": null,
+      "hts_code": null
+    }
+  ],
+  "processing_time": 23.726449489593506,
+  "extraction_method": "enhanced",
+  "line_item_extraction_success": true,
+  "cached_at": 1749665137.7614162,
+  "file_path": "data\\temp\\extraction_AE900744788\\FACTURA COMERCIAL 0550001710.pdf"
+}

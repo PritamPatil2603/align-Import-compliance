@@ -1,0 +1,32 @@
+{
+  "invoice_number": "10-184-MIB-0062",
+  "company_name": "COSMETICOS TRUJILLO",
+  "total_usd_amount": "26813.16",
+  "currency": "USD",
+  "confidence_level": "HIGH",
+  "extraction_notes": "Single SKU extracted from the invoice with all details matching the total invoice amount.",
+  "amount_source_text": "Total USD: 26813.16",
+  "client_reference": null,
+  "material_description": null,
+  "fecha_hora": "19/02/2025 15:22:19",
+  "cantidad_total": null,
+  "valor_unitario": null,
+  "line_items": [
+    {
+      "line_number": 1,
+      "sku": "10-184-MIB-0062",
+      "description": "AGUA DE TOCADOR MIBHBM PASSIONFRUIT150ML",
+      "quantity": 14652.0,
+      "unit_price": "1.83",
+      "line_total": "26813.16",
+      "unit_of_measure": null,
+      "country_of_origin": null,
+      "hts_code": null
+    }
+  ],
+  "processing_time": 18.469509840011597,
+  "extraction_method": "enhanced",
+  "line_item_extraction_success": true,
+  "cached_at": 1749657363.7076516,
+  "file_path": "data\\temp\\extraction_AE900737733\\FACTURA COMERCIAL 0550001510.pdf"
+}

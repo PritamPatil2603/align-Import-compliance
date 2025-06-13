@@ -1,0 +1,32 @@
+{
+  "invoice_number": "10-184-MIB-0057",
+  "company_name": "COSMETICOS TRUJILLO",
+  "total_usd_amount": "44808.48",
+  "currency": "USD",
+  "confidence_level": "HIGH",
+  "extraction_notes": null,
+  "amount_source_text": "Total USD: 44808.48",
+  "client_reference": null,
+  "material_description": null,
+  "fecha_hora": "31/03/2025 19:24:02",
+  "cantidad_total": null,
+  "valor_unitario": null,
+  "line_items": [
+    {
+      "line_number": 1,
+      "sku": "10-184-MIB-0057",
+      "description": "AGUA DE TOCADOR MIB VANBOUR 75ML",
+      "quantity": 40368.0,
+      "unit_price": "1.11",
+      "line_total": "44808.48",
+      "unit_of_measure": "ML",
+      "country_of_origin": null,
+      "hts_code": null
+    }
+  ],
+  "processing_time": 25.87384557723999,
+  "extraction_method": "enhanced",
+  "line_item_extraction_success": true,
+  "cached_at": 1749665113.3823059,
+  "file_path": "data\\temp\\extraction_AE900744788\\FACTURA COMERCIAL 0550001720.pdf"
+}

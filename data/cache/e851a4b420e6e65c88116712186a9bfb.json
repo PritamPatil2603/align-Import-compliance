@@ -1,0 +1,32 @@
+{
+  "invoice_number": "10-184-FIN-0028",
+  "company_name": "COSMETICOS TRUJILLO",
+  "total_usd_amount": "5700.78",
+  "currency": "USD",
+  "confidence_level": "HIGH",
+  "extraction_notes": "Single SKU with clear details provided.",
+  "amount_source_text": "CINCO MIL SETECIENTOS DOLARES 78/100 USD",
+  "client_reference": null,
+  "material_description": null,
+  "fecha_hora": "21/05/2024 11:18:16",
+  "cantidad_total": null,
+  "valor_unitario": null,
+  "line_items": [
+    {
+      "line_number": 1,
+      "sku": "10-184-FIN-0028",
+      "description": "AGUA DE PERFUME FIN FLOWERBED 10ML",
+      "quantity": 11178.0,
+      "unit_price": "0.51",
+      "line_total": "5700.78",
+      "unit_of_measure": null,
+      "country_of_origin": null,
+      "hts_code": null
+    }
+  ],
+  "processing_time": 82.14932560920715,
+  "extraction_method": "enhanced",
+  "line_item_extraction_success": true,
+  "cached_at": 1749659096.952341,
+  "file_path": "data\\temp\\extraction_AE900703222\\FACTURA COMERCIAL 0550000525.pdf"
+}

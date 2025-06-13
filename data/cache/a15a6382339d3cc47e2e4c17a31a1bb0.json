@@ -1,0 +1,43 @@
+{
+  "invoice_number": "00001000000506202789",
+  "company_name": "COSMETICOS TRUJILLO",
+  "total_usd_amount": "21379.2",
+  "currency": "USD",
+  "confidence_level": "HIGH",
+  "extraction_notes": null,
+  "amount_source_text": "Total USD: 21379.20",
+  "client_reference": null,
+  "material_description": null,
+  "fecha_hora": "31/05/2024 17:54:22",
+  "cantidad_total": null,
+  "valor_unitario": null,
+  "line_items": [
+    {
+      "line_number": 1,
+      "sku": "10-191-ONV-0003",
+      "description": "AGUA DE TOCADOR ONV GROVE 50ML",
+      "quantity": 13200.0,
+      "unit_price": "0.68",
+      "line_total": "8976",
+      "unit_of_measure": null,
+      "country_of_origin": null,
+      "hts_code": null
+    },
+    {
+      "line_number": 2,
+      "sku": "10-191-ONV-0004",
+      "description": "AGUA DE TOCADOR ONV INDIGO 50ML",
+      "quantity": 18240.0,
+      "unit_price": "0.68",
+      "line_total": "12403.2",
+      "unit_of_measure": null,
+      "country_of_origin": null,
+      "hts_code": null
+    }
+  ],
+  "processing_time": 91.66159081459045,
+  "extraction_method": "enhanced",
+  "line_item_extraction_success": true,
+  "cached_at": 1749663841.203926,
+  "file_path": "data\\temp\\extraction_AE900704717\\FACTURA COMERCIAL 0550000567.pdf"
+}

@@ -1,0 +1,43 @@
+{
+  "invoice_number": "17DA4009-D4C6-4A64-9854-CDB5DBF2FEDB",
+  "company_name": "COSMETICOS TRUJILLO",
+  "total_usd_amount": "13.65",
+  "currency": "USD",
+  "confidence_level": "HIGH",
+  "extraction_notes": null,
+  "amount_source_text": "Total USD: $13.65",
+  "client_reference": null,
+  "material_description": null,
+  "fecha_hora": "26/03/2024 18:47:45",
+  "cantidad_total": null,
+  "valor_unitario": null,
+  "line_items": [
+    {
+      "line_number": 1,
+      "sku": "10-184-FIN-0036",
+      "description": "AGUA DE TOCADOR FIN PISTACHIOPLEASE150ML",
+      "quantity": 6.0,
+      "unit_price": "0.91",
+      "line_total": "5.46",
+      "unit_of_measure": null,
+      "country_of_origin": null,
+      "hts_code": null
+    },
+    {
+      "line_number": 2,
+      "sku": "10-184-FIN-0036",
+      "description": "AGUA DE TOCADOR FIN WITHOUTATRACE 150ML",
+      "quantity": 9.0,
+      "unit_price": "0.91",
+      "line_total": "8.19",
+      "unit_of_measure": null,
+      "country_of_origin": null,
+      "hts_code": null
+    }
+  ],
+  "processing_time": 15.558928489685059,
+  "extraction_method": "enhanced",
+  "line_item_extraction_success": true,
+  "cached_at": 1749650284.5429683,
+  "file_path": "data\\temp\\extraction_AE900693423\\FACTURA COMERCIAL 0550000338.pdf"
+}

@@ -1,0 +1,43 @@
+{
+  "invoice_number": "00001000000506202789",
+  "company_name": "COSMETICOS TRUJILLO",
+  "total_usd_amount": "13999.5",
+  "currency": "USD",
+  "confidence_level": "HIGH",
+  "extraction_notes": "Line totals calculated as quantity multiplied by unit price. Total matches provided invoice total.",
+  "amount_source_text": "Total USD: 13,999.50",
+  "client_reference": null,
+  "material_description": null,
+  "fecha_hora": "01/03/2024 14:18:18",
+  "cantidad_total": null,
+  "valor_unitario": null,
+  "line_items": [
+    {
+      "line_number": 1,
+      "sku": "10-191-ONV-0010",
+      "description": "AGUA DE PERFUME ONV WATERLILYMELON30ML",
+      "quantity": 13250.0,
+      "unit_price": "0.61",
+      "line_total": "8082.5",
+      "unit_of_measure": null,
+      "country_of_origin": null,
+      "hts_code": null
+    },
+    {
+      "line_number": 2,
+      "sku": "10-191-ONV-0012",
+      "description": "AGUA DE PERFUME ONV ORANGEBLOSSOMTEA30ML",
+      "quantity": 9700.0,
+      "unit_price": "0.61",
+      "line_total": "5917",
+      "unit_of_measure": null,
+      "country_of_origin": null,
+      "hts_code": null
+    }
+  ],
+  "processing_time": 16.935205698013306,
+  "extraction_method": "enhanced",
+  "line_item_extraction_success": true,
+  "cached_at": 1749663738.0776253,
+  "file_path": "data\\temp\\extraction_AE900688761\\FACTURA COMERCIAL 550000254.pdf"
+}

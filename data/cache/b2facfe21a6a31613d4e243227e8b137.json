@@ -1,0 +1,32 @@
+{
+  "invoice_number": "10-191-ONV-0019",
+  "company_name": "COSMETICOS TRUJILLO",
+  "total_usd_amount": "345.6",
+  "currency": "USD",
+  "confidence_level": "HIGH",
+  "extraction_notes": null,
+  "amount_source_text": "Total USD: 345.60",
+  "client_reference": null,
+  "material_description": null,
+  "fecha_hora": "17/12/2024 19:13:44",
+  "cantidad_total": null,
+  "valor_unitario": null,
+  "line_items": [
+    {
+      "line_number": 1,
+      "sku": "10-191-ONV-0019",
+      "description": "AGUA DE TOCADOR ONVHBM WATERLIMELON160ML",
+      "quantity": 384.0,
+      "unit_price": "0.9",
+      "line_total": "345.6",
+      "unit_of_measure": null,
+      "country_of_origin": null,
+      "hts_code": null
+    }
+  ],
+  "processing_time": 19.858564853668213,
+  "extraction_method": "enhanced",
+  "line_item_extraction_success": true,
+  "cached_at": 1749665697.3576674,
+  "file_path": "data\\temp\\extraction_AE900729714\\FACTURA COMERCIAL 0550001210.pdf"
+}

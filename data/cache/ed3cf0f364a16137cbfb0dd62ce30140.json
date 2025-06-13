@@ -1,0 +1,32 @@
+{
+  "invoice_number": "10-184-FIN-0038",
+  "company_name": "COSMETICOS TRUJILLO",
+  "total_usd_amount": "18793.8",
+  "currency": "USD",
+  "confidence_level": "HIGH",
+  "extraction_notes": null,
+  "amount_source_text": null,
+  "client_reference": null,
+  "material_description": null,
+  "fecha_hora": "22/02/2025 14:36:36",
+  "cantidad_total": null,
+  "valor_unitario": null,
+  "line_items": [
+    {
+      "line_number": 1,
+      "sku": "10-184-FIN-0038",
+      "description": "AGUA DE TOCADOR FIN MADAME 150ML",
+      "quantity": 9540.0,
+      "unit_price": "1.97",
+      "line_total": "18793.8",
+      "unit_of_measure": null,
+      "country_of_origin": null,
+      "hts_code": null
+    }
+  ],
+  "processing_time": 15.459173917770386,
+  "extraction_method": "enhanced",
+  "line_item_extraction_success": true,
+  "cached_at": 1749664537.482055,
+  "file_path": "data\\temp\\extraction_AE900738376\\FACTURA COMERCIAL 0550001525.pdf"
+}

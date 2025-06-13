@@ -1,0 +1,32 @@
+{
+  "invoice_number": "10-184-MIB-0006",
+  "company_name": "COSMETICOS TRUJILLO",
+  "total_usd_amount": "6926.64",
+  "currency": "USD",
+  "confidence_level": "HIGH",
+  "extraction_notes": "Single SKU with total quantity and unit price provided. Calculated line total matches invoice total.",
+  "amount_source_text": "Total USD: 6926.64",
+  "client_reference": null,
+  "material_description": null,
+  "fecha_hora": "23/02/2024 13:29:41",
+  "cantidad_total": null,
+  "valor_unitario": null,
+  "line_items": [
+    {
+      "line_number": 1,
+      "sku": "10-184-MIB-0006",
+      "description": "AGUA DE PERFUME MIB TC COCONUTPALM 50ML",
+      "quantity": 11172.0,
+      "unit_price": "0.62",
+      "line_total": "6926.64",
+      "unit_of_measure": "PCS",
+      "country_of_origin": null,
+      "hts_code": null
+    }
+  ],
+  "processing_time": 136.2338056564331,
+  "extraction_method": "enhanced",
+  "line_item_extraction_success": true,
+  "cached_at": 1749660099.4383757,
+  "file_path": "data\\temp\\extraction_AE900687870\\FACTURA COMERCIAL 0550000232.pdf"
+}

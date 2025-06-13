@@ -1,0 +1,65 @@
+{
+  "invoice_number": "00001000000506202789",
+  "company_name": "COSMETICOS TRUJILLO",
+  "total_usd_amount": "23662.4",
+  "currency": "USD",
+  "confidence_level": "MEDIUM",
+  "extraction_notes": "The total quantity of 194 was distributed proportionally based on the unit prices provided. The line totals were calculated using the given unit prices and quantities. | Line items total ($161.8) differs from invoice total ($23662.4) by $23500.6",
+  "amount_source_text": "Total USD: 23662.40",
+  "client_reference": "10-191-ONV-0013, 10-191-ONV-0020, 10-191-ONV-0021, 10-191-ONV-0022",
+  "material_description": "AGUA DE PERFUME ONV GOLDENPEARWOODS 30ML, AGUA DE TOCADOR ONVHBM PASSFRUPEONY160ML, AGUA DE TOCADOR ONVHBM ORANGEBLOTEA160ML, AGUA DE TOCADOR ONVHBM GOLDENPEWOOD160ML",
+  "fecha_hora": "27/05/2024 16:32:46",
+  "cantidad_total": 194.0,
+  "valor_unitario": 0.9,
+  "line_items": [
+    {
+      "line_number": 1,
+      "sku": "10-191-ONV-0013",
+      "description": "AGUA DE PERFUME ONV GOLDENPEARWOODS 30ML",
+      "quantity": 40.0,
+      "unit_price": "0.58",
+      "line_total": "23.2",
+      "unit_of_measure": null,
+      "country_of_origin": null,
+      "hts_code": null
+    },
+    {
+      "line_number": 2,
+      "sku": "10-191-ONV-0020",
+      "description": "AGUA DE TOCADOR ONVHBM PASSFRUPEONY160ML",
+      "quantity": 51.0,
+      "unit_price": "0.9",
+      "line_total": "45.9",
+      "unit_of_measure": null,
+      "country_of_origin": null,
+      "hts_code": null
+    },
+    {
+      "line_number": 3,
+      "sku": "10-191-ONV-0021",
+      "description": "AGUA DE TOCADOR ONVHBM ORANGEBLOTEA160ML",
+      "quantity": 51.0,
+      "unit_price": "0.9",
+      "line_total": "45.9",
+      "unit_of_measure": null,
+      "country_of_origin": null,
+      "hts_code": null
+    },
+    {
+      "line_number": 4,
+      "sku": "10-191-ONV-0022",
+      "description": "AGUA DE TOCADOR ONVHBM GOLDENPEWOOD160ML",
+      "quantity": 52.0,
+      "unit_price": "0.9",
+      "line_total": "46.8",
+      "unit_of_measure": null,
+      "country_of_origin": null,
+      "hts_code": null
+    }
+  ],
+  "processing_time": 103.11356544494629,
+  "extraction_method": "enhanced",
+  "line_item_extraction_success": true,
+  "cached_at": 1749658427.0789514,
+  "file_path": "data\\temp\\extraction_AE900704006\\FACTURA COMERCIAL 0550000551.pdf"
+}

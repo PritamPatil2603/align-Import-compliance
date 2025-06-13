@@ -1,0 +1,32 @@
+{
+  "invoice_number": "10-126-BOD-0026",
+  "company_name": "COSMETICOS TRUJILLO",
+  "total_usd_amount": "14311.44",
+  "currency": "USD",
+  "confidence_level": "HIGH",
+  "extraction_notes": "The invoice contains one line item with a total quantity of 10008 units, priced at 1.43 USD each, matching the total invoice amount.",
+  "amount_source_text": "Total USD: 14311.44",
+  "client_reference": null,
+  "material_description": null,
+  "fecha_hora": "27/05/2024 16:31:03",
+  "cantidad_total": 10008.0,
+  "valor_unitario": 1.43,
+  "line_items": [
+    {
+      "line_number": 1,
+      "sku": "10-126-BOD-0026",
+      "description": "CREMA CORPORAL BOD CALMAKANAMASLAY 13OZ",
+      "quantity": 10008.0,
+      "unit_price": "1.43",
+      "line_total": "14311.44",
+      "unit_of_measure": "PCS",
+      "country_of_origin": null,
+      "hts_code": null
+    }
+  ],
+  "processing_time": 80.00798797607422,
+  "extraction_method": "enhanced",
+  "line_item_extraction_success": true,
+  "cached_at": 1749658403.9507573,
+  "file_path": "data\\temp\\extraction_AE900704006\\FACTURA COMERCIAL 0550000550.pdf"
+}

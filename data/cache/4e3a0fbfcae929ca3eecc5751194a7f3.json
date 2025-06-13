@@ -1,0 +1,32 @@
+{
+  "invoice_number": "10-184-FIN-0076",
+  "company_name": "COSMETICOS TRUJILLO",
+  "total_usd_amount": "56",
+  "currency": "USD",
+  "confidence_level": "HIGH",
+  "extraction_notes": null,
+  "amount_source_text": "Total USD: 56.00",
+  "client_reference": null,
+  "material_description": null,
+  "fecha_hora": "14/02/2025 17:30:12",
+  "cantidad_total": null,
+  "valor_unitario": null,
+  "line_items": [
+    {
+      "line_number": 1,
+      "sku": "10-184-FIN-0076",
+      "description": "AGUA DE PERFUME FIN MEN DISCOVERY 3x10ML",
+      "quantity": 40.0,
+      "unit_price": "1.4",
+      "line_total": "56",
+      "unit_of_measure": null,
+      "country_of_origin": null,
+      "hts_code": null
+    }
+  ],
+  "processing_time": 19.150108575820923,
+  "extraction_method": "enhanced",
+  "line_item_extraction_success": true,
+  "cached_at": 1749656392.3648343,
+  "file_path": "data\\temp\\extraction_AE900736800\\FACTURA COMERCIAL 0550001479.pdf"
+}

@@ -1,0 +1,43 @@
+{
+  "invoice_number": "N/A",
+  "company_name": "COSMETICOS TRUJILLO",
+  "total_usd_amount": "195.93",
+  "currency": "USD",
+  "confidence_level": "HIGH",
+  "extraction_notes": null,
+  "amount_source_text": "Total USD: $195.93",
+  "client_reference": null,
+  "material_description": null,
+  "fecha_hora": "09/08/2024 13:22:42",
+  "cantidad_total": null,
+  "valor_unitario": null,
+  "line_items": [
+    {
+      "line_number": 1,
+      "sku": "10-184-FIN-0047",
+      "description": "AGUADETOCADOR FIN MINI NEW ROUGE 75ML",
+      "quantity": 347.0,
+      "unit_price": "0.54",
+      "line_total": "187.38",
+      "unit_of_measure": null,
+      "country_of_origin": null,
+      "hts_code": null
+    },
+    {
+      "line_number": 2,
+      "sku": "10-184-FIN-0027",
+      "description": "AGUA DE PERFUME FIN NEWROUGE 60ML",
+      "quantity": 3.0,
+      "unit_price": "2.85",
+      "line_total": "8.55",
+      "unit_of_measure": null,
+      "country_of_origin": null,
+      "hts_code": null
+    }
+  ],
+  "processing_time": 56.21864986419678,
+  "extraction_method": "enhanced",
+  "line_item_extraction_success": true,
+  "cached_at": 1749659858.7143877,
+  "file_path": "data\\temp\\extraction_AE900712587\\FACTURA COMERCIAL 0550000751.pdf"
+}

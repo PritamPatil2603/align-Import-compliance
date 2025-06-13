@@ -1,0 +1,32 @@
+{
+  "invoice_number": "10-184-FRE-0071",
+  "company_name": "COSMETICOS TRUJILLO",
+  "total_usd_amount": "42931.2",
+  "currency": "USD",
+  "confidence_level": "HIGH",
+  "extraction_notes": null,
+  "amount_source_text": "Total USD: 42931.20",
+  "client_reference": null,
+  "material_description": null,
+  "fecha_hora": "07/11/2024 15:08:36",
+  "cantidad_total": null,
+  "valor_unitario": null,
+  "line_items": [
+    {
+      "line_number": 1,
+      "sku": "10-184-FRE-0071",
+      "description": "AGUA DE PERFUME FRE SOLAR FLEUR 60ML",
+      "quantity": 12480.0,
+      "unit_price": "3.44",
+      "line_total": "42931.2",
+      "unit_of_measure": null,
+      "country_of_origin": null,
+      "hts_code": null
+    }
+  ],
+  "processing_time": 40.25715255737305,
+  "extraction_method": "enhanced",
+  "line_item_extraction_success": true,
+  "cached_at": 1749658788.4568052,
+  "file_path": "data\\temp\\extraction_AE900724400\\FACTURA COMERCIAL 550001027.pdf"
+}

@@ -1,0 +1,32 @@
+{
+  "invoice_number": "10-184-FRE-0090",
+  "company_name": "COSMETICOS TRUJILLO",
+  "total_usd_amount": "36078.72",
+  "currency": "USD",
+  "confidence_level": "HIGH",
+  "extraction_notes": null,
+  "amount_source_text": "Total USD: 36078.72",
+  "client_reference": null,
+  "material_description": null,
+  "fecha_hora": "20/09/2024 12:20:39",
+  "cantidad_total": null,
+  "valor_unitario": null,
+  "line_items": [
+    {
+      "line_number": 1,
+      "sku": "10-184-FRE-0090",
+      "description": "AGUA DE PERFUME FRE PALOSANTOSAGE 60ML",
+      "quantity": 10488.0,
+      "unit_price": "3.44",
+      "line_total": "36078.72",
+      "unit_of_measure": "ML",
+      "country_of_origin": null,
+      "hts_code": null
+    }
+  ],
+  "processing_time": 48.43082666397095,
+  "extraction_method": "enhanced",
+  "line_item_extraction_success": true,
+  "cached_at": 1749652948.6980855,
+  "file_path": "data\\temp\\extraction_AE900717321\\FACTURA COMERCIAL 0550000845.pdf"
+}

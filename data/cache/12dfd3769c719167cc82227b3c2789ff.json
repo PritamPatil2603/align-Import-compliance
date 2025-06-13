@@ -1,0 +1,32 @@
+{
+  "invoice_number": "10-184-FIN-0011",
+  "company_name": "COSMETICOS TRUJILLO",
+  "total_usd_amount": "19949.52",
+  "currency": "USD",
+  "confidence_level": "HIGH",
+  "extraction_notes": null,
+  "amount_source_text": null,
+  "client_reference": null,
+  "material_description": null,
+  "fecha_hora": "31/10/2024 22:47:31",
+  "cantidad_total": null,
+  "valor_unitario": null,
+  "line_items": [
+    {
+      "line_number": 1,
+      "sku": "10-184-FIN-0011",
+      "description": "AGUA DE TOCADOR FIN IMMUSK 150 ML",
+      "quantity": 9876.0,
+      "unit_price": "2.02",
+      "line_total": "19949.52",
+      "unit_of_measure": null,
+      "country_of_origin": null,
+      "hts_code": null
+    }
+  ],
+  "processing_time": 26.179659605026245,
+  "extraction_method": "enhanced",
+  "line_item_extraction_success": true,
+  "cached_at": 1749655235.6182775,
+  "file_path": "data\\temp\\extraction_AE900723717\\FACTURA COMERCIAL 0550001012.pdf"
+}

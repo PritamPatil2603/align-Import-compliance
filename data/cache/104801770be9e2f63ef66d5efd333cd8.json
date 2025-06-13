@@ -1,0 +1,32 @@
+{
+  "invoice_number": "10-184-FIN-0043",
+  "company_name": "COSMETICOS TRUJILLO",
+  "total_usd_amount": "6765.12",
+  "currency": "USD",
+  "confidence_level": "HIGH",
+  "extraction_notes": "Single SKU with total quantity and price provided.",
+  "amount_source_text": "Total USD: 6765.12",
+  "client_reference": null,
+  "material_description": null,
+  "fecha_hora": "14/08/2024 15:30:30",
+  "cantidad_total": 12528.0,
+  "valor_unitario": 0.54,
+  "line_items": [
+    {
+      "line_number": 1,
+      "sku": "10-184-FIN-0043",
+      "description": "AGUADETOCADOR FIN MINI WITHOUTATRACE75ML",
+      "quantity": 12528.0,
+      "unit_price": "0.54",
+      "line_total": "6765.12",
+      "unit_of_measure": null,
+      "country_of_origin": null,
+      "hts_code": null
+    }
+  ],
+  "processing_time": 54.969855308532715,
+  "extraction_method": "enhanced",
+  "line_item_extraction_success": true,
+  "cached_at": 1749652125.1593418,
+  "file_path": "data\\temp\\extraction_AE900713239\\FACTURA COMERCIAL 0550000760.pdf"
+}

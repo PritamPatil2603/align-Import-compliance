@@ -1,0 +1,32 @@
+{
+  "invoice_number": "198400",
+  "company_name": "COSMETICOS TRUJILLO",
+  "total_usd_amount": "4929.66",
+  "currency": "USD",
+  "confidence_level": "HIGH",
+  "extraction_notes": null,
+  "amount_source_text": "Total USD: 4929.66",
+  "client_reference": null,
+  "material_description": null,
+  "fecha_hora": "26/03/2024 08:43:27",
+  "cantidad_total": null,
+  "valor_unitario": null,
+  "line_items": [
+    {
+      "line_number": 1,
+      "sku": "10-184-FIN-0029",
+      "description": "AGUA DE PERFUME FIN NOTACHERRY10ML",
+      "quantity": 9666.0,
+      "unit_price": "0.51",
+      "line_total": "4929.66",
+      "unit_of_measure": "PIEZA",
+      "country_of_origin": null,
+      "hts_code": null
+    }
+  ],
+  "processing_time": 22.701675415039062,
+  "extraction_method": "enhanced",
+  "line_item_extraction_success": true,
+  "cached_at": 1749652588.0628438,
+  "file_path": "data\\temp\\extraction_AE900693134\\FACTURA COMERCIAL 0550000324.pdf"
+}

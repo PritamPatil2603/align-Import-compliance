@@ -1,0 +1,32 @@
+{
+  "invoice_number": "10-184-FRE-0070",
+  "company_name": "COSMETICOS TRUJILLO",
+  "total_usd_amount": "14770.56",
+  "currency": "USD",
+  "confidence_level": "HIGH",
+  "extraction_notes": "Single SKU identified with clear quantity and pricing.",
+  "amount_source_text": "Total USD: 14770.56",
+  "client_reference": null,
+  "material_description": null,
+  "fecha_hora": "10/04/2024 16:06:40",
+  "cantidad_total": 15072.0,
+  "valor_unitario": 0.98,
+  "line_items": [
+    {
+      "line_number": 1,
+      "sku": "10-184-FRE-0070",
+      "description": "AGUA DE PERFUME FRE LAVENDERCLOUD 60ML",
+      "quantity": 15072.0,
+      "unit_price": "0.98",
+      "line_total": "14770.56",
+      "unit_of_measure": "PIEZA",
+      "country_of_origin": null,
+      "hts_code": null
+    }
+  ],
+  "processing_time": 81.5494339466095,
+  "extraction_method": "enhanced",
+  "line_item_extraction_success": true,
+  "cached_at": 1749660463.184973,
+  "file_path": "data\\temp\\extraction_AE900695915\\FACTURA COMERCIAL 0550000428.pdf"
+}

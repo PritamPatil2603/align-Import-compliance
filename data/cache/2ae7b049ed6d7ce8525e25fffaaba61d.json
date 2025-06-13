@@ -1,0 +1,32 @@
+{
+  "invoice_number": "10-184-FRE-0088",
+  "company_name": "COSMETICOS TRUJILLO",
+  "total_usd_amount": "1328.4",
+  "currency": "USD",
+  "confidence_level": "HIGH",
+  "extraction_notes": null,
+  "amount_source_text": "UN MIL TRESCIENTOS VEINTIOCHO DOLARES 40/100 USD",
+  "client_reference": null,
+  "material_description": null,
+  "fecha_hora": "05/07/2024 16:28:27",
+  "cantidad_total": null,
+  "valor_unitario": null,
+  "line_items": [
+    {
+      "line_number": 1,
+      "sku": "10-184-FRE-0088",
+      "description": "GEL DE DUCHA FRE PALOSANTO 14OZ",
+      "quantity": 1080.0,
+      "unit_price": "1.23",
+      "line_total": "1328.4",
+      "unit_of_measure": "PIEZA",
+      "country_of_origin": null,
+      "hts_code": "53131612"
+    }
+  ],
+  "processing_time": 29.825079441070557,
+  "extraction_method": "enhanced",
+  "line_item_extraction_success": true,
+  "cached_at": 1749659044.5467503,
+  "file_path": "data\\temp\\extraction_AE900703222\\FACTURA COMERCIAL 0550000663.pdf"
+}

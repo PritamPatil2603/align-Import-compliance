@@ -1,0 +1,32 @@
+{
+  "invoice_number": "68-184-MIB-0012",
+  "company_name": "COSMETICOS TRUJILLO",
+  "total_usd_amount": "13127.4",
+  "currency": "USD",
+  "confidence_level": "HIGH",
+  "extraction_notes": "Single SKU extracted from invoice. No additional SKUs found.",
+  "amount_source_text": "Total USD: 13127.40",
+  "client_reference": null,
+  "material_description": null,
+  "fecha_hora": "25/10/2024 19:14:56",
+  "cantidad_total": null,
+  "valor_unitario": null,
+  "line_items": [
+    {
+      "line_number": 1,
+      "sku": "68-184-MIB-0012",
+      "description": "AGUA DE PERFUME MIB TES SUGARED VIOLET",
+      "quantity": 6630.0,
+      "unit_price": "1.98",
+      "line_total": "13127.4",
+      "unit_of_measure": null,
+      "country_of_origin": null,
+      "hts_code": null
+    }
+  ],
+  "processing_time": 27.838648796081543,
+  "extraction_method": "enhanced",
+  "line_item_extraction_success": true,
+  "cached_at": 1749652189.267405,
+  "file_path": "data\\temp\\extraction_AE900722321\\FACTURA COMERCIAL 0550000971.pdf"
+}

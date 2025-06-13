@@ -1,0 +1,32 @@
+{
+  "invoice_number": "68-184-FIN-0007",
+  "company_name": "COSMETICOS TRUJILLO",
+  "total_usd_amount": "13365",
+  "currency": "USD",
+  "confidence_level": "HIGH",
+  "extraction_notes": null,
+  "amount_source_text": "Total USD: 13365.00",
+  "client_reference": null,
+  "material_description": null,
+  "fecha_hora": "11/11/2024 16:14:52",
+  "cantidad_total": null,
+  "valor_unitario": null,
+  "line_items": [
+    {
+      "line_number": 1,
+      "sku": "68-184-FIN-0007",
+      "description": "AGUA DE PERFUME FIN TESJUNGLESANTAL 60ML",
+      "quantity": 5940.0,
+      "unit_price": "2.25",
+      "line_total": "13365",
+      "unit_of_measure": "PIEZA",
+      "country_of_origin": null,
+      "hts_code": null
+    }
+  ],
+  "processing_time": 31.255723476409912,
+  "extraction_method": "enhanced",
+  "line_item_extraction_success": true,
+  "cached_at": 1749651868.923262,
+  "file_path": "data\\temp\\extraction_AE900724673\\FACTURA COMERCIAL 0550001044.pdf"
+}

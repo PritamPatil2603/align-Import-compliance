@@ -1,0 +1,32 @@
+{
+  "invoice_number": "10-184-FIN-0004",
+  "company_name": "COSMETICOS TRUJILLO",
+  "total_usd_amount": "18381.6",
+  "currency": "USD",
+  "confidence_level": "HIGH",
+  "extraction_notes": "Single SKU with clear quantity and pricing details.",
+  "amount_source_text": "Total USD: 18381.60",
+  "client_reference": null,
+  "material_description": null,
+  "fecha_hora": "13/02/2024 20:29:15",
+  "cantidad_total": null,
+  "valor_unitario": null,
+  "line_items": [
+    {
+      "line_number": 1,
+      "sku": "10-184-FIN-0004",
+      "description": "AGUA DE PERFUME FIN FLOWBED 60ML",
+      "quantity": 20424.0,
+      "unit_price": "0.9",
+      "line_total": "18381.6",
+      "unit_of_measure": "PIEZA",
+      "country_of_origin": null,
+      "hts_code": null
+    }
+  ],
+  "processing_time": 20.26050877571106,
+  "extraction_method": "enhanced",
+  "line_item_extraction_success": true,
+  "cached_at": 1749657992.160057,
+  "file_path": "data\\temp\\extraction_AE900685080\\FACTURA COMERCIAL 0550000116.pdf"
+}

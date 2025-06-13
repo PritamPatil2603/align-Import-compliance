@@ -1,0 +1,32 @@
+{
+  "invoice_number": "10-184-FIN-0013",
+  "company_name": "COSMETICOS TRUJILLO",
+  "total_usd_amount": "24652.08",
+  "currency": "USD",
+  "confidence_level": "HIGH",
+  "extraction_notes": null,
+  "amount_source_text": null,
+  "client_reference": null,
+  "material_description": null,
+  "fecha_hora": "26/07/2024 15:13:28",
+  "cantidad_total": null,
+  "valor_unitario": null,
+  "line_items": [
+    {
+      "line_number": 1,
+      "sku": "10-184-FIN-0013",
+      "description": "AGUA DE TOCADOR FIN FLOWERBED 150ML",
+      "quantity": 12204.0,
+      "unit_price": "2.02",
+      "line_total": "24652.08",
+      "unit_of_measure": null,
+      "country_of_origin": null,
+      "hts_code": null
+    }
+  ],
+  "processing_time": 22.40705704689026,
+  "extraction_method": "enhanced",
+  "line_item_extraction_success": true,
+  "cached_at": 1749654981.2232766,
+  "file_path": "data\\temp\\extraction_AE900710953\\FACTURA COMERCIAL 0550000708.pdf"
+}

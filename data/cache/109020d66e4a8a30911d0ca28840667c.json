@@ -1,0 +1,32 @@
+{
+  "invoice_number": "10-184-FIN-0056",
+  "company_name": "COSMETICOS TRUJILLO",
+  "total_usd_amount": "32692.8",
+  "currency": "USD",
+  "confidence_level": "HIGH",
+  "extraction_notes": null,
+  "amount_source_text": null,
+  "client_reference": null,
+  "material_description": null,
+  "fecha_hora": "07/01/2025 16:17:57",
+  "cantidad_total": null,
+  "valor_unitario": null,
+  "line_items": [
+    {
+      "line_number": 1,
+      "sku": "10-184-FIN-0056",
+      "description": "AGUA DE TOCADOR FIN ROSALINA 150ML",
+      "quantity": 16680.0,
+      "unit_price": "1.96",
+      "line_total": "32692.8",
+      "unit_of_measure": null,
+      "country_of_origin": null,
+      "hts_code": null
+    }
+  ],
+  "processing_time": 58.09953951835632,
+  "extraction_method": "enhanced",
+  "line_item_extraction_success": true,
+  "cached_at": 1749663715.519507,
+  "file_path": "data\\temp\\extraction_AE900731652\\FACTURA COMERCIAL 0550001303.pdf"
+}

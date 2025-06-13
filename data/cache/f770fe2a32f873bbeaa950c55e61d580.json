@@ -1,0 +1,32 @@
+{
+  "invoice_number": "10-184-MIB-0038",
+  "company_name": "COSMETICOS TRUJILLO",
+  "total_usd_amount": "4677.48",
+  "currency": "USD",
+  "confidence_level": "HIGH",
+  "extraction_notes": "Single SKU with total matching invoice total.",
+  "amount_source_text": "4677.48",
+  "client_reference": null,
+  "material_description": null,
+  "fecha_hora": "31/05/2024 18:15:54",
+  "cantidad_total": null,
+  "valor_unitario": null,
+  "line_items": [
+    {
+      "line_number": 1,
+      "sku": "10-184-MIB-0038",
+      "description": "AGUA DE TOCADOR MIBHBMTC SPARHIB150ML",
+      "quantity": 6588.0,
+      "unit_price": "0.71",
+      "line_total": "4677.48",
+      "unit_of_measure": "PIEZA",
+      "country_of_origin": null,
+      "hts_code": null
+    }
+  ],
+  "processing_time": 87.90239024162292,
+  "extraction_method": "enhanced",
+  "line_item_extraction_success": true,
+  "cached_at": 1749663856.1001036,
+  "file_path": "data\\temp\\extraction_AE900704717\\FACTURA COMERCIAL 0550000570.pdf"
+}

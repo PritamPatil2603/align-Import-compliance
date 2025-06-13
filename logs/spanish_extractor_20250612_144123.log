@@ -1,0 +1,24 @@
+2025-06-12 14:42:32,012 - google_services - INFO - 🔍 Searching for ESN folders in Google Drive...
+2025-06-12 14:42:33,732 - google_services - INFO - Found 159 potential ESN folders
+2025-06-12 14:42:33,743 - google_services - INFO - ✅ Found 159 valid ESN folders
+2025-06-12 14:42:34,781 - google_services - INFO - Found 2 PDF files in COMMERCIAL INVOICES
+2025-06-12 14:42:38,048 - invoice_processor - INFO - 📄 Enhanced processing: FACTURA COMERCIAL 0550000559.pdf
+2025-06-12 14:42:39,682 - invoice_processor - INFO - 📄 Enhanced processing: FACTURA COMERCIAL 0550000558.pdf
+2025-06-12 14:42:46,047 - httpx - INFO - HTTP Request: POST https://api.cloud.llamaindex.ai/api/parsing/upload "HTTP/1.1 200 OK"
+2025-06-12 14:42:46,230 - httpx - INFO - HTTP Request: POST https://api.cloud.llamaindex.ai/api/parsing/upload "HTTP/1.1 200 OK"
+2025-06-12 14:42:48,496 - httpx - INFO - HTTP Request: GET https://api.cloud.llamaindex.ai/api/parsing/job/8d05061e-8ebf-4e00-83ab-da022598e8db "HTTP/1.1 200 OK"
+2025-06-12 14:42:48,668 - httpx - INFO - HTTP Request: GET https://api.cloud.llamaindex.ai/api/parsing/job/bb7a36f4-9686-47a0-9b5e-f2efabfc3ed1 "HTTP/1.1 200 OK"
+2025-06-12 14:42:51,935 - httpx - INFO - HTTP Request: GET https://api.cloud.llamaindex.ai/api/parsing/job/8d05061e-8ebf-4e00-83ab-da022598e8db "HTTP/1.1 200 OK"
+2025-06-12 14:42:52,020 - httpx - INFO - HTTP Request: GET https://api.cloud.llamaindex.ai/api/parsing/job/bb7a36f4-9686-47a0-9b5e-f2efabfc3ed1 "HTTP/1.1 200 OK"
+2025-06-12 14:42:52,454 - httpx - INFO - HTTP Request: GET https://api.cloud.llamaindex.ai/api/parsing/job/8d05061e-8ebf-4e00-83ab-da022598e8db/result/markdown "HTTP/1.1 200 OK"
+2025-06-12 14:42:55,223 - httpx - INFO - HTTP Request: GET https://api.cloud.llamaindex.ai/api/parsing/job/bb7a36f4-9686-47a0-9b5e-f2efabfc3ed1/result/markdown "HTTP/1.1 200 OK"
+2025-06-12 14:43:01,571 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-06-12 14:43:01,627 - invoice_processor - INFO - ✅ Line items extracted: 1 items
+2025-06-12 14:43:01,652 - invoice_processor - INFO - 🎯 FACTURA COMERCIAL 0550000559.pdf: $6585.6 (1 items, 23.6s)
+2025-06-12 14:43:01,811 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-06-12 14:43:01,822 - invoice_processor - INFO - ✅ Line items extracted: 5 items
+2025-06-12 14:43:01,831 - invoice_processor - INFO - 🎯 FACTURA COMERCIAL 0550000558.pdf: $52978.56 (5 items, 22.1s)
+2025-06-12 14:43:01,901 - export_manager - INFO - JSON exported: data\reports\spanish_extractions\json\single_esn_AE900704444_extraction_20250612_144301.json
+2025-06-12 14:43:05,257 - export_manager - INFO - CSV exported: data\reports\spanish_extractions\csv\single_esn_AE900704444_extraction_20250612_144301.csv
+2025-06-12 14:43:05,441 - export_manager - ERROR - Error saving Excel: At least one sheet must be visible
+2025-06-12 14:43:05,447 - export_manager - INFO - Excel exported: data\reports\spanish_extractions\excel\single_esn_AE900704444_extraction_20250612_144301.xlsx

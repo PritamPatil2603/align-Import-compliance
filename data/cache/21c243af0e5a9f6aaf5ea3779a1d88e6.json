@@ -1,0 +1,32 @@
+{
+  "invoice_number": "10-184-FRE-0122",
+  "company_name": "COSMETICOS TRUJILLO",
+  "total_usd_amount": "43178.88",
+  "currency": "USD",
+  "confidence_level": "HIGH",
+  "extraction_notes": null,
+  "amount_source_text": "Total USD: 43178.88",
+  "client_reference": null,
+  "material_description": null,
+  "fecha_hora": "09/11/2024 12:28:42",
+  "cantidad_total": null,
+  "valor_unitario": null,
+  "line_items": [
+    {
+      "line_number": 1,
+      "sku": "10-184-FRE-0122",
+      "description": "AGUA DE PERFUME FRE ROSE 60ML",
+      "quantity": 12552.0,
+      "unit_price": "3.44",
+      "line_total": "43178.88",
+      "unit_of_measure": "PIEZA",
+      "country_of_origin": null,
+      "hts_code": null
+    }
+  ],
+  "processing_time": 27.00919508934021,
+  "extraction_method": "enhanced",
+  "line_item_extraction_success": true,
+  "cached_at": 1749664877.2176385,
+  "file_path": "data\\temp\\extraction_AE900724434\\FACTURA COMERCIAL 0550001029.pdf"
+}

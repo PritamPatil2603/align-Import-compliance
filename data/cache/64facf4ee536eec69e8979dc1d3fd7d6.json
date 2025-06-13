@@ -1,0 +1,32 @@
+{
+  "invoice_number": "10-184-MIB-0061",
+  "company_name": "COSMETICOS TRUJILLO",
+  "total_usd_amount": "2721.6",
+  "currency": "USD",
+  "confidence_level": "HIGH",
+  "extraction_notes": "Single SKU with clear quantity and pricing details.",
+  "amount_source_text": "2721.60",
+  "client_reference": null,
+  "material_description": null,
+  "fecha_hora": "13/06/2024 10:38:24",
+  "cantidad_total": 3780.0,
+  "valor_unitario": 0.72,
+  "line_items": [
+    {
+      "line_number": 1,
+      "sku": "10-184-MIB-0061",
+      "description": "AGUA DE PERFUME MIB SALTPETALS 50ML",
+      "quantity": 3780.0,
+      "unit_price": "0.72",
+      "line_total": "2721.6",
+      "unit_of_measure": null,
+      "country_of_origin": null,
+      "hts_code": null
+    }
+  ],
+  "processing_time": 97.97562980651855,
+  "extraction_method": "enhanced",
+  "line_item_extraction_success": true,
+  "cached_at": 1749654256.1780124,
+  "file_path": "data\\temp\\extraction_AE900706035\\FACTURA COMERCIAL 0550000611.pdf"
+}

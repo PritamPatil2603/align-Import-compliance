@@ -1,0 +1,32 @@
+{
+  "invoice_number": "10-184-FRE-0021",
+  "company_name": "COSMETICOS TRUJILLO",
+  "total_usd_amount": "2376.15",
+  "currency": "USD",
+  "confidence_level": "HIGH",
+  "extraction_notes": null,
+  "amount_source_text": "Total USD: 2376.15",
+  "client_reference": null,
+  "material_description": null,
+  "fecha_hora": "04/04/2025 17:49:01",
+  "cantidad_total": null,
+  "valor_unitario": null,
+  "line_items": [
+    {
+      "line_number": 1,
+      "sku": "10-184-FRE-0021",
+      "description": "GEL DE DUCHA FRE BW LAVENDERCLOUD 14OZ",
+      "quantity": 1085.0,
+      "unit_price": "2.19",
+      "line_total": "2376.15",
+      "unit_of_measure": null,
+      "country_of_origin": null,
+      "hts_code": null
+    }
+  ],
+  "processing_time": 31.304629802703857,
+  "extraction_method": "enhanced",
+  "line_item_extraction_success": true,
+  "cached_at": 1749666027.5658867,
+  "file_path": "data\\temp\\extraction_AE900745066\\FACTURA COMERCIAL 0550001725.pdf"
+}

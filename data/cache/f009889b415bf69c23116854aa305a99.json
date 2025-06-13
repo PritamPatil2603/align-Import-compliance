@@ -1,0 +1,32 @@
+{
+  "invoice_number": "10-184-FIN-0047",
+  "company_name": "COSMETICOS TRUJILLO",
+  "total_usd_amount": "36556.8",
+  "currency": "USD",
+  "confidence_level": "HIGH",
+  "extraction_notes": null,
+  "amount_source_text": null,
+  "client_reference": null,
+  "material_description": null,
+  "fecha_hora": "04/04/2025 20:50:25",
+  "cantidad_total": null,
+  "valor_unitario": null,
+  "line_items": [
+    {
+      "line_number": 1,
+      "sku": "10-184-FIN-0047",
+      "description": "AGUADETOCADOR FIN MINI NEW ROUGE 75ML V2",
+      "quantity": 26880.0,
+      "unit_price": "1.36",
+      "line_total": "36556.8",
+      "unit_of_measure": null,
+      "country_of_origin": null,
+      "hts_code": null
+    }
+  ],
+  "processing_time": 25.231518745422363,
+  "extraction_method": "enhanced",
+  "line_item_extraction_success": true,
+  "cached_at": 1749665963.069297,
+  "file_path": "data\\temp\\extraction_AE900745066\\FACTURA COMERCIAL 0550001732.pdf"
+}

@@ -1,0 +1,32 @@
+{
+  "invoice_number": "10-184-FIN-0016",
+  "company_name": "COSMETICOS TRUJILLO",
+  "total_usd_amount": "15850.8",
+  "currency": "USD",
+  "confidence_level": "HIGH",
+  "extraction_notes": "Single SKU extracted with calculated line total matching invoice total.",
+  "amount_source_text": "15850.80",
+  "client_reference": "10-184-FIN-0016",
+  "material_description": "AGUA DE TOCADOR FIN JUNGLESANTAL150ML",
+  "fecha_hora": "13/02/2024 16:53:39",
+  "cantidad_total": 15096.0,
+  "valor_unitario": 1.05,
+  "line_items": [
+    {
+      "line_number": 1,
+      "sku": "10-184-FIN-0016",
+      "description": "AGUA DE TOCADOR FIN JUNGLESANTAL150ML",
+      "quantity": 15096.0,
+      "unit_price": "1.05",
+      "line_total": "15850.8",
+      "unit_of_measure": "PIEZA",
+      "country_of_origin": null,
+      "hts_code": null
+    }
+  ],
+  "processing_time": 15.646641492843628,
+  "extraction_method": "enhanced",
+  "line_item_extraction_success": true,
+  "cached_at": 1749647768.2268317,
+  "file_path": "data\\temp\\extraction_AE900683929\\FACTURA COMERCIAL 550000110.pdf"
+}

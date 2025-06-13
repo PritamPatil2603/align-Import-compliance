@@ -1,0 +1,32 @@
+{
+  "invoice_number": "10-184-FIN-0007",
+  "company_name": "COSMETICOS TRUJILLO",
+  "total_usd_amount": "162",
+  "currency": "USD",
+  "confidence_level": "HIGH",
+  "extraction_notes": "Single SKU with clear details provided.",
+  "amount_source_text": "CIENTO SESENTA Y DOS DOLARES 00/100 USD",
+  "client_reference": null,
+  "material_description": null,
+  "fecha_hora": "08/03/2024 08:49:28",
+  "cantidad_total": null,
+  "valor_unitario": null,
+  "line_items": [
+    {
+      "line_number": 1,
+      "sku": "10-184-FIN-0007",
+      "description": "AGUA DE PERFUME FIN JUNGLESANTAL 60ML",
+      "quantity": 180.0,
+      "unit_price": "0.9",
+      "line_total": "162",
+      "unit_of_measure": "PIEZA",
+      "country_of_origin": null,
+      "hts_code": null
+    }
+  ],
+  "processing_time": 91.70047974586487,
+  "extraction_method": "enhanced",
+  "line_item_extraction_success": true,
+  "cached_at": 1749656213.524306,
+  "file_path": "data\\temp\\extraction_AE900689892\\FACTURA COMERCIAL 550000270.pdf"
+}

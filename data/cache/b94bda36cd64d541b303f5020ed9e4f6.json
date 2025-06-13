@@ -1,0 +1,32 @@
+{
+  "invoice_number": "10-191-ONV-0014",
+  "company_name": "COSMETICOS TRUJILLO",
+  "total_usd_amount": "5875.2",
+  "currency": "USD",
+  "confidence_level": "HIGH",
+  "extraction_notes": null,
+  "amount_source_text": "Total USD: 5875.20",
+  "client_reference": "10-191-ONV-0014",
+  "material_description": "AGUA DE TOCADOR ONVHBM COTTONFLSHEA160ML",
+  "fecha_hora": "21/11/2024 13:23:22",
+  "cantidad_total": 6528.0,
+  "valor_unitario": 0.9,
+  "line_items": [
+    {
+      "line_number": 1,
+      "sku": "10-191-ONV-0014",
+      "description": "AGUA DE TOCADOR ONVHBM COTTONFLSHEA160ML",
+      "quantity": 6528.0,
+      "unit_price": "0.9",
+      "line_total": "5875.2",
+      "unit_of_measure": "PIEZA",
+      "country_of_origin": null,
+      "hts_code": null
+    }
+  ],
+  "processing_time": 34.28409790992737,
+  "extraction_method": "enhanced",
+  "line_item_extraction_success": true,
+  "cached_at": 1749659438.1624937,
+  "file_path": "data\\temp\\extraction_AE900725951\\FACTURA COMERCIAL 550001090.pdf"
+}

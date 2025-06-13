@@ -1,0 +1,32 @@
+{
+  "invoice_number": "10-202-RTE-0042",
+  "company_name": "COSMETICOS TRUJILLO",
+  "total_usd_amount": "18988.8",
+  "currency": "USD",
+  "confidence_level": "HIGH",
+  "extraction_notes": null,
+  "amount_source_text": null,
+  "client_reference": null,
+  "material_description": null,
+  "fecha_hora": "14/12/2024 12:52:33",
+  "cantidad_total": null,
+  "valor_unitario": null,
+  "line_items": [
+    {
+      "line_number": 1,
+      "sku": "10-202-RTE-0042",
+      "description": "ACONDICIONADOR CAPILAR RTE SCALPSOTH13OZ",
+      "quantity": 22080.0,
+      "unit_price": "0.86",
+      "line_total": "18988.8",
+      "unit_of_measure": null,
+      "country_of_origin": null,
+      "hts_code": null
+    }
+  ],
+  "processing_time": 21.414252281188965,
+  "extraction_method": "enhanced",
+  "line_item_extraction_success": true,
+  "cached_at": 1749659737.3983004,
+  "file_path": "data\\temp\\extraction_AE900729177\\FACTURA COMERCIAL 0550001204.pdf"
+}

@@ -1,0 +1,32 @@
+{
+  "invoice_number": "10-184-KES-0814",
+  "company_name": "COSMETICOS TRUJILLO",
+  "total_usd_amount": "7910.4",
+  "currency": "USD",
+  "confidence_level": "HIGH",
+  "extraction_notes": "Single SKU with clear quantity and pricing.",
+  "amount_source_text": "Total USD: 7910.40",
+  "client_reference": null,
+  "material_description": null,
+  "fecha_hora": "13/11/2024 11:38:44",
+  "cantidad_total": null,
+  "valor_unitario": null,
+  "line_items": [
+    {
+      "line_number": 1,
+      "sku": "10-184-KES-0814",
+      "description": "PERFUMECAPILAR KES TRANSLUCENTHREE 2.5OZ",
+      "quantity": 7680.0,
+      "unit_price": "1.03",
+      "line_total": "7910.4",
+      "unit_of_measure": null,
+      "country_of_origin": null,
+      "hts_code": null
+    }
+  ],
+  "processing_time": 25.169121026992798,
+  "extraction_method": "enhanced",
+  "line_item_extraction_success": true,
+  "cached_at": 1749652843.620461,
+  "file_path": "data\\temp\\extraction_AE900725076\\FACTURA COMERCIAL 0550001051.pdf"
+}

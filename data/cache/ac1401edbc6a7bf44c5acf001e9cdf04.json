@@ -1,0 +1,32 @@
+{
+  "invoice_number": "10-184-KES-0815",
+  "company_name": "COSMETICOS TRUJILLO",
+  "total_usd_amount": "10011.6",
+  "currency": "USD",
+  "confidence_level": "HIGH",
+  "extraction_notes": "Single SKU extracted with total matching invoice total.",
+  "amount_source_text": "Total USD: 10011.60",
+  "client_reference": null,
+  "material_description": null,
+  "fecha_hora": "04/04/2025 17:48:26",
+  "cantidad_total": null,
+  "valor_unitario": null,
+  "line_items": [
+    {
+      "line_number": 1,
+      "sku": "10-184-KES-0815",
+      "description": "PERFUME CAPILAR KES ONE SIGNATURE 2.5OZ",
+      "quantity": 9720.0,
+      "unit_price": "1.03",
+      "line_total": "10011.6",
+      "unit_of_measure": null,
+      "country_of_origin": null,
+      "hts_code": null
+    }
+  ],
+  "processing_time": 21.410630702972412,
+  "extraction_method": "enhanced",
+  "line_item_extraction_success": true,
+  "cached_at": 1749665984.4952023,
+  "file_path": "data\\temp\\extraction_AE900745066\\FACTURA COMERCIAL 0550001723.pdf"
+}

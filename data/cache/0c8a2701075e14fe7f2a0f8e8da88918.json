@@ -1,0 +1,32 @@
+{
+  "invoice_number": "10-191-ONV-0021",
+  "company_name": "COSMETICOS TRUJILLO",
+  "total_usd_amount": "1123.2",
+  "currency": "USD",
+  "confidence_level": "HIGH",
+  "extraction_notes": "Single SKU with total quantity and unit price provided.",
+  "amount_source_text": "1123.20",
+  "client_reference": null,
+  "material_description": null,
+  "fecha_hora": "17/12/2024 19:14:16",
+  "cantidad_total": null,
+  "valor_unitario": null,
+  "line_items": [
+    {
+      "line_number": 1,
+      "sku": "10-191-ONV-0021",
+      "description": "AGUA DE TOCADOR ONVHBM ORANGEBLOTEA160ML",
+      "quantity": 1248.0,
+      "unit_price": "0.9",
+      "line_total": "1123.2",
+      "unit_of_measure": null,
+      "country_of_origin": null,
+      "hts_code": null
+    }
+  ],
+  "processing_time": 16.90393829345703,
+  "extraction_method": "enhanced",
+  "line_item_extraction_success": true,
+  "cached_at": 1749665720.5609322,
+  "file_path": "data\\temp\\extraction_AE900729714\\FACTURA COMERCIAL 0550001212.pdf"
+}

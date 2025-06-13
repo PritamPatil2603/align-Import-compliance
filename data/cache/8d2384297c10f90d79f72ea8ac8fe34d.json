@@ -1,0 +1,32 @@
+{
+  "invoice_number": "10-191-ONV-0013",
+  "company_name": "COSMETICOS TRUJILLO",
+  "total_usd_amount": "2436",
+  "currency": "USD",
+  "confidence_level": "HIGH",
+  "extraction_notes": null,
+  "amount_source_text": null,
+  "client_reference": null,
+  "material_description": null,
+  "fecha_hora": "2025-01-11T09:03:13",
+  "cantidad_total": null,
+  "valor_unitario": null,
+  "line_items": [
+    {
+      "line_number": 1,
+      "sku": "10-191-ONV-0013",
+      "description": "AGUA DE PERFUME ONV GOLDENPEARWOODS 30ML",
+      "quantity": 4200.0,
+      "unit_price": "0.58",
+      "line_total": "2436",
+      "unit_of_measure": null,
+      "country_of_origin": null,
+      "hts_code": null
+    }
+  ],
+  "processing_time": 15.809788465499878,
+  "extraction_method": "enhanced",
+  "line_item_extraction_success": true,
+  "cached_at": 1749653390.7440195,
+  "file_path": "data\\temp\\extraction_AE900692151\\FACTURA COMERCIAL 0550001322.pdf"
+}

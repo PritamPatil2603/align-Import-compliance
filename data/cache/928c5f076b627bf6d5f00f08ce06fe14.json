@@ -1,0 +1,32 @@
+{
+  "invoice_number": "10-184-MIB-0073",
+  "company_name": "COSMETICOS TRUJILLO",
+  "total_usd_amount": "9537.12",
+  "currency": "USD",
+  "confidence_level": "HIGH",
+  "extraction_notes": "Single SKU with clear details provided. No need for proportional estimation.",
+  "amount_source_text": "Total USD: 9537.12",
+  "client_reference": null,
+  "material_description": null,
+  "fecha_hora": "28/12/2024 11:10:03",
+  "cantidad_total": null,
+  "valor_unitario": null,
+  "line_items": [
+    {
+      "line_number": 1,
+      "sku": "10-184-MIB-0073",
+      "description": "AGUA DE TOCADOR MIB SUGARED VIOLET 150ML",
+      "quantity": 5328.0,
+      "unit_price": "1.79",
+      "line_total": "9537.12",
+      "unit_of_measure": "PIEZA",
+      "country_of_origin": null,
+      "hts_code": null
+    }
+  ],
+  "processing_time": 14.972386598587036,
+  "extraction_method": "enhanced",
+  "line_item_extraction_success": true,
+  "cached_at": 1749655028.0807364,
+  "file_path": "data\\temp\\extraction_AE900730936\\FACTURA COMERCIAL 0550001276.pdf"
+}

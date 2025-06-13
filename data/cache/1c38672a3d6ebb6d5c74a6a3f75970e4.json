@@ -1,0 +1,32 @@
+{
+  "invoice_number": "10-191-ONV-0012",
+  "company_name": "COSMETICOS TRUJILLO",
+  "total_usd_amount": "5365",
+  "currency": "USD",
+  "confidence_level": "HIGH",
+  "extraction_notes": "All data extracted from the provided invoice content. Only one SKU present.",
+  "amount_source_text": "CINCO MIL TRESCIENTOS SESENTA Y CINCO DOLARES 00/100 USD",
+  "client_reference": "10-191-ONV-0012",
+  "material_description": "AGUA DE PERFUME ONV ORANGEBLOSSOMTEA30ML",
+  "fecha_hora": "20/12/2024 19:23:42",
+  "cantidad_total": 9250.0,
+  "valor_unitario": 0.58,
+  "line_items": [
+    {
+      "line_number": 1,
+      "sku": "10-191-ONV-0012",
+      "description": "AGUA DE PERFUME ONV ORANGEBLOSSOMTEA30ML",
+      "quantity": 9250.0,
+      "unit_price": "0.58",
+      "line_total": "5365",
+      "unit_of_measure": "PIEZA",
+      "country_of_origin": null,
+      "hts_code": null
+    }
+  ],
+  "processing_time": 27.431479692459106,
+  "extraction_method": "enhanced",
+  "line_item_extraction_success": true,
+  "cached_at": 1749645968.8135858,
+  "file_path": "data\\temp\\extraction_AE900730084\\FACTURA COMERCIAL 0550001240.pdf"
+}

@@ -1,0 +1,32 @@
+{
+  "invoice_number": "10-184-FRE-0024",
+  "company_name": "COSMETICOS TRUJILLO",
+  "total_usd_amount": "53.55",
+  "currency": "USD",
+  "confidence_level": "HIGH",
+  "extraction_notes": null,
+  "amount_source_text": "53.55 USD (CINCUENTA Y TRES DOLARES 55/100 USD)",
+  "client_reference": null,
+  "material_description": null,
+  "fecha_hora": "27/03/2024 17:45:54",
+  "cantidad_total": null,
+  "valor_unitario": null,
+  "line_items": [
+    {
+      "line_number": 1,
+      "sku": "10-184-FRE-0024",
+      "description": "GEL DE DUCHA FRE BW SOLARFLEUR 14OZ",
+      "quantity": 45.0,
+      "unit_price": "1.19",
+      "line_total": "53.55",
+      "unit_of_measure": null,
+      "country_of_origin": null,
+      "hts_code": null
+    }
+  ],
+  "processing_time": 26.821502208709717,
+  "extraction_method": "enhanced",
+  "line_item_extraction_success": true,
+  "cached_at": 1749664382.3647456,
+  "file_path": "data\\temp\\extraction_AE900693837\\FACTURA COMERCIAL 0550000346.pdf"
+}

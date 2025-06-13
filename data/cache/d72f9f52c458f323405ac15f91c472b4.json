@@ -1,0 +1,32 @@
+{
+  "invoice_number": "10-184-FIN-0070",
+  "company_name": "COSMETICOS TRUJILLO",
+  "total_usd_amount": "37958.04",
+  "currency": "USD",
+  "confidence_level": "HIGH",
+  "extraction_notes": null,
+  "amount_source_text": null,
+  "client_reference": null,
+  "material_description": null,
+  "fecha_hora": "23/01/2025 16:08:17",
+  "cantidad_total": null,
+  "valor_unitario": null,
+  "line_items": [
+    {
+      "line_number": 1,
+      "sku": "10-184-FIN-0070",
+      "description": "AGUA DE PERFUME FIN MEN WHY NOT 60ML",
+      "quantity": 13044.0,
+      "unit_price": "2.91",
+      "line_total": "37958.04",
+      "unit_of_measure": null,
+      "country_of_origin": null,
+      "hts_code": null
+    }
+  ],
+  "processing_time": 14.583726644515991,
+  "extraction_method": "enhanced",
+  "line_item_extraction_success": true,
+  "cached_at": 1749663471.430656,
+  "file_path": "data\\temp\\extraction_AE900733534\\FACTURA COMERCIAL 0550001359.pdf"
+}

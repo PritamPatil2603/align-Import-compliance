@@ -1,0 +1,32 @@
+{
+  "invoice_number": "10-184-FIN-0014",
+  "company_name": "COSMETICOS TRUJILLO",
+  "total_usd_amount": "5140.8",
+  "currency": "USD",
+  "confidence_level": "HIGH",
+  "extraction_notes": "Single SKU with clear quantity and pricing information.",
+  "amount_source_text": "5140.80",
+  "client_reference": null,
+  "material_description": null,
+  "fecha_hora": "13/02/2024 17:14:56",
+  "cantidad_total": 4896.0,
+  "valor_unitario": 1.05,
+  "line_items": [
+    {
+      "line_number": 1,
+      "sku": "10-184-FIN-0014",
+      "description": "AGUA DE TOCADOR FIN BEFORERAINBOW 150ML",
+      "quantity": 4896.0,
+      "unit_price": "1.05",
+      "line_total": "5140.8",
+      "unit_of_measure": "PIEZA",
+      "country_of_origin": null,
+      "hts_code": null
+    }
+  ],
+  "processing_time": 80.3994562625885,
+  "extraction_method": "enhanced",
+  "line_item_extraction_success": true,
+  "cached_at": 1749657970.2310538,
+  "file_path": "data\\temp\\extraction_AE900685080\\FACTURA COMERCIAL 550000113.pdf"
+}

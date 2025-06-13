@@ -1,0 +1,32 @@
+{
+  "invoice_number": "10-184-FIN-0060",
+  "company_name": "COSMETICOS TRUJILLO",
+  "total_usd_amount": "66561.6",
+  "currency": "USD",
+  "confidence_level": "HIGH",
+  "extraction_notes": null,
+  "amount_source_text": "Total USD: 66561.60",
+  "client_reference": "10-184-FIN-0060",
+  "material_description": "AGUA DE TOCADOR FIN NO PRINCE REQ 150ML",
+  "fecha_hora": "10/01/2025 09:56:55",
+  "cantidad_total": 33960.0,
+  "valor_unitario": 1.96,
+  "line_items": [
+    {
+      "line_number": 1,
+      "sku": "10-184-FIN-0060",
+      "description": "AGUA DE TOCADOR FIN NO PRINCE REQ 150ML",
+      "quantity": 33960.0,
+      "unit_price": "1.96",
+      "line_total": "66561.6",
+      "unit_of_measure": "PIEZA",
+      "country_of_origin": null,
+      "hts_code": null
+    }
+  ],
+  "processing_time": 26.566609382629395,
+  "extraction_method": "enhanced",
+  "line_item_extraction_success": true,
+  "cached_at": 1749662191.737267,
+  "file_path": "data\\temp\\extraction_AE900731876\\FACTURA COMERCIAL 0550001311.pdf"
+}

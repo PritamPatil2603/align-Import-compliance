@@ -1,0 +1,32 @@
+{
+  "invoice_number": "10-126-BOD-0006",
+  "company_name": "COSMETICOS TRUJILLO",
+  "total_usd_amount": "19782",
+  "currency": "USD",
+  "confidence_level": "HIGH",
+  "extraction_notes": null,
+  "amount_source_text": null,
+  "client_reference": null,
+  "material_description": null,
+  "fecha_hora": "28/12/2024 14:34:38",
+  "cantidad_total": null,
+  "valor_unitario": null,
+  "line_items": [
+    {
+      "line_number": 1,
+      "sku": "10-126-BOD-0006",
+      "description": "ACEITE CORPORAL BOD ANYTHING GLOWS 10OZ",
+      "quantity": 6300.0,
+      "unit_price": "3.14",
+      "line_total": "19782",
+      "unit_of_measure": null,
+      "country_of_origin": null,
+      "hts_code": null
+    }
+  ],
+  "processing_time": 106.16081190109253,
+  "extraction_method": "enhanced",
+  "line_item_extraction_success": true,
+  "cached_at": 1749652052.3365161,
+  "file_path": "data\\temp\\extraction_AE900730845\\FACTURA COMERCIAL 0550001279.pdf"
+}

@@ -1,0 +1,32 @@
+{
+  "invoice_number": "10-191-ONV-0001",
+  "company_name": "COSMETICOS TRUJILLO",
+  "total_usd_amount": "6658.56",
+  "currency": "USD",
+  "confidence_level": "HIGH",
+  "extraction_notes": null,
+  "amount_source_text": null,
+  "client_reference": null,
+  "material_description": null,
+  "fecha_hora": "30/11/2024 19:09:49",
+  "cantidad_total": null,
+  "valor_unitario": null,
+  "line_items": [
+    {
+      "line_number": 1,
+      "sku": "10-191-ONV-0001",
+      "description": "AGUA DE TOCADOR ONV DRIFT 50ML",
+      "quantity": 9792.0,
+      "unit_price": "0.68",
+      "line_total": "6658.56",
+      "unit_of_measure": null,
+      "country_of_origin": null,
+      "hts_code": null
+    }
+  ],
+  "processing_time": 23.1373929977417,
+  "extraction_method": "enhanced",
+  "line_item_extraction_success": true,
+  "cached_at": 1749663528.408924,
+  "file_path": "data\\temp\\extraction_AE900727791\\FACTURA COMERCIAL 550001138.pdf"
+}

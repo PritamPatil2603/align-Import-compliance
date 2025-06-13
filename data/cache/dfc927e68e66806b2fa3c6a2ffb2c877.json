@@ -1,0 +1,43 @@
+{
+  "invoice_number": "20D7AB37-6120-4643-A36A-1DA38B5FEB21",
+  "company_name": "COSMETICOS TRUJILLO",
+  "total_usd_amount": "14030",
+  "currency": "USD",
+  "confidence_level": "HIGH",
+  "extraction_notes": null,
+  "amount_source_text": "14030.00",
+  "client_reference": null,
+  "material_description": null,
+  "fecha_hora": "08/03/2024 08:47:38",
+  "cantidad_total": null,
+  "valor_unitario": null,
+  "line_items": [
+    {
+      "line_number": 1,
+      "sku": "10-191-ONV-0013",
+      "description": "AGUA DE PERFUME ONV GOLDENPEARWOODS 30ML",
+      "quantity": 10000.0,
+      "unit_price": "0.61",
+      "line_total": "6100",
+      "unit_of_measure": null,
+      "country_of_origin": null,
+      "hts_code": null
+    },
+    {
+      "line_number": 2,
+      "sku": "10-191-ONV-0005",
+      "description": "AGUA DE PERFUME ONV COTTONFLOWSHEA 30ML",
+      "quantity": 13000.0,
+      "unit_price": "0.61",
+      "line_total": "7930",
+      "unit_of_measure": null,
+      "country_of_origin": null,
+      "hts_code": null
+    }
+  ],
+  "processing_time": 100.04386258125305,
+  "extraction_method": "enhanced",
+  "line_item_extraction_success": true,
+  "cached_at": 1749656307.5057988,
+  "file_path": "data\\temp\\extraction_AE900689892\\FACTURA COMERCIAL 550000268.pdf"
+}

@@ -1,0 +1,32 @@
+{
+  "invoice_number": "68-184-FIN-0013",
+  "company_name": "COSMETICOS TRUJILLO",
+  "total_usd_amount": "13837.5",
+  "currency": "USD",
+  "confidence_level": "HIGH",
+  "extraction_notes": "Single SKU identified with clear quantity and pricing.",
+  "amount_source_text": "Total USD: 13837.50",
+  "client_reference": null,
+  "material_description": null,
+  "fecha_hora": "11/11/2024 14:26:45",
+  "cantidad_total": null,
+  "valor_unitario": null,
+  "line_items": [
+    {
+      "line_number": 1,
+      "sku": "68-184-FIN-0013",
+      "description": "AGUA DE PERFUME FINTES MADAME 60ML",
+      "quantity": 6150.0,
+      "unit_price": "2.25",
+      "line_total": "13837.5",
+      "unit_of_measure": "PIEZA",
+      "country_of_origin": null,
+      "hts_code": null
+    }
+  ],
+  "processing_time": 39.82134771347046,
+  "extraction_method": "enhanced",
+  "line_item_extraction_success": true,
+  "cached_at": 1749651908.749584,
+  "file_path": "data\\temp\\extraction_AE900724673\\FACTURA COMERCIAL 0550001039.pdf"
+}

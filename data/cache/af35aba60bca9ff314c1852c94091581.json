@@ -1,0 +1,32 @@
+{
+  "invoice_number": "10-184-FIN-0018",
+  "company_name": "COSMETICOS TRUJILLO",
+  "total_usd_amount": "22640.16",
+  "currency": "USD",
+  "confidence_level": "HIGH",
+  "extraction_notes": null,
+  "amount_source_text": "Total USD: 22640.16",
+  "client_reference": "10-184-FIN-0018",
+  "material_description": "AGUA DE TOCADOR FIN NOTACHERRY150ML",
+  "fecha_hora": "07/10/2024 14:48:34",
+  "cantidad_total": 11208.0,
+  "valor_unitario": 2.02,
+  "line_items": [
+    {
+      "line_number": 1,
+      "sku": "10-184-FIN-0018",
+      "description": "AGUA DE TOCADOR FIN NOTACHERRY150ML",
+      "quantity": 11208.0,
+      "unit_price": "2.02",
+      "line_total": "22640.16",
+      "unit_of_measure": "PIEZA",
+      "country_of_origin": null,
+      "hts_code": null
+    }
+  ],
+  "processing_time": 122.28186511993408,
+  "extraction_method": "enhanced",
+  "line_item_extraction_success": true,
+  "cached_at": 1749654142.3915718,
+  "file_path": "data\\temp\\extraction_AE900719640\\FACTURA COMERCIAL 0550000900.pdf"
+}

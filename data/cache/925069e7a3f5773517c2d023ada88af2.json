@@ -1,0 +1,32 @@
+{
+  "invoice_number": "10-184-MIB-0083",
+  "company_name": "COSMETICOS TRUJILLO",
+  "total_usd_amount": "14933.16",
+  "currency": "USD",
+  "confidence_level": "HIGH",
+  "extraction_notes": "Single line item extracted with matching total.",
+  "amount_source_text": "CATORCE MIL NOVECIENTOS TREINTA Y TRES DOLARES 16/100 USD",
+  "client_reference": null,
+  "material_description": null,
+  "fecha_hora": "04/06/2024 16:57:20",
+  "cantidad_total": null,
+  "valor_unitario": null,
+  "line_items": [
+    {
+      "line_number": 1,
+      "sku": "10-184-MIB-0083",
+      "description": "AGUA DE TOCADOR MIBHBM SALTPETALS 150ML",
+      "quantity": 15084.0,
+      "unit_price": "0.99",
+      "line_total": "14933.16",
+      "unit_of_measure": null,
+      "country_of_origin": null,
+      "hts_code": null
+    }
+  ],
+  "processing_time": 81.9364423751831,
+  "extraction_method": "enhanced",
+  "line_item_extraction_success": true,
+  "cached_at": 1749663416.7408848,
+  "file_path": "data\\temp\\extraction_AE900705060\\FACTURA COMERCIAL 0550000577.pdf"
+}

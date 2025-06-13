@@ -1,0 +1,32 @@
+{
+  "invoice_number": "68-184-FIN-0001",
+  "company_name": "COSMETICOS TRUJILLO",
+  "total_usd_amount": "15525",
+  "currency": "USD",
+  "confidence_level": "HIGH",
+  "extraction_notes": null,
+  "amount_source_text": null,
+  "client_reference": null,
+  "material_description": null,
+  "fecha_hora": "14/10/2024 15:53:31",
+  "cantidad_total": null,
+  "valor_unitario": null,
+  "line_items": [
+    {
+      "line_number": 1,
+      "sku": "68-184-FIN-0001",
+      "description": "AGUA DE PERFUME FIN TES SWEETOUT 60ML",
+      "quantity": 6900.0,
+      "unit_price": "2.25",
+      "line_total": "15525",
+      "unit_of_measure": null,
+      "country_of_origin": null,
+      "hts_code": null
+    }
+  ],
+  "processing_time": 20.725092887878418,
+  "extraction_method": "enhanced",
+  "line_item_extraction_success": true,
+  "cached_at": 1749661221.9941573,
+  "file_path": "data\\temp\\extraction_AE900718626\\FACTURA COMERCIAL 0550000904.pdf"
+}

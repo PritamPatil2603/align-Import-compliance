@@ -1,0 +1,65 @@
+{
+  "invoice_number": "00001000000506202789",
+  "company_name": "COSMETICOS TRUJILLO",
+  "total_usd_amount": "545.24",
+  "currency": "USD",
+  "confidence_level": "HIGH",
+  "extraction_notes": "Line totals calculated by multiplying quantity by unit price. All line totals sum to the total invoice amount.",
+  "amount_source_text": "Subtotal: 545.24 Total: 545.24",
+  "client_reference": null,
+  "material_description": null,
+  "fecha_hora": "09/11/2024 12:33:47",
+  "cantidad_total": null,
+  "valor_unitario": null,
+  "line_items": [
+    {
+      "line_number": 1,
+      "sku": "10-184-FIN-0067",
+      "description": "AGUA DE PERFUME FIN MEN ALLEGED 60ML",
+      "quantity": 86.0,
+      "unit_price": "2.93",
+      "line_total": "251.98",
+      "unit_of_measure": null,
+      "country_of_origin": null,
+      "hts_code": null
+    },
+    {
+      "line_number": 2,
+      "sku": "10-184-FIN-0068",
+      "description": "AGUA DE PERFUME FIN MEN ULTRA 60ML",
+      "quantity": 86.0,
+      "unit_price": "2.93",
+      "line_total": "251.98",
+      "unit_of_measure": null,
+      "country_of_origin": null,
+      "hts_code": null
+    },
+    {
+      "line_number": 3,
+      "sku": "10-184-FRE-0122",
+      "description": "AGUA DE PERFUME FRE ROSE 60ML",
+      "quantity": 6.0,
+      "unit_price": "3.44",
+      "line_total": "20.64",
+      "unit_of_measure": null,
+      "country_of_origin": null,
+      "hts_code": null
+    },
+    {
+      "line_number": 4,
+      "sku": "10-184-FRE-0123",
+      "description": "AGUA DE PERFUME FRE SALT 60ML",
+      "quantity": 6.0,
+      "unit_price": "3.44",
+      "line_total": "20.64",
+      "unit_of_measure": null,
+      "country_of_origin": null,
+      "hts_code": null
+    }
+  ],
+  "processing_time": 99.46582531929016,
+  "extraction_method": "enhanced",
+  "line_item_extraction_success": true,
+  "cached_at": 1749664916.7781558,
+  "file_path": "data\\temp\\extraction_AE900724434\\FACTURA COMERCIAL 0550001038.pdf"
+}

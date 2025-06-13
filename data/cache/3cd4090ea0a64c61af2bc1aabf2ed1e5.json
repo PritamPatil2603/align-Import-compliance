@@ -1,0 +1,87 @@
+{
+  "invoice_number": "00001000000506202789",
+  "company_name": "COSMETICOS TRUJILLO",
+  "total_usd_amount": "51544",
+  "currency": "USD",
+  "confidence_level": "HIGH",
+  "extraction_notes": "Line items were extracted and calculated based on provided quantities and unit prices. The total matches the invoice total.",
+  "amount_source_text": "Total USD: 51544.00",
+  "client_reference": null,
+  "material_description": null,
+  "fecha_hora": "22/05/2024 15:03:38",
+  "cantidad_total": null,
+  "valor_unitario": null,
+  "line_items": [
+    {
+      "line_number": 1,
+      "sku": "10-191-ONV-0005",
+      "description": "AGUA DE PERFUME ONV COTTONFLOWSHEA 30ML",
+      "quantity": 10200.0,
+      "unit_price": "0.58",
+      "line_total": "5916",
+      "unit_of_measure": null,
+      "country_of_origin": null,
+      "hts_code": null
+    },
+    {
+      "line_number": 2,
+      "sku": "10-191-ONV-0006",
+      "description": "AGUA DE PERFUME ONV FREESIAPETALRAIN30ML",
+      "quantity": 10150.0,
+      "unit_price": "0.58",
+      "line_total": "5887",
+      "unit_of_measure": null,
+      "country_of_origin": null,
+      "hts_code": null
+    },
+    {
+      "line_number": 3,
+      "sku": "10-191-ONV-0009",
+      "description": "AGUA DE PERFUME ONV SEASALTFIG 30ML",
+      "quantity": 10050.0,
+      "unit_price": "0.58",
+      "line_total": "5829",
+      "unit_of_measure": null,
+      "country_of_origin": null,
+      "hts_code": null
+    },
+    {
+      "line_number": 4,
+      "sku": "10-191-ONV-0010",
+      "description": "EAU DE TOILETTE",
+      "quantity": 629.76,
+      "unit_price": "5.63",
+      "line_total": "3542.4",
+      "unit_of_measure": null,
+      "country_of_origin": null,
+      "hts_code": null
+    },
+    {
+      "line_number": 5,
+      "sku": "10-191-ONV-0011",
+      "description": "EAU DE TOILETTE",
+      "quantity": 2918.4,
+      "unit_price": "5.63",
+      "line_total": "16416",
+      "unit_of_measure": null,
+      "country_of_origin": null,
+      "hts_code": null
+    },
+    {
+      "line_number": 6,
+      "sku": "10-191-ONV-0012",
+      "description": "EAU DE TOILETTE",
+      "quantity": 2480.64,
+      "unit_price": "5.63",
+      "line_total": "13953.6",
+      "unit_of_measure": null,
+      "country_of_origin": null,
+      "hts_code": null
+    }
+  ],
+  "processing_time": 107.64103889465332,
+  "extraction_method": "enhanced",
+  "line_item_extraction_success": true,
+  "cached_at": 1749665923.0368202,
+  "file_path": "data\\temp\\extraction_AE900703412\\FACTURA COMERCIAL 0550000539.pdf"
+}

@@ -1,0 +1,32 @@
+{
+  "invoice_number": "10-191-ONV-0011",
+  "company_name": "COSMETICOS TRUJILLO",
+  "total_usd_amount": "8729",
+  "currency": "USD",
+  "confidence_level": "HIGH",
+  "extraction_notes": "Single SKU extracted from the invoice. All details match the provided data.",
+  "amount_source_text": "Total USD: 8729.00",
+  "client_reference": null,
+  "material_description": null,
+  "fecha_hora": "20/12/2024 19:22:45",
+  "cantidad_total": null,
+  "valor_unitario": null,
+  "line_items": [
+    {
+      "line_number": 1,
+      "sku": "10-191-ONV-0011",
+      "description": "AGUA DE PERFUME ONV PASSIONFRUITPEO30ML",
+      "quantity": 15050.0,
+      "unit_price": "0.58",
+      "line_total": "8729",
+      "unit_of_measure": null,
+      "country_of_origin": null,
+      "hts_code": null
+    }
+  ],
+  "processing_time": 26.74631929397583,
+  "extraction_method": "enhanced",
+  "line_item_extraction_success": true,
+  "cached_at": 1749645968.1529467,
+  "file_path": "data\\temp\\extraction_AE900730084\\FACTURA COMERCIAL 0550001239.pdf"
+}

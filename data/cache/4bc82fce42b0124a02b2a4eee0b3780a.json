@@ -1,0 +1,32 @@
+{
+  "invoice_number": "200053",
+  "company_name": "COSMETICOS TRUJILLO",
+  "total_usd_amount": "2797.2",
+  "currency": "USD",
+  "confidence_level": "HIGH",
+  "extraction_notes": "Single SKU identified with clear quantity and pricing details.",
+  "amount_source_text": "Total USD: 2797.20",
+  "client_reference": "10-184-FIN-0001",
+  "material_description": "AGUA DE PERFUME FIN SWEETOUT 60ML",
+  "fecha_hora": "17/02/2024 10:11:01",
+  "cantidad_total": 3108.0,
+  "valor_unitario": 0.9,
+  "line_items": [
+    {
+      "line_number": 1,
+      "sku": "10-184-FIN-0001",
+      "description": "AGUA DE PERFUME FIN SWEETOUT 60ML",
+      "quantity": 3108.0,
+      "unit_price": "0.9",
+      "line_total": "2797.2",
+      "unit_of_measure": "PIEZA",
+      "country_of_origin": null,
+      "hts_code": null
+    }
+  ],
+  "processing_time": 77.45297479629517,
+  "extraction_method": "enhanced",
+  "line_item_extraction_success": true,
+  "cached_at": 1749657187.5067422,
+  "file_path": "data\\temp\\extraction_AE900686294\\FACTURA COMERCIAL 50000129.pdf"
+}

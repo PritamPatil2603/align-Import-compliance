@@ -1,0 +1,32 @@
+{
+  "invoice_number": "10-191-ONV-0002",
+  "company_name": "COSMETICOS TRUJILLO",
+  "total_usd_amount": "10771.2",
+  "currency": "USD",
+  "confidence_level": "HIGH",
+  "extraction_notes": null,
+  "amount_source_text": null,
+  "client_reference": null,
+  "material_description": null,
+  "fecha_hora": "10/12/2024 11:58:15",
+  "cantidad_total": null,
+  "valor_unitario": null,
+  "line_items": [
+    {
+      "line_number": 1,
+      "sku": "10-191-ONV-0002",
+      "description": "AGUA DE TOCADOR ONV EMBER 50ML",
+      "quantity": 15840.0,
+      "unit_price": "0.68",
+      "line_total": "10771.2",
+      "unit_of_measure": null,
+      "country_of_origin": null,
+      "hts_code": null
+    }
+  ],
+  "processing_time": 27.232686519622803,
+  "extraction_method": "enhanced",
+  "line_item_extraction_success": true,
+  "cached_at": 1749661338.995419,
+  "file_path": "data\\temp\\extraction_AE900728708\\FACTURA COMERCIAL 0550001188.pdf"
+}

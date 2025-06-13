@@ -1,0 +1,32 @@
+{
+  "invoice_number": "10-191-ONV-0003",
+  "company_name": "COSMETICOS TRUJILLO",
+  "total_usd_amount": "16156.8",
+  "currency": "USD",
+  "confidence_level": "HIGH",
+  "extraction_notes": null,
+  "amount_source_text": null,
+  "client_reference": null,
+  "material_description": null,
+  "fecha_hora": "2024-12-10T11:58:39",
+  "cantidad_total": null,
+  "valor_unitario": null,
+  "line_items": [
+    {
+      "line_number": 1,
+      "sku": "10-191-ONV-0003",
+      "description": "AGUA DE TOCADOR ONV GROVE 50ML",
+      "quantity": 23760.0,
+      "unit_price": "0.68",
+      "line_total": "16156.8",
+      "unit_of_measure": null,
+      "country_of_origin": null,
+      "hts_code": null
+    }
+  ],
+  "processing_time": 21.972545385360718,
+  "extraction_method": "enhanced",
+  "line_item_extraction_success": true,
+  "cached_at": 1749661329.5901647,
+  "file_path": "data\\temp\\extraction_AE900728708\\FACTURA COMERCIAL 0550001189.pdf"
+}

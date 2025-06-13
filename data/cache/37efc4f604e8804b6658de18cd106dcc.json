@@ -1,0 +1,32 @@
+{
+  "invoice_number": "10-184-MIB-0009",
+  "company_name": "COSMETICOS TRUJILLO",
+  "total_usd_amount": "53333.28",
+  "currency": "USD",
+  "confidence_level": "HIGH",
+  "extraction_notes": "Single SKU extracted with total matching invoice total.",
+  "amount_source_text": "Total USD: 53333.28",
+  "client_reference": null,
+  "material_description": null,
+  "fecha_hora": "21/12/2024 15:23:11",
+  "cantidad_total": null,
+  "valor_unitario": null,
+  "line_items": [
+    {
+      "line_number": 1,
+      "sku": "10-184-MIB-0009",
+      "description": "AGUA DE TOCADOR MIBHBMTC VANBOUR 150ML",
+      "quantity": 29304.0,
+      "unit_price": "1.82",
+      "line_total": "53333.28",
+      "unit_of_measure": null,
+      "country_of_origin": null,
+      "hts_code": null
+    }
+  ],
+  "processing_time": 26.74718141555786,
+  "extraction_method": "enhanced",
+  "line_item_extraction_success": true,
+  "cached_at": 1749658494.5517378,
+  "file_path": "data\\temp\\extraction_AE900730142\\FACTURA COMERCIAL 0550001248.pdf"
+}

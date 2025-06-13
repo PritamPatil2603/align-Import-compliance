@@ -1,0 +1,32 @@
+{
+  "invoice_number": "10-184-FIN-0069",
+  "company_name": "COSMETICOS TRUJILLO",
+  "total_usd_amount": "18088.56",
+  "currency": "USD",
+  "confidence_level": "HIGH",
+  "extraction_notes": "Single SKU with total quantity and price provided.",
+  "amount_source_text": "Total USD: 18088.56",
+  "client_reference": null,
+  "material_description": null,
+  "fecha_hora": "28/02/2025 14:34:02",
+  "cantidad_total": null,
+  "valor_unitario": null,
+  "line_items": [
+    {
+      "line_number": 1,
+      "sku": "10-184-FIN-0069",
+      "description": "AGUA DE PERFUME FIN MEN IN THE OUD 60ML",
+      "quantity": 6216.0,
+      "unit_price": "2.91",
+      "line_total": "18088.56",
+      "unit_of_measure": "PCS",
+      "country_of_origin": null,
+      "hts_code": null
+    }
+  ],
+  "processing_time": 20.56458854675293,
+  "extraction_method": "enhanced",
+  "line_item_extraction_success": true,
+  "cached_at": 1749658982.0460527,
+  "file_path": "data\\temp\\extraction_AE900739721\\FACTURA COMERCIAL 0550001564.pdf"
+}

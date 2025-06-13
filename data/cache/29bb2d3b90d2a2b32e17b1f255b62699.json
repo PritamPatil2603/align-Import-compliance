@@ -1,0 +1,32 @@
+{
+  "invoice_number": "10-184-FIN-0037",
+  "company_name": "COSMETICOS TRUJILLO",
+  "total_usd_amount": "9928.8",
+  "currency": "USD",
+  "confidence_level": "HIGH",
+  "extraction_notes": "Single SKU extracted with confirmed total matching invoice total.",
+  "amount_source_text": null,
+  "client_reference": null,
+  "material_description": null,
+  "fecha_hora": "07/03/2025 18:31:52",
+  "cantidad_total": null,
+  "valor_unitario": null,
+  "line_items": [
+    {
+      "line_number": 1,
+      "sku": "10-184-FIN-0037",
+      "description": "AGUA DE TOCADOR FIN WITHOUTATRACE 150ML",
+      "quantity": 5040.0,
+      "unit_price": "1.97",
+      "line_total": "9928.8",
+      "unit_of_measure": null,
+      "country_of_origin": null,
+      "hts_code": null
+    }
+  ],
+  "processing_time": 22.770301342010498,
+  "extraction_method": "enhanced",
+  "line_item_extraction_success": true,
+  "cached_at": 1749664045.7490587,
+  "file_path": "data\\temp\\extraction_AE900740836\\FACTURA COMERCIAL 0550001590.pdf"
+}

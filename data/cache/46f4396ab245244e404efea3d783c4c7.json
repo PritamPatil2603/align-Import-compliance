@@ -1,0 +1,32 @@
+{
+  "invoice_number": "10-184-FIN-0045",
+  "company_name": "COSMETICOS TRUJILLO",
+  "total_usd_amount": "11612.16",
+  "currency": "USD",
+  "confidence_level": "HIGH",
+  "extraction_notes": "Single SKU extracted from the invoice with all details provided.",
+  "amount_source_text": "Total USD: 11612.16",
+  "client_reference": null,
+  "material_description": null,
+  "fecha_hora": "23/11/2024 12:54:34",
+  "cantidad_total": null,
+  "valor_unitario": null,
+  "line_items": [
+    {
+      "line_number": 1,
+      "sku": "10-184-FIN-0045",
+      "description": "AGUADETOCADOR FIN MINI SWEETOUTSIDE 75ML",
+      "quantity": 21504.0,
+      "unit_price": "0.54",
+      "line_total": "11612.16",
+      "unit_of_measure": null,
+      "country_of_origin": null,
+      "hts_code": null
+    }
+  ],
+  "processing_time": 16.73288345336914,
+  "extraction_method": "enhanced",
+  "line_item_extraction_success": true,
+  "cached_at": 1749664274.0439594,
+  "file_path": "data\\temp\\extraction_AE900726041\\FACTURA COMERCIAL 550001098.pdf"
+}

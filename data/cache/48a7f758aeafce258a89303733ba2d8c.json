@@ -1,0 +1,32 @@
+{
+  "invoice_number": "10-184-FRE-0069",
+  "company_name": "COSMETICOS TRUJILLO",
+  "total_usd_amount": "23708.16",
+  "currency": "USD",
+  "confidence_level": "HIGH",
+  "extraction_notes": "Single SKU with total quantity and unit price provided. Calculated line total matches invoice total.",
+  "amount_source_text": "Total USD: 23708.16",
+  "client_reference": null,
+  "material_description": null,
+  "fecha_hora": "2024-03-01T14:18:44",
+  "cantidad_total": null,
+  "valor_unitario": null,
+  "line_items": [
+    {
+      "line_number": 1,
+      "sku": "10-184-FRE-0069",
+      "description": "AGUA DE PERFUME FRE CASHMEREVANILLA 60ML",
+      "quantity": 24192.0,
+      "unit_price": "0.98",
+      "line_total": "23708.16",
+      "unit_of_measure": "PCS",
+      "country_of_origin": null,
+      "hts_code": null
+    }
+  ],
+  "processing_time": 88.65511345863342,
+  "extraction_method": "enhanced",
+  "line_item_extraction_success": true,
+  "cached_at": 1749662324.013496,
+  "file_path": "data\\temp\\extraction_AE900692003\\FACTURA COMERCIAL 550000255.pdf"
+}

@@ -1,0 +1,32 @@
+{
+  "invoice_number": "10-184-FIN-0026",
+  "company_name": "COSMETICOS TRUJILLO",
+  "total_usd_amount": "42177.6",
+  "currency": "USD",
+  "confidence_level": "HIGH",
+  "extraction_notes": "Single line item extracted from the invoice with matching total amount.",
+  "amount_source_text": null,
+  "client_reference": null,
+  "material_description": null,
+  "fecha_hora": "31/07/2024 09:54:41",
+  "cantidad_total": null,
+  "valor_unitario": null,
+  "line_items": [
+    {
+      "line_number": 1,
+      "sku": "10-184-FIN-0026",
+      "description": "AGUA DE TOCADOR FIN NEW ROUGE 150ML",
+      "quantity": 20880.0,
+      "unit_price": "2.02",
+      "line_total": "42177.6",
+      "unit_of_measure": null,
+      "country_of_origin": null,
+      "hts_code": null
+    }
+  ],
+  "processing_time": 19.160804271697998,
+  "extraction_method": "enhanced",
+  "line_item_extraction_success": true,
+  "cached_at": 1749656867.241659,
+  "file_path": "data\\temp\\extraction_AE900711498\\FACTURA COMERCIAL 0550000728.pdf"
+}

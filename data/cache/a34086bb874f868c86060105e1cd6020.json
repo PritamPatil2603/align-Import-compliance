@@ -1,0 +1,32 @@
+{
+  "invoice_number": "10-184-FIN-0057",
+  "company_name": "COSMETICOS TRUJILLO",
+  "total_usd_amount": "39160.8",
+  "currency": "USD",
+  "confidence_level": "HIGH",
+  "extraction_notes": "Single SKU extracted with all details matching the invoice total.",
+  "amount_source_text": "39160.80",
+  "client_reference": null,
+  "material_description": null,
+  "fecha_hora": "10/01/2025 10:00:12",
+  "cantidad_total": null,
+  "valor_unitario": null,
+  "line_items": [
+    {
+      "line_number": 1,
+      "sku": "10-184-FIN-0057",
+      "description": "AGUA DE PERFUME FIN NO PRINCE REQ 60ML",
+      "quantity": 15540.0,
+      "unit_price": "2.52",
+      "line_total": "39160.8",
+      "unit_of_measure": "PIEZA",
+      "country_of_origin": null,
+      "hts_code": null
+    }
+  ],
+  "processing_time": 38.023361682891846,
+  "extraction_method": "enhanced",
+  "line_item_extraction_success": true,
+  "cached_at": 1749662203.1294243,
+  "file_path": "data\\temp\\extraction_AE900731876\\FACTURA COMERCIAL 0550001314.pdf"
+}

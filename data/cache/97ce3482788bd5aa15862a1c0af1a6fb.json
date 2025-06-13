@@ -1,0 +1,32 @@
+{
+  "invoice_number": "68-184-FIN-0002",
+  "company_name": "COSMETICOS TRUJILLO",
+  "total_usd_amount": "14580",
+  "currency": "USD",
+  "confidence_level": "HIGH",
+  "extraction_notes": null,
+  "amount_source_text": null,
+  "client_reference": null,
+  "material_description": null,
+  "fecha_hora": "16/10/2024 14:08:40",
+  "cantidad_total": null,
+  "valor_unitario": null,
+  "line_items": [
+    {
+      "line_number": 1,
+      "sku": "68-184-FIN-0002",
+      "description": "AGUA DE PERFUME FIN TES I'MMUSK 60ML",
+      "quantity": 6480.0,
+      "unit_price": "2.25",
+      "line_total": "14580",
+      "unit_of_measure": null,
+      "country_of_origin": null,
+      "hts_code": null
+    }
+  ],
+  "processing_time": 26.89994168281555,
+  "extraction_method": "enhanced",
+  "line_item_extraction_success": true,
+  "cached_at": 1749658903.6084776,
+  "file_path": "data\\temp\\extraction_AE900720861\\FACTURA COMERCIAL 0550000918.pdf"
+}

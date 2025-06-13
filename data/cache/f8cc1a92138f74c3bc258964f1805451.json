@@ -1,0 +1,32 @@
+{
+  "invoice_number": "10-184-FIN-0046",
+  "company_name": "COSMETICOS TRUJILLO",
+  "total_usd_amount": "27760.32",
+  "currency": "USD",
+  "confidence_level": "HIGH",
+  "extraction_notes": "Single SKU with clear quantity and pricing details.",
+  "amount_source_text": "Total USD: 27760.32",
+  "client_reference": null,
+  "material_description": null,
+  "fecha_hora": "20/08/2024 11:06:31",
+  "cantidad_total": null,
+  "valor_unitario": null,
+  "line_items": [
+    {
+      "line_number": 1,
+      "sku": "10-184-FIN-0046",
+      "description": "AGUADETOCADOR FIN MINI NOTACHERRY 75ML",
+      "quantity": 51408.0,
+      "unit_price": "0.54",
+      "line_total": "27760.32",
+      "unit_of_measure": "PIEZA",
+      "country_of_origin": null,
+      "hts_code": null
+    }
+  ],
+  "processing_time": 46.34107851982117,
+  "extraction_method": "enhanced",
+  "line_item_extraction_success": true,
+  "cached_at": 1749657786.844011,
+  "file_path": "data\\temp\\extraction_AE900713841\\FACTURA COMERCIAL 0550000777.pdf"
+}

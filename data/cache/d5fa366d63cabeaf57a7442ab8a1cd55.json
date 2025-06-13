@@ -1,0 +1,32 @@
+{
+  "invoice_number": "10-184-FRE-0123",
+  "company_name": "COSMETICOS TRUJILLO",
+  "total_usd_amount": "9659.52",
+  "currency": "USD",
+  "confidence_level": "HIGH",
+  "extraction_notes": null,
+  "amount_source_text": "Total USD: 9659.52",
+  "client_reference": null,
+  "material_description": null,
+  "fecha_hora": "25/01/2025 12:01:21",
+  "cantidad_total": null,
+  "valor_unitario": null,
+  "line_items": [
+    {
+      "line_number": 1,
+      "sku": "10-184-FRE-0123",
+      "description": "AGUA DE PERFUME FRE SALT 60ML",
+      "quantity": 2808.0,
+      "unit_price": "3.44",
+      "line_total": "9659.52",
+      "unit_of_measure": null,
+      "country_of_origin": null,
+      "hts_code": null
+    }
+  ],
+  "processing_time": 20.53518843650818,
+  "extraction_method": "enhanced",
+  "line_item_extraction_success": true,
+  "cached_at": 1749660177.1275682,
+  "file_path": "data\\temp\\extraction_AE900733856\\FACTURA COMERCIAL 0550001370.pdf"
+}

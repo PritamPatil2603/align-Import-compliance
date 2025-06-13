@@ -1,0 +1,54 @@
+{
+  "invoice_number": "00001000000506202789",
+  "company_name": "COSMETICOS TRUJILLO",
+  "total_usd_amount": "22692",
+  "currency": "USD",
+  "confidence_level": "HIGH",
+  "extraction_notes": null,
+  "amount_source_text": null,
+  "client_reference": null,
+  "material_description": null,
+  "fecha_hora": "13/02/2024 16:43:36",
+  "cantidad_total": null,
+  "valor_unitario": null,
+  "line_items": [
+    {
+      "line_number": 1,
+      "sku": "10-191-ONV-0007",
+      "description": "AGUA DE PERFUME ONV MARINEWATERDRIFT30ML",
+      "quantity": 10650.0,
+      "unit_price": "0.61",
+      "line_total": "6496.5",
+      "unit_of_measure": null,
+      "country_of_origin": null,
+      "hts_code": null
+    },
+    {
+      "line_number": 2,
+      "sku": "10-191-ONV-0011",
+      "description": "AGUA DE PERFUME ONV PASSIONFRUITPEO30ML",
+      "quantity": 10500.0,
+      "unit_price": "0.61",
+      "line_total": "6405",
+      "unit_of_measure": null,
+      "country_of_origin": null,
+      "hts_code": null
+    },
+    {
+      "line_number": 3,
+      "sku": "10-191-ONV-0008",
+      "description": "AGUA DE PERFUME ONV PINKPOPPYSTARFRU30ML",
+      "quantity": 16050.0,
+      "unit_price": "0.61",
+      "line_total": "9790.5",
+      "unit_of_measure": null,
+      "country_of_origin": null,
+      "hts_code": null
+    }
+  ],
+  "processing_time": 16.75742268562317,
+  "extraction_method": "enhanced",
+  "line_item_extraction_success": true,
+  "cached_at": 1749647194.4982462,
+  "file_path": "data\\temp\\extraction_AE900683929\\FACTURA COMERCIAL 550000108.pdf"
+}

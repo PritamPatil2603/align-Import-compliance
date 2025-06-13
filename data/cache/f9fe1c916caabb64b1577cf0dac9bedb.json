@@ -1,0 +1,32 @@
+{
+  "invoice_number": "N/A",
+  "company_name": "COSMETICOS TRUJILLO",
+  "total_usd_amount": "9090.84",
+  "currency": "USD",
+  "confidence_level": "HIGH",
+  "extraction_notes": "Single line item extracted with high confidence. No additional SKUs found.",
+  "amount_source_text": "NUEVE MIL NOVENTA DOLARES 84/100 USD",
+  "client_reference": null,
+  "material_description": null,
+  "fecha_hora": "26/03/2024 08:44:45",
+  "cantidad_total": null,
+  "valor_unitario": null,
+  "line_items": [
+    {
+      "line_number": 1,
+      "sku": "10-184-MIB-0039",
+      "description": "AGUA DE TOCADOR MIBHBMTC WALMOND 150ML",
+      "quantity": 12804.0,
+      "unit_price": "0.71",
+      "line_total": "9090.84",
+      "unit_of_measure": null,
+      "country_of_origin": null,
+      "hts_code": null
+    }
+  ],
+  "processing_time": 36.605024099349976,
+  "extraction_method": "enhanced",
+  "line_item_extraction_success": true,
+  "cached_at": 1749652565.3325365,
+  "file_path": "data\\temp\\extraction_AE900693134\\FACTURA COMERCIAL 0550000325.pdf"
+}

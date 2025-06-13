@@ -1,0 +1,32 @@
+{
+  "invoice_number": "10-184-MIB-0050",
+  "company_name": "COSMETICOS TRUJILLO",
+  "total_usd_amount": "23376.6",
+  "currency": "USD",
+  "confidence_level": "HIGH",
+  "extraction_notes": "Single SKU extracted with total matching invoice total.",
+  "amount_source_text": "Total USD: 23376.60",
+  "client_reference": null,
+  "material_description": null,
+  "fecha_hora": "24/06/2024 17:51:53",
+  "cantidad_total": null,
+  "valor_unitario": null,
+  "line_items": [
+    {
+      "line_number": 1,
+      "sku": "10-184-MIB-0050",
+      "description": "AGUA DE TOCADOR MIBHBMTC PEARBLO 150ML",
+      "quantity": 11988.0,
+      "unit_price": "1.95",
+      "line_total": "23376.6",
+      "unit_of_measure": null,
+      "country_of_origin": null,
+      "hts_code": null
+    }
+  ],
+  "processing_time": 85.8096854686737,
+  "extraction_method": "enhanced",
+  "line_item_extraction_success": true,
+  "cached_at": 1749653076.2817385,
+  "file_path": "data\\temp\\extraction_AE900707207\\FACTURA COMERCIAL 550000630.pdf"
+}

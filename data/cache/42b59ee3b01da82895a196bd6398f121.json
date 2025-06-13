@@ -1,0 +1,32 @@
+{
+  "invoice_number": "10-184-MIB-0003",
+  "company_name": "COSMETICOS TRUJILLO",
+  "total_usd_amount": "5654.4",
+  "currency": "USD",
+  "confidence_level": "HIGH",
+  "extraction_notes": "Single SKU with clear quantity and pricing details.",
+  "amount_source_text": "CINCO MIL SEISCIENTOS CINCUENTA Y CUATRO DOLARES 40/100 USD",
+  "client_reference": null,
+  "material_description": null,
+  "fecha_hora": "21/02/2024 15:59:49",
+  "cantidad_total": null,
+  "valor_unitario": null,
+  "line_items": [
+    {
+      "line_number": 1,
+      "sku": "10-184-MIB-0003",
+      "description": "AGUA DE PERFUME MIB TC CLOUDMUSK 50ML",
+      "quantity": 9120.0,
+      "unit_price": "0.62",
+      "line_total": "5654.4",
+      "unit_of_measure": "PIEZA",
+      "country_of_origin": null,
+      "hts_code": null
+    }
+  ],
+  "processing_time": 83.82800340652466,
+  "extraction_method": "enhanced",
+  "line_item_extraction_success": true,
+  "cached_at": 1749662978.0174031,
+  "file_path": "data\\temp\\extraction_AE900686468\\FACTURA COMERCIAL 0550000209.pdf"
+}
